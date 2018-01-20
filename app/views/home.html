@@ -1,20 +1,33 @@
-<div class="jumbotron">
-	<h1>'Allo, 'Allo!</h1>
-	<p class="lead">
-		<img src="images/yeoman.png" alt="I'm Yeoman"><br />
-		{{'WELCOME_MESSAGE' | translate}}
-	</p>
-	<p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
 
-<div class="row marketing">
-	<h4>Angular-Require-Fullstack Generator contains</h4>
-	<ul>
-		<li>AngularJs</li>
-		<li>RequireJs</li>
-		<li>Bootstrap</li>
-		<li>i18n</li>
-		<li>Grunt</li>
-		<li>File revving</li>
-	</ul>
-</div>
+	<div class="col-md-8">
+		<div class="card  " >
+			<div class="card-header">
+			    	<h5 class="card-title center">{{'NEW_MESSAGE' | translate}}</h5>
+			  </div>
+		</div>
+		<div class ="row contentForm">
+				<div ng-click="triggerTextForm()" class=" col  offset-md-4 col-md-2  white clickable" ng-class="{'contentSelected' : showTextForm}" id="textDiv">
+					<a  id="Text" ><span class="fa fa-font fa-3x"></span> <br/><p >{{'CONTENT_TEXT' | translate}}</p></a>
+				</div>
+
+				
+
+				<div ng-click="triggerVideoForm()" class=" col  col-md-2 last white clickable" ng-class="{'contentSelected' : showVideoForm}" id="videoDiv">
+				<a  id="Video"  ><span class="fa fa-video-camera fa-3x"></span> <br/><p >{{'CONTENT_VIDEO' | translate}}</p></a>
+				</div>
+		</div>
+
+
+			<!--<c:if test="${postsNum == 0}">
+				<h5 id="messageEmpty"><spring:message code="messages.empty"> </spring:message></h5>
+			</c:if>-->
+			
+			<message-form ng-show="showTextForm || showVideoForm" />	
+			<div ng-repeat="p in posts">
+				<post-view post="p" />
+			</div>	
+			
+	</div>
+
+
+	

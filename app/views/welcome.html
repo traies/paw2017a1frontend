@@ -1,0 +1,67 @@
+
+	
+     <div  class="row justify-content-md-center" id ="welcome">
+          <h1>{{'WELCOME_MESSAGE' | translate}}</h1>
+          <p class="slogan">{{'SLOGAN' | translate}} </p>
+
+     </div>
+      <div class = "row justify-content-md-center" id="anon-search">
+        <div class = "bg-inverse col col-lg-4 center search-games-anon">
+          <h5 class="white">{{'FIND_GAMES' | translate}}</h5>
+             <form class="autocomplete form-inline my-2 my-lg-0" action="${pageContext.servletContext.contextPath}/search" method="get"  >
+               <input style="width:21.3rem" class="search typeahead form-control mr-sm-2" type="text" placeholder="Search" name="term">
+             </form>
+       </div>
+       </div>
+        
+          
+           
+            <div class="row trendAndPop">
+              <div class="col center">
+	                <h2 >{{'GAME_TRENDING' | translate}}</h2>
+					<div ng-repeat="game in trendings" >
+							<a class="list-group-item list-group-item-action" ng-href="/game/steam/{{game.appid}}">
+							  <div class="card-block game-block">
+									<img ng-if="game.logoUrl" class="float-left img-thumbnail game-logo" ng-src="{{game.logoUrl}}" alt="Game logo">
+									<img ng-if="!game.logoUrl" class="float-left img-thumbnail game-logo" src="images/no-game.jpg" alt="Game logo">
+							    <h5 class="card-title">{{game.name}}</h5>
+							    <h6 class="card-subtitle mb-2 text-muted">
+							    	<span class="game-attr">{{'GAME_RELEASE_DATE' | translate}}</span> {{game.releaseDate}}
+							    </h6>
+							  </div>
+							</a>
+					</div>
+					<li ng-if="trendings==undefined || trendings.length == 0" class="list-group-item">
+						<div class="card-block">
+							<h5 class="card-title">No games were found</h5>
+						</div>
+					</li>
+		
+               </div>
+
+      
+              <div class="col center offset-md-2">
+                 <h2 >{{'GAME_POPULAR' | translate}}</h2>
+					<div ng-repeat="game in populars" >
+							<a class="list-group-item list-group-item-action" ng-href="/game/steam/{{game.appid}}">
+							  <div class="card-block game-block">
+									<img ng-if="game.logoUrl" class="float-left img-thumbnail game-logo" ng-src="{{game.logoUrl}}" alt="Game logo">
+									<img ng-if="!game.logoUrl" class="float-left img-thumbnail game-logo" src="images/no-game.jpg" alt="Game logo">
+							    <h5 class="card-title">{{game.name}}</h5>
+							    <h6 class="card-subtitle mb-2 text-muted">
+							    	<span class="game-attr">{{'GAME_RELEASE_DATE' | translate}}</span> {{game.releaseDate}}
+							    </h6>
+							  </div>
+							</a>
+					</div>
+					<li ng-if="populars == undefined || populars.length == 0" class="list-group-item">
+						<div class="card-block">
+							<h5 class="card-title">No games were found</h5>
+						</div>
+					</li> 
+              </div>
+          </div>
+
+          
+        
+  

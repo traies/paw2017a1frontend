@@ -4,12 +4,14 @@ define(['routes',
 	'i18n/i18nLoader!',
 	'angular',
 	'angular-route',
+	'angular-bootstrap',
 	'bootstrap',
 	'angular-translate'],
 	function(config, dependencyResolverFor, i18n) {
 		var paw2017a1frontend = angular.module('paw2017a1frontend', [
 			'ngRoute',
-			'pascalprecht.translate'
+			'pascalprecht.translate',
+			'ui.bootstrap'
 		]);
 		paw2017a1frontend
 			.config(

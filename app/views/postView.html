@@ -1,0 +1,81 @@
+<div class="card message clickable"  id="{{post.message.id}}"  user="{{post.message.user.name}}">
+ <a class="card-link-absolute" ng-href="/post?id={{post.message.id}}"></a>
+ <div class=" shared" ng-if="post.contextSharers.length > 0">
+		   	<span ng-if="post.contextSharers.length == 1" > <a ng-href="user/{{post.contextSharers[0].user.name}}">{{post.contextSharers[0].user.name}} </a> has shared it </span>
+		   
+		   	<span ng-if="post.contextSharers.length > 1" >
+		   		<div ng-repeat="user in post.contextSharers" style="display:inline;">
+		   			<a ng-href="/user/{{user.name}}">{{user.name}} </a> 
+		   			<span ng-if="$index < post.contextSharers.length - 2">,</span>
+		   			<span ng-if="$index == post.contextSharers.length - 2">and</span>
+		   		</div> 
+		   		have shared it
+		   	</span>
+ 	
+   
+  </div>
+
+  <div class="card-block header">
+  <img ng-src="/user/avatar/{{post.message.user.name}}" class="img-rounded message_logo"/>
+    <a class="message-user" ng-href="/user/{{post.message.user.name}}"> {{post.message.user.name}} </a> 
+    <span class="message-date">{{post.message.date}} </span>
+  </div>
+
+  <div class="card-block">
+    <h4 class="card-title"><span class="type-message"><a class="card-title" ng-href="/post?id={{post.message.id }}">
+    {{post.message.title}}
+    </a></span></h4>
+    <div ng-repeat="game in post.message.tags" style="display:inline;">
+		   	<a ng-href="/game/steam/{{game.appid}}">#{{game.name}}</a>
+	</div>
+  </div>
+
+  <div  ng-if="post.message.type === 'Video'" class="card-block">  
+			<div class="video-container">
+				<div class="embed-responsive embed-responsive-16by9">
+				<iframe class="embed-responsive-item" ng-src="{{trustedVideoUrl(post.message.contentd.body)}}"></iframe>
+				</div>
+			</div>
+	</div>
+		
+	
+
+ <div class="card-block interaction ">
+
+   	<a ng-if="user != null" ng-click="replyModal()"  class="card-link reply"  modal="replyModal"  ><span>{{post.timesReplied}}<span class="fa fa-reply "> </span>  </span> </a>
+
+   	<a ng-if="user == null"  class="card-link "   ><span>{{post.timesReplied}}<span class="fa fa-reply "> </span>  </span> </a>
+
+    <a ng-if="user == null" class="card-link grey "> <span> {{post.timesShared}}<span  class="fa fa-retweet "> </span> </span> </a>
+
+	<div ng-if="isSameUser" >
+		 <a class="card-link grey cant-share"> <span> {{post.timesShared}}<span  class="fa fa-retweet "> </span> </span> </a>
+		  <form class="inline deleteForm" >
+			<button type="submit" class="btn-link  cant-share"><span  class="fa fa-trash "> </span></button>
+		</form> 
+	</div>
+
+  	<form ng-if="!isSameUser && user!= null && !haveShared" class="inline retweetForm" >
+			<button type="submit" class="btn-link"><span> {{post.timesShared}}<span  class="fa fa-retweet "> </span> </span> </button>
+	</form> 
+
+	<form  ng-if="!isSameUser && user!= null && haveShared" class="inline retweetForm" >
+		<button type="submit" class="btn-link black cant-share"><span> {{post.timesShared}}<span  class="fa fa-retweet "> </span> </span> </button>
+	</form> 
+   
+
+ <span class="right">{{post.message.type}}</span>
+ 	<div ng-if="post.message.type === 'Review'" style="display:inline;"> 
+			<span ng-if="post.message.reviewd.positive == 'true' " class="fa fa-thumbs-up right"></span> 
+ 			<span ng-if="post.message.reviewd.positive == 'false' " class="fa fa-thumbs-down right"></span> 
+ 	</div> 
+
+	
+  </div>
+</div> 
+	
+	    		
+	 
+
+
+
