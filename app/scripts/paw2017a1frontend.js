@@ -6,7 +6,8 @@ define(['routes',
 	'angular-route',
 	'angular-bootstrap',
 	'bootstrap',
-	'angular-translate'],
+	'angular-translate',
+	'jwt-decode'],
 	function(config, dependencyResolverFor, i18n) {
 		var paw2017a1frontend = angular.module('paw2017a1frontend', [
 			'ngRoute',

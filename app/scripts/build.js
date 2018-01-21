@@ -28,7 +28,9 @@ require.config({
         'typeahead-jquery': '../../bower_components/corejs-typeahead/dist/typeahead.jquery',
         tether: '../../bower_components/tether/dist/js/tether',
         'corejs-typeahead': '../../bower_components/corejs-typeahead/dist/typeahead.bundle',
-        'angular-bootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls'
+        'angular-bootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls',
+        'angular-jwt': '../../bower_components/angular-jwt/dist/angular-jwt',
+        'jwt-decode': '../../bower_components/jwt-decode/build/jwt-decode'
     },
     shim: {
         angular: {

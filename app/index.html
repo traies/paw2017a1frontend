@@ -10,7 +10,7 @@
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/index.css">
    <!-- endbuild -->
-   
+
     <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/loginregister.css">
    <!-- endbuild -->
@@ -38,10 +38,10 @@
   class="navbar main_navbar sticky-top navbar-collapse navbar-toggleable-md navbar-inverse bg-inverse">
 
     <div class="navbar-header">
-        <a ng-if="user != null" class="navbar-brand"  href="#!/"> 
+        <a ng-if="user != null" class="navbar-brand"  href="#!/">
             <img alt="logo" width="150" src="images/vaporw.png" />
         </a>
-        <a ng-if="user == null" class="navbar-brand"  href="#!/welcome"> 
+        <a ng-if="user == null" class="navbar-brand"  href="#!/welcome">
               <img alt="logo" width="150" src="images/vaporw.png" />
         </a>
 
@@ -83,7 +83,7 @@
           </div>
           <div class="dropdown-divider"></div>
             <div ng-if="user.notifications.length == 0" class="dropdown-item">
-              You don't have new notifications      
+              You don't have new notifications
             </div>
             <div ng-if="user.notifications.length != 0" >
               <div ng-repeat="notif in user.notifications"  varStatus="gen">
@@ -101,9 +101,9 @@
                       <a ng-href="/msgnotif?id={{notif.id}}">
                             <i class="fa fa-retweet" aria-hidden="true"></i>
                           <div ng-repeat = "sharer in notif.sharers" >
-                            {{sharer.user.name}}                  
-                            <span ng-if="$index == notif.sharers.length - 2" > and </span>                        
-                            <span ng-if="$index < notif.sharers.length - 2"> , </span>      
+                            {{sharer.user.name}}
+                            <span ng-if="$index == notif.sharers.length - 2" > and </span>
+                            <span ng-if="$index < notif.sharers.length - 2"> , </span>
                           </div>
                           shared your message
                           <em style="color: blue;">{{notif.message.title}}</em>
@@ -116,8 +116,8 @@
                           <i class="fa fa-reply" aria-hidden="true"></i>
                         <div ng-repeat="replier in notif.repliers">
                           {{replier.user.name}}
-                          <span ng-if="$index == notif.repliers.length - 2" > and </span>                       
-                          <span ng-if="$index < notif.repliers.length - 2"> , </span>                       
+                          <span ng-if="$index == notif.repliers.length - 2" > and </span>
+                          <span ng-if="$index < notif.repliers.length - 2"> , </span>
                         </div>
                         replied your message
                         <em style="color: blue;">{{notif.message.title}}</em>
@@ -135,14 +135,14 @@
                 <i class="fa fa-line-chart fa-lg" aria-hidden="true" id="trendings-icon"></i>
               </h5></a>
 
-            
+
       </div>
       <form  style="float:right;" class="autocomplete form-inline my-2 my-lg-0" action="/search" method="get" >
         <input style="width: 20rem" class="search typeahead form-control mr-sm-2" type="text" placeholder="Search games, users and messages" name="term"/>
       </form>
     </div>
 
- 
+
     <div ng-if="!isLoggedIn">
       <div style="float: right">
         <a id="login" href="#!/login"><h5
@@ -157,7 +157,7 @@
               Register
             </h5></a>
 
-          
+
       </div>
     </div>
 </nav>
@@ -169,7 +169,7 @@
 
     <div ng-view=""></div>
 
-    
+
   </div>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

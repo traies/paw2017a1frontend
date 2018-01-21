@@ -1,7 +1,9 @@
 {
   "name": "paw2017a1frontend",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "angular-jwt": "^0.1.9"
+  },
   "devDependencies": {
     "bower": "^1.3.12",
     "grunt": "^0.4.1",
