@@ -1,9 +1,9 @@
 'use strict';
-define(['paw2017a1frontend','services/sessionService'], function(paw2017a1frontend) {
+define(['paw2017a1frontend','services/sessionService', 'services/notificationsService'], function(paw2017a1frontend) {
 
-   return paw2017a1frontend.factory('authService', ['$http', 'sessionService', '$q', '$rootScope','jwtHelper',
+   return paw2017a1frontend.factory('authService', ['$http', 'notificationsService', 'sessionService', '$q', '$rootScope','jwtHelper',
 
-   function($http,  session, $q, $rootScope,jwtHelper) {
+   function($http, notif,  session, $q, $rootScope,jwtHelper) {
 
     var AuthService = {};
 		AuthService.loggedUser = session.getUser();
@@ -23,17 +23,36 @@ define(['paw2017a1frontend','services/sessionService'], function(paw2017a1fronte
         },
         data: {username: username, password: password}
       }).then(function (response) {
-        console.log(response.headers()['x-auth-token']);
+        var payload = jwtHelper.decodeToken(response.headers()['x-auth-token']);
+        var user = {
+          name: payload.username,
+          id: payload.userId,
+          token: response.headers()['x-auth-token'],
+          tokenPayload: payload,
+          notifications: []
+        };
+        session.setUser(user, rememberMe);
+        self.loggedUser = user;
+        //perhaps this should be called when listening user:updated
+        notif.update();
+        $rootScope.$broadcast('user:updated');
       });
-var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ2YXBvciIsImV4cCI6MTUxNjU2NTQ3NiwidXNlcklkIjo0MiwiaWF0IjoxNTE2NTY0NTc2LCJqdGkiOiI5ODAxNmNjMDE4NWM5OWJiYWU3NjFkYjNiMzAwNTU2ZSIsInVzZXJuYW1lIjoiWmtheW9uIn0.Q5Hhqgx0547yhX7GhmFedpoGTxggqQFdjZvwaojBKC0';
 
-    var tokenPayload = jwtHelper.decodeToken(token);
-   console.log(tokenPayload);
-
-			session.setUser( {name:"Nicolas",id:'2',notifications:[]}, rememberMe);
-			self.loggedUser = {name:"Nicolas",id:'2',notifications:[]};
-			$rootScope.$broadcast('user:updated');
 		};
+
+    AuthService.updateTokenData = function(token){
+      var payload = jwtHelper.decodeToken(token);
+      var user = {
+        name: payload.username,
+        id: payload.userId,
+        token: token,
+        tokenPayload: payload,
+        notifications: session.getUser().notifications
+      };
+      session.updateUser(user);
+      self.loggedUser = user;
+      $rootScope.$broadcast('user:updated');
+    };
 
 		AuthService.isLoggedIn = function() {
 			return !!this.loggedUser;

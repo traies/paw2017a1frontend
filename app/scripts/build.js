@@ -29,7 +29,9 @@ require.config({
         tether: '../../bower_components/tether/dist/js/tether',
         'corejs-typeahead': '../../bower_components/corejs-typeahead/dist/typeahead.bundle',
         'angular-bootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls',
-        'angular-jwt': '../../bower_components/angular-jwt/dist/angular-jwt'
+        'angular-jwt': '../../bower_components/angular-jwt/dist/angular-jwt',
+        'jwt-decode': '../../bower_components/jwt-decode/build/jwt-decode',
+        'angular-resource': '../../bower_components/angular-resource/angular-resource'
     },
     shim: {
         angular: {
@@ -41,12 +43,18 @@ require.config({
             deps: [
                 'angular'
             ]
-        },'angular-jwt': {
+        },
+        'angular-jwt': {
             deps: [
                 'angular'
             ]
         },
         'angular-route': {
+            deps: [
+                'angular'
+            ]
+        },
+        'angular-resource': {
             deps: [
                 'angular'
             ]

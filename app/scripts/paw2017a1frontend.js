@@ -4,6 +4,7 @@ define(['routes',
 	'i18n/i18nLoader!',
 	'angular',
 	'angular-route',
+	'angular-resource',
 	'angular-bootstrap',
 	'bootstrap',
 	'angular-translate',
@@ -12,6 +13,7 @@ define(['routes',
 	function(config, dependencyResolverFor, i18n) {
 		var paw2017a1frontend = angular.module('paw2017a1frontend', [
 			'ngRoute',
+			'ngResource',
 			'pascalprecht.translate',
 			'ui.bootstrap',
 			'angular-jwt'
@@ -24,7 +26,8 @@ define(['routes',
 				'$filterProvider',
 				'$provide',
 				'$translateProvider',
-				function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider) {
+				'$httpProvider',
+				function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider, $httpProvider) {
 
 					paw2017a1frontend.controller = $controllerProvider.register;
 					paw2017a1frontend.directive = $compileProvider.directive;
@@ -43,6 +46,30 @@ define(['routes',
 
 					$translateProvider.translations('preferredLanguage', i18n);
 					$translateProvider.preferredLanguage('preferredLanguage');
+
+					var interceptor = ['sessionService',
+
+				    function(session) {
+
+							return {
+
+				       request: function (config) {
+				           // This is the authentication service that I use.
+				           // I store the bearer token in the local storage and retrieve it when needed.
+				           // You can use your own implementation for this
+				           var user = session.getUser();
+
+				           if (user != null) {
+				               config.headers['Authorization'] = 'Bearer '+ user.token;
+				           }
+
+				           return config;
+				         }
+							 };
+				 	}];
+
+					$httpProvider.interceptors.push(interceptor);
+
 				}]);
 		return paw2017a1frontend;
 	}
