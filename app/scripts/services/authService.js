@@ -1,9 +1,9 @@
 'use strict';
 define(['paw2017a1frontend','services/sessionService'], function(paw2017a1frontend) {
 
-   return paw2017a1frontend.factory('authService', ['$http', 'sessionService', '$q', '$rootScope',
+   return paw2017a1frontend.factory('authService', ['$http', 'sessionService', '$q', '$rootScope','jwtHelper',
 
-   function($http,  session, $q, $rootScope) {
+   function($http,  session, $q, $rootScope,jwtHelper) {
 
     var AuthService = {};
 		AuthService.loggedUser = session.getUser();
@@ -25,8 +25,10 @@ define(['paw2017a1frontend','services/sessionService'], function(paw2017a1fronte
       }).then(function (response) {
         console.log(response.headers()['x-auth-token']);
       });
+var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ2YXBvciIsImV4cCI6MTUxNjU2NTQ3NiwidXNlcklkIjo0MiwiaWF0IjoxNTE2NTY0NTc2LCJqdGkiOiI5ODAxNmNjMDE4NWM5OWJiYWU3NjFkYjNiMzAwNTU2ZSIsInVzZXJuYW1lIjoiWmtheW9uIn0.Q5Hhqgx0547yhX7GhmFedpoGTxggqQFdjZvwaojBKC0';
 
-
+    var tokenPayload = jwtHelper.decodeToken(token);
+   console.log(tokenPayload);
 
 			session.setUser( {name:"Nicolas",id:'2',notifications:[]}, rememberMe);
 			self.loggedUser = {name:"Nicolas",id:'2',notifications:[]};
