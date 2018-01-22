@@ -20,7 +20,7 @@ define(['paw2017a1frontend','services/authService','directives/postView','direct
 						,contextSharers:[ {name:'Alejo',id:'3'} , {name:'Tomás',id:'3'} , {name:'Eliseo',id:'3'} ]
 						,timesReplied:'2'
 						,timesShared:'2'
-					} , 
+					} ,
 					{message:{
 							user:{name:'Tomas'},
 							id:'85',date:'12/01/2018',
@@ -47,7 +47,7 @@ define(['paw2017a1frontend','services/authService','directives/postView','direct
 		 	$scope.showTextForm = false;
 		 }
 		 /*$scope.openMessageForm(function(){
-	 	
+
 	 	if(currentContent != $(this).children(':first').attr('id').toLowerCase()){
 	 		currentContent = $(this).children(':first').attr('id').toLowerCase();
 	 		$('.message-creator').removeClass('sr-only');
@@ -68,9 +68,9 @@ define(['paw2017a1frontend','services/authService','directives/postView','direct
 			 $('.message-creator').addClass('sr-only');
 			 $('#textDiv,#videoDiv').removeClass('contentSelected');
 	 	}
-	 	
-	 	
+
+
 	 });*/
-		
+
 	}]);
 });

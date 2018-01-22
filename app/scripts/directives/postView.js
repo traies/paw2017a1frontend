@@ -21,7 +21,7 @@ define(['paw2017a1frontend','services/authService','controllers/ReplyModalCtrl']
 					return $sce.trustAsResourceUrl(url);
 				};
 
-				$scope.replyModal = function(){		
+				$scope.replyModal = function(){
 					return $uibModal.open({
 						templateUrl: 'views/modals/replyModal.html',
 						controller: 'ReplyModalCtrl',
@@ -36,7 +36,7 @@ define(['paw2017a1frontend','services/authService','controllers/ReplyModalCtrl']
 					  }
 					});;
 				}
-				
+
 			}]
 		}
     });

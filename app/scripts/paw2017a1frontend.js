@@ -47,9 +47,9 @@ define(['routes',
 					$translateProvider.translations('preferredLanguage', i18n);
 					$translateProvider.preferredLanguage('preferredLanguage');
 
-					var interceptor = ['sessionService',
+					var interceptor = ['sessionService', '$injector',
 
-				    function(session) {
+				    function(session, $injector) {
 
 							return {
 
@@ -64,7 +64,26 @@ define(['routes',
 				           }
 
 				           return config;
-				         }
+				         },
+
+								 response: function (response){
+									 /*
+									 ** Need to inject this way because of
+									 **	a circular dependency on $http
+									 */
+									 var auth = $injector.get('authService');
+
+									 var token = response.headers('x-auth-token');
+
+									 if(auth.isLoggedIn() && token != null){
+										 auth.updateTokenData(token);
+										 console.log('updated user');
+									 }
+
+
+									 return response;
+								 }
+
 							 };
 				 	}];
 

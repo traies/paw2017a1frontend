@@ -1,5 +1,5 @@
 'use strict';
-define(['paw2017a1frontend','services/autoCompleteService','services/authService','bloodhound','typeahead','typeahead-jquery'], function(paw2017a1frontend) {
+define(['paw2017a1frontend','directives/notifications','services/autoCompleteService','services/authService','bloodhound','typeahead','typeahead-jquery'], function(paw2017a1frontend) {
 
 	paw2017a1frontend.controller('IndexCtrl', ['$scope','$location','autoCompleteService','authService' ,function($scope,$location,autoComplete,auth) {
 
@@ -7,8 +7,6 @@ define(['paw2017a1frontend','services/autoCompleteService','services/authService
 		$scope.isLoggedIn = auth.isLoggedIn();
 		$scope.user = auth.getLoggedUser();
 		$scope.showNavBar = true;
-		$('#dropdownMenuButton').dropdown();
-		$('#notificationsDropdown').dropdown();
 
 		$scope.logOut = function(){
 			auth.logOut();
@@ -37,4 +35,3 @@ define(['paw2017a1frontend','services/autoCompleteService','services/authService
 
 	}]);
 });
-

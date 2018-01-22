@@ -73,62 +73,7 @@
           </a>
         </div>
       </div>
-      <div  style="float:right;" ng-if="user.notifications != null" class="dropdown">
-        <button class="btn navbar_profile_button" type="button" id="notificationsDropdown" data-toggle="dropdown" style="background-color: rgb(41,43,44); color: rgb(247,247,247);">
-          <i class="fa fa-bell fa-lg" aria-hidden="true">{{user.notifications.length}}</i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationsDropdown" style="height: auto; max-height: 30em; width: 25em;word-break: break-all;">
-          <div class="dropdown-item">
-            <h4 style="text-align: center;">Notifications</h4>
-          </div>
-          <div class="dropdown-divider"></div>
-            <div ng-if="user.notifications.length == 0" class="dropdown-item">
-              You don't have new notifications
-            </div>
-            <div ng-if="user.notifications.length != 0" >
-              <div ng-repeat="notif in user.notifications"  varStatus="gen">
-                      <div ng-if="notif.type == 'FOLLOWED' " class="dropdown-item">
-                        <p style="word-break: break-word; white-space:normal;">
-                      <a ng-href="/folnotif?id={{notif.id}}">
-                          <i class="fa fa-user-plus" aria-hidden="true"></i>
-                          {{notif.follower.name}}
-                          followed you
-                      </a>
-                    </p>
-                  </div>
-                      <div ng-if="notif.type == 'SHARED' " class="dropdown-item">
-                        <p style="word-break: normal; white-space:normal;">
-                      <a ng-href="/msgnotif?id={{notif.id}}">
-                            <i class="fa fa-retweet" aria-hidden="true"></i>
-                          <div ng-repeat = "sharer in notif.sharers" >
-                            {{sharer.user.name}}
-                            <span ng-if="$index == notif.sharers.length - 2" > and </span>
-                            <span ng-if="$index < notif.sharers.length - 2"> , </span>
-                          </div>
-                          shared your message
-                          <em style="color: blue;">{{notif.message.title}}</em>
-                      </a>
-                    </p>
-                  </div>
-                      <div ng-if="notif.type == 'REPLIED' " class="dropdown-item">
-                        <p style="word-break: normal; white-space:normal;">
-                      <a ng-href="/msgnotif?id={{notif.id}}">
-                          <i class="fa fa-reply" aria-hidden="true"></i>
-                        <div ng-repeat="replier in notif.repliers">
-                          {{replier.user.name}}
-                          <span ng-if="$index == notif.repliers.length - 2" > and </span>
-                          <span ng-if="$index < notif.repliers.length - 2"> , </span>
-                        </div>
-                        replied your message
-                        <em style="color: blue;">{{notif.message.title}}</em>
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                <div ng-if="$index != user.notifications.length - 1" class="dropdown-divider"></div>
-            </div>
-        </div>
-      </div>
+      <notifications></notifications>
       <div style="float: right" >
             <a id="trendings" href="/trendings"><h5
                 class="white clickable">
