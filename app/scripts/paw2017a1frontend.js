@@ -77,7 +77,6 @@ define(['routes',
 
 									 if(auth.isLoggedIn() && token != null){
 										 auth.updateTokenData(token);
-										 console.log('updated user');
 									 }
 
 

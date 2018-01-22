@@ -46,7 +46,7 @@ a.message{
 }
 
 div#message-input{
-	
+
 }
 .center{
 	text-align:center;
@@ -94,7 +94,7 @@ nav.navbar.main_navbar {
 }
 
 body {
-	min-height:100% !important; 
+	min-height:100% !important;
 	background-color:#f7f7f7 !important;
 }
 
@@ -156,7 +156,7 @@ li.nav-item a.game_category_link:hover{
 }
 .list-group{
 	padding-right: 0;
-	
+
 }
 
 .card-block.interaction{
@@ -331,7 +331,7 @@ div.inline div.dropdown{
 	transition: .3s;
 }
 .contentForm div:not(.last){
-	border-right: 1px solid rgba(255, 255, 255, 0.5); 
+	border-right: 1px solid rgba(255, 255, 255, 0.5);
 	border-radius: 10px 0px 0px 10px;
 }
 .contentForm div.last{
@@ -429,7 +429,7 @@ ul.user-count-list{
 }
 
 li.list-inline-item.user-count-list-item {
-	line-height:1.1; 
+	line-height:1.1;
 	margin-right:1rem;
 	text-align:center;
 	font-size:small
@@ -439,12 +439,12 @@ div.user-count-number {
 	font-size:xx-large;
 }
 img.user-image{
-	margin-right:1rem; 
+	margin-right:1rem;
 	max-width:5rem
 }
 
 img.game-logo {
-	margin-right:1rem; 
+	margin-right:1rem;
 	max-width:10rem
 }
 
@@ -569,8 +569,8 @@ div.search-games-anon{
 }
 
 div.navbar.sticky-navbar {
-	padding-bottom:0; 
-	padding-top:0; 
+	padding-bottom:0;
+	padding-top:0;
 	position:sticky;
 	margin-top: -1px;
 }

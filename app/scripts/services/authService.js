@@ -1,8 +1,17 @@
 'use strict';
-define(['paw2017a1frontend','services/sessionService', 'services/notificationsService'], function(paw2017a1frontend) {
+define(
+  ['paw2017a1frontend',
+  'services/sessionService',
+  'services/notificationsService'],
+  function(paw2017a1frontend) {
 
-   return paw2017a1frontend.factory('authService', ['$http', 'notificationsService', 'sessionService', '$q', '$rootScope','jwtHelper',
-
+   return paw2017a1frontend.factory('authService',
+   ['$http',
+   'notificationsService',
+   'sessionService',
+   '$q',
+   '$rootScope',
+   'jwtHelper',
    function($http, notif,  session, $q, $rootScope,jwtHelper) {
 
     var AuthService = {};
@@ -33,9 +42,13 @@ define(['paw2017a1frontend','services/sessionService', 'services/notificationsSe
         };
         session.setUser(user, rememberMe);
         self.loggedUser = user;
-        //perhaps this should be called when listening user:updated
+        //Todo: see if can trigger this when event
+        //fired or once in a while
         notif.update();
         $rootScope.$broadcast('user:updated');
+        $rootScope.$broadcast('login:ok');
+      }, function(){
+        $rootScope.$broadcast('login:failed');
       });
 
 		};
