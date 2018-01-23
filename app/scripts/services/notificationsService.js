@@ -11,7 +11,11 @@ define(['paw2017a1frontend','services/sessionService'], function(paw2017a1fronte
       {id:'@id'});
 
       NotificationsService.update = function(){
-        session.getUser().notifications = notificationsResource.query();
+        notificationsResource.query().$promise.then(
+          function(response){
+            session.getUser().notifications = response;
+          }
+        );
       };
 
       NotificationsService.delete = function(id){

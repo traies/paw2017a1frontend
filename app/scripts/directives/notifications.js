@@ -1,5 +1,5 @@
 'use strict';
-define(['paw2017a1frontend', 'services/authService', 'services/notificationsService'], function(paw2017a1frontend) {
+define(['paw2017a1frontend', 'services/sessionService', 'services/notificationsService'], function(paw2017a1frontend) {
 
 	paw2017a1frontend.directive('notifications', function() {
 		return {
@@ -9,12 +9,12 @@ define(['paw2017a1frontend', 'services/authService', 'services/notificationsServ
       scope: {},
       controller:
         ['$scope',
-        'authService',
+        'sessionService',
         'notificationsService',
-        function($scope, auth, notif){
+        function($scope, session, notif){
 
           $scope.getNotifications = function(){
-            return auth.getLoggedUser().notifications;
+            return session.getUser().notifications;
           };
 
           $scope.updateNotifications = function(){
