@@ -1,13 +1,13 @@
 'use strict';
 define(['paw2017a1frontend','services/sessionService'], function(paw2017a1frontend) {
 
-   return paw2017a1frontend.factory('notificationsService', ['$resource', 'sessionService',
+   return paw2017a1frontend.factory('notificationsService', ['$resource', 'sessionService','baseUrl',
 
-   function($resource, session) {
+   function($resource, session, baseUrl) {
 
       var NotificationsService = {};
 
-      var notificationsResource = $resource('http://192.168.1.106:8080/api/notifications/:id',
+      var notificationsResource = $resource(baseUrl + '/api/notifications/:id',
       {id:'@id'});
 
       NotificationsService.update = function(){

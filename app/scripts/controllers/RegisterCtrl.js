@@ -1,10 +1,27 @@
-define(['paw2017a1frontend','services/restService'], function(paw2017a1frontend) {
+define(
+  ['paw2017a1frontend',
+  'services/UserService',
+  'services/authService'], function(paw2017a1frontend) {
 
     'use strict';
-    paw2017a1frontend.controller('RegisterCtrl', ['$scope','$location','restService','$rootScope',function($scope,$location,rest,$rootScope) {
+    paw2017a1frontend.controller('RegisterCtrl',
+    ['$scope',
+    '$location',
+    '$rootScope',
+    'UserService',
+    'authService',
+    function($scope,$location,$rootScope, userService, auth) {
 
     	$rootScope.$broadcast('hideNavBar');
+
+        $scope.url = '/';
+
+        $scope.registerError = false;
+
         $scope.registerSubmit = function(registerUrl){
+
+            $scope.url = registerUrl != null ? registerUrl : '/';
+
             $scope.resetErrors();
 
             if ($scope.registerForm.username.length < 6){
@@ -30,13 +47,28 @@ define(['paw2017a1frontend','services/restService'], function(paw2017a1frontend)
 
             if($scope.gotErrors)
                 return;
-        	rest.createUser({username : $scope.registerForm.username, password: $scope.registerForm.password});
-        	$rootScope.$broadcast('showNavBar');
-        	if (registerUrl == undefined || registerUrl == null){
-        		$location.path('/');
-        	}else{
-        		$location.path('registerUrl');
-        	}
+        	//rest.createUser({username : $scope.registerForm.username, password: $scope.registerForm.password});
+
+          userService.register({
+            "username": $scope.registerForm.username,
+            "password": $scope.registerForm.password,
+            "repeatPassword": $scope.registerForm.password
+          }).$promise.then(function(response){
+            //now login
+            $scope.registerError = false;
+            var token = response.$httpHeaders('x-auth-token');
+
+            auth.loginWithToken(token, false);
+            $rootScope.$broadcast('showNavBar');
+            $location.path($scope.url);
+
+          }, function(error){
+            $scope.registerError = true;
+
+          });
+
+
+
         }
 
         $scope.resetErrors = function(){

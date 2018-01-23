@@ -88,7 +88,7 @@ define(['routes',
 
 					$httpProvider.interceptors.push(interceptor);
 				}])
-				.constant('baseUrl','http://127.0.0.1:8080');
+				.constant('baseUrl','http://192.168.1.106:8080');
 		return paw2017a1frontend;
 	}
 );

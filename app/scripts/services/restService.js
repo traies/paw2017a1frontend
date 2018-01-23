@@ -1,15 +1,7 @@
 'use strict';
 define(['paw2017a1frontend', 'services/authService'], function(paw2017a1frontend) {
 		return paw2017a1frontend.factory('restService', ['$http', '$q' , '$resource', 'baseUrl', 'authService', function($http, $q, $resource, baseUrl, auth) {         			
-			/*return {
-				createUser: function(data) {
-					auth.logIn(data.username,data.password);			
-					return;
-				},
-				getGameFeed: $resource('http://127.0.0.1:8080/api/game/730/feed', {}, )
-			}
-			*/
-			return { 
+			return {
 				Game: $resource(baseUrl + "/api/game/:gameId", {gameId: '@id'}, {
 					followers: {
 						url: baseUrl + "/api/game/:gameId/followers",
@@ -22,7 +14,7 @@ define(['paw2017a1frontend', 'services/authService'], function(paw2017a1frontend
 						isArray: true,
 					}
 				}),
-				
+
 			}
 		}]);
 	}
