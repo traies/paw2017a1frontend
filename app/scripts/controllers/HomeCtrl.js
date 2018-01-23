@@ -1,44 +1,13 @@
 'use strict';
-define(['paw2017a1frontend','services/authService','directives/postView','directives/messageForm'], function(paw2017a1frontend) {
+define(['paw2017a1frontend','services/restService','services/GameService', 'services/authService','directives/postView','directives/messageForm'], function(paw2017a1frontend) {
 
-	paw2017a1frontend.controller('HomeCtrl',[ '$scope','$location','authService',function($scope,$location,auth) {
+	paw2017a1frontend.controller('HomeCtrl',[ '$scope','$location', 'GameService', 'restService','authService',function($scope,$location, GameService, restService, auth) {
 		$scope.homePageText = 'This is your homepage';
 		if (!auth.isLoggedIn())
 			$location.url('/welcome');
-
-		$scope.posts = [ {message:{
-							user:{name:'Nicolas',id:'2'},
-							id:'85',date:'12/01/2018',
-							tags:[
-									{appid:'45',name:'Counter Strike'},
-									{appid:'55',name:'PUBG'}
-								],
-							type:'Review',
-							reviewd:{positive:'true'},
-							title:'Review jeje'
-					   		}
-						,contextSharers:[ {name:'Alejo',id:'3'} , {name:'Tomás',id:'3'} , {name:'Eliseo',id:'3'} ]
-						,timesReplied:'2'
-						,timesShared:'2'
-					} ,
-					{message:{
-							user:{name:'Tomas'},
-							id:'85',date:'12/01/2018',
-							tags:[
-									{appid:'45',name:'Counter Strike'},
-									{appid:'55',name:'PUBG'}
-								],
-							type:'Video',
-							contentd:{body:'https://www.youtube.com/embed/ODlmDbtZy8c'},
-							title:'Video jeje'
-
-						}
-						,contextSharers:[ {name:'Alejo'} , {name:'Tomás'} , {name:'Eliseo'}, {name:'Nicolas',id:'2'} ]
-						,timesReplied:'3'
-						,timesShared:'2'
-					}
-					];
-		 $scope.triggerTextForm = function(){
+		
+		$scope.posts = GameService.feed({gameId: 730});
+		$scope.triggerTextForm = function(){
 		 	$scope.showTextForm = !$scope.showTextForm;
 		 	$scope.showVideoForm = false;
 		 }

@@ -10,9 +10,9 @@ define(['paw2017a1frontend','services/authService','controllers/ReplyModalCtrl']
 			controller: ['$scope','$sce','authService','$uibModal' ,function($scope,$sce,auth,$uibModal) {
 				$scope.user = auth.getLoggedUser();
 				var post = $scope.post;
-				$scope.isSameUser = $scope.user != null ?  $scope.user.id === $scope.post.message.user.id : false;
+				$scope.isSameUser = $scope.user ?  $scope.user.id === $scope.post.message.author.id : false;
 
-				$scope.post.contextSharers.forEach(function(element){
+				$scope.post.sharers.forEach(function(element){
 						if (element.id == $scope.user.id)
 							$scope.haveShared = true;
 				});
