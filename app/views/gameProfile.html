@@ -12,9 +12,9 @@
 <div class="row navbar game_navbar navbar-toggleable-md navbar-light bg-faded" role="navigation">
     <div class="push-md-6 col-md-6 collapse navbar-collapse" id="gameMessageCategoryNav">
         <ul class="navbar-nav mr-auto game_message_navbar">
-                    <li class="nav-item {{type == 'posts' ? 'active' : ''}}">
+                    <li class='nav-item' ng-class="type().type == 'messages' ? 'active'  : ''">
               <h3>
-                <a class="nav-link game_category_link" ng-click="gameProfile.select(gameProfile.tabs[0])"> 
+                <a class="nav-link game_category_link" ng-href="#!/game/730/messages"> 
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_MESSAGES' | translate}}
@@ -31,9 +31,9 @@
           </li>
           
          
-            <li class="nav-item  {{type == 'followers' ? 'active' : ''">
+            <li class='nav-item' ng-class="type().type == 'followers'? 'active'  : ''">
                 <h3>
-                    <a class="nav-link game_category_link" href="/game/steam/{{game.appid}}/followers">
+                    <a class="nav-link game_category_link" ng-href="#!/game/730/followers">
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_FOLLOWERS' | translate}}
@@ -131,5 +131,5 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8 game_content"><ng-transclude></ng-transclude></div>
+    <div class="col-md-8 game_content"><ui-view></ui-view></div>
 </div>
