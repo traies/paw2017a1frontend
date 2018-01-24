@@ -34,7 +34,9 @@ require.config({
         'angular-resource': '../../bower_components/angular-resource/angular-resource',
         affix: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix',
         transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition',
-        'angular-ui-router': '../../bower_components/angular-ui-router/release/angular-ui-router'
+        'angular-ui-router': '../../bower_components/angular-ui-router/release/angular-ui-router',
+        'bootstrap-sass': '../../bower_components/bootstrap-sass/assets/javascripts/bootstrap',
+        'bootstrap-sass-official': '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap'
     },
     shim: {
         angular: {

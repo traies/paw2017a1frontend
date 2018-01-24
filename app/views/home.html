@@ -10,7 +10,7 @@
 					<a  id="Text" ><span class="fa fa-font fa-3x"></span> <br/><p >{{'CONTENT_TEXT' | translate}}</p></a>
 				</div>
 
-				
+
 
 				<div ng-click="triggerVideoForm()" class=" col  col-md-2 last white clickable" ng-class="{'contentSelected' : showVideoForm}" id="videoDiv">
 				<a  id="Video"  ><span class="fa fa-video-camera fa-3x"></span> <br/><p >{{'CONTENT_VIDEO' | translate}}</p></a>
@@ -21,13 +21,11 @@
 			<!--<c:if test="${postsNum == 0}">
 				<h5 id="messageEmpty"><spring:message code="messages.empty"> </spring:message></h5>
 			</c:if>-->
-			
+
 			<message-form ng-show="showTextForm || showVideoForm" />	
 			<div ng-repeat="p in posts">
 				<post-view post="p" />
-			</div>	
-			
+			</div>
+
 	</div>
 </div>
-
-	
