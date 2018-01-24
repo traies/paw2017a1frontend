@@ -2,9 +2,6 @@
     <div class="card card-container" id="loginCard">
         <a href="#/welcome"><img id="profile-img" class="profile-img-card" src="images/vapor.png" /></a>
         <p id="profile-name" class="profile-name-card"></p>
-	    <div id="error" ng-if = "false" >
-	        <p>{{'MESSAGE_BAD_CREDENTIALS' | translate}}</p>
-	    </div>
         <form class="form-signin" ng-submit="loginSubmit()"  >
             <span id="reauth-email" class="reauth-email"></span>
             <input type="text" ng-model="loginForm.username" id="inputEmail" class="form-control" placeholder="{{'USERNAME' | translate}}" required autofocus >
@@ -14,7 +11,7 @@
                     <input type="checkbox" ng-model="loginForm.rememberMe" value="remember-me"> {{'REMEMBER_ME' | translate}}
                 </label>
             </div>
-            <p ng-if="loginFailed" id="errorPassword">Login failed</p>
+            <p ng-if="loginFailed" id="errorPassword">{{'MESSAGE_BAD_CREDENTIALS' | translate}}</p>
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">{{'SIGN_IN ' | translate}}</button>
         </form><!-- /form -->
         <a ng-href="#/register" class="forgot-password">
