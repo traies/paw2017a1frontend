@@ -27,7 +27,8 @@ define(['routes',
 				'$provide',
 				'$translateProvider',
 				'$httpProvider',
-				function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider, $httpProvider) {
+				'$logProvider',
+				function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider, $httpProvider, $logProvider) {
 
 					paw2017a1frontend.controller = $controllerProvider.register;
 					paw2017a1frontend.directive = $compileProvider.directive;
@@ -87,8 +88,10 @@ define(['routes',
 				 	}];
 
 					$httpProvider.interceptors.push(interceptor);
+
+					$logProvider.debugEnabled(true);			//  TODO change in production
 				}])
-				.constant('baseUrl','http://127.0.0.1:8080');
+				.constant('baseUrl','http://127.0.0.1:8080');	//  TODO change in production
 		return paw2017a1frontend;
 	}
 );

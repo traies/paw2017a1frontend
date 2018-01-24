@@ -1,0 +1,176 @@
+<div class="game_profile_container container game_profile_container">
+    <game-profile id='730'>
+        <ui-view></ui-view>
+        <game-feed id='730'></game-feed>
+        <game-followers id='730'></game-followers>
+    </game-profile>
+</div>
+
+<!--
+<div class="row">
+    <div class="col-md-4 game_info_cont">
+        <div class="game_info">
+            <div class="game_info_about">${game.about }</div>
+            <div class="game_info_developers">
+                <span class="game_info_label">
+                    <spring:message code="game.developer"></spring:message> 
+                </span>
+                <span class="game_info_value">
+                    <c:forEach items="${game.developers}" var="developer" >
+                        <a class="game_info_value_link" href="<c:url value="/search">
+                                    <c:param name="developer" value="${developer.id}"/>
+                                </c:url>">
+                                <c:out value="${developer.name}"/>
+                        </a>
+                    </c:forEach>
+                </span>
+            </div>
+            
+            <div class="game_info_publishers">
+                <span class="game_info_label">
+                    <spring:message code="game.publisher"></spring:message> 
+                </span>
+                <span class="game_info_value">
+                    <c:forEach items="${game.publishers}" var="publisher" >
+                        <a class="game_info_value_link" href="<c:url value="/search">
+                                    <c:param name="publisher" value="${publisher.id}"/>
+                                </c:url>">
+                                <c:out value="${publisher.name}"/>
+                        </a>
+                    </c:forEach>
+                </span>
+            </div>
+            
+            <div class="game_info_release"> 
+                <span class="game_info_label">
+                    <spring:message code="game.releasedate"></spring:message> 
+                </span> 
+                <span class="game_info_value">
+                    <c:out value="${game.releaseDate }"/>
+                </span>
+            </div>
+            <div class="game_info_platforms">
+                <span class="game_info_label" >
+                    <spring:message code="game.platforms"></spring:message>  
+                </span>
+                <span class="game_info_value">
+                    <c:if test="${game.supportswindows > 0 }">
+                    <spring:message code="game.windows"></spring:message> 
+                    </c:if>
+                    <c:if test="${game.supportsmac > 0}">
+                        <spring:message code="game.mac"></spring:message> 
+                    </c:if>
+                    <c:if test="${game.supportslinux > 0}">
+                        <spring:message code="game.linux"></spring:message> 
+                    </c:if>
+                </span>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <c:if test="${type == 'posts'}">
+        <div class="col-md-8">
+            <c:if test="${ not empty posts}">
+                <div class="message_container messages">
+                    <jsp:include page="messageTemplate.jsp" >
+                        <jsp:param name="posts" value="${posts}"/>
+                    </jsp:include>
+                </div>
+            </c:if>
+            <c:if test="${empty posts }">
+                <h5 class="content-not-found post-content"><spring:message code="game.no-posts" arguments="${game.name }"></spring:message></h5>
+            
+            </c:if>
+        </div>
+    </c:if>
+-->
+<!--
+    <c:if test="${type == 'followers'}">
+        <div class="col-md-8">
+            <c:if test="${not empty userlist }">
+                <ul  class="list-group list-group-flush user-list-group result-list">
+                
+                    <jsp:include page="user_list.jsp" >
+                        <jsp:param name="userlist" value="${userlist }"/>
+                    </jsp:include>
+                </ul>
+            </c:if>
+            <c:if test="${empty userlist }">
+                <h5 class="content-not-found post-content " ><spring:message code="game.no-followers"  arguments="${game.name }"></spring:message></h5>
+            
+            </c:if>
+        -->
+        <!--
+<c:if test="${pageTotal > 1}" >
+    <div class="col-md-12">
+        <nav>
+          <ul class="pagination justify-content-center" style="margin-top:1rem;">
+              <li class="page-item <c:if test="${currentPage == 1 }"> disabled</c:if>">
+                  <a class="page-link" href="
+                    <c:url value="/game/steam/${game.appid}/${type}">
+                        <c:param name="page" value="1"/>
+                    </c:url>
+                    ">
+                    <spring:message code="nav.first"></spring:message>
+                </a>
+              </li>
+              <li class="page-item <c:if test="${currentPage == 1 }"> disabled </c:if>">
+                <a class="page-link" href="
+                    <c:url value="/game/steam/${game.appid}/${type}">
+                        <c:param name="page" value="${currentPage -1}"/>
+                    </c:url>
+                    ">
+                    <spring:message code="nav.previous"></spring:message>
+                </a>
+            <c:forEach var="i" begin="${ (1 >= currentPage - maxPagesHalf)? 1 : currentPage - maxPagesHalf}" end="${(pageTotal <= currentPage + maxPagesHalf)? pageTotal: currentPage + maxPagesHalf}">
+                <c:choose>
+                    <c:when test="${i == currentPage }">
+                        <li class="page-item active">
+                          <span class="page-link">
+                                <c:out value="${i }"/>
+                            <span class="sr-only">(current)</span>
+                          </span>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                            <a class="page-link" href="
+                                    <c:url value="/game/steam/${game.appid}/${type}">
+                                        <c:param name="page" value="${i}"/>
+                                    </c:url>
+                                    " >
+                                <c:out value="${i }"/>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                   </c:choose>
+            </c:forEach>
+            <li class="page-item <c:if test="${currentPage == pageTotal }"> disabled </c:if>">   
+                <a class="page-link" href="
+                                    <c:url value="/game/steam/${game.appid}/${type}">
+                                        <c:param name="page" value="${currentPage + 1}"/>
+                                    </c:url>
+                                    ">
+                    <spring:message code="nav.next"></spring:message>
+                </a>
+                </li>
+                <li class="page-item <c:if test="${currentPage == pageTotal }"> disabled</c:if>">
+              <a class="page-link" href="
+                <c:url value="/game/steam/${game.appid}/${type}">
+                    <c:param name="page" value="${pageTotal }"/>
+                </c:url>
+                ">
+                <spring:message code="nav.last"></spring:message>
+                </a>
+              </li>
+          </ul>
+        </nav>
+        </div>
+    </c:if>
+        </div>
+    </c:if>
+</div>
+
+</div>
+-->

@@ -1,0 +1,49 @@
+<a ng-repeat="user in followers" class="list-group-item list-group-item-action" ng-href="#!/game/1">
+    <div class="card-block" style="padding:.1rem;">
+    <img class="float-left img-thumbnail user-image" ng-src="/user/avatar/{{user.name}}"/>
+    
+    <ul class="float-right list-inline user-count-list">
+        <li class="list-inline-item user-count-list-item">
+            <div >
+                <div>
+                    {{ 'COUNT_MESSAGES' | translate}}
+                </div>
+                <div class="user-count-number">
+                    {{ user.messages }}
+                </div>
+            </div>	
+        </li>
+        <li class="list-inline-item user-count-list-item" >
+            <div>
+                <div>
+                    {{ 'COUNT_GAMES' | translate }}
+                </div>
+                <div class="user-count-number">
+                    {{ user.game_following }}
+                </div>
+            </div>	
+        </li>
+        <li class="list-inline-item user-count-list-item" >
+            <div>
+                <div>
+                    {{ 'COUNT_FOLLOWERS' | translate }}
+                </div>
+                <div class="user-count-number">
+                    {{ user.followers }}
+                </div>
+            </div>	
+        </li>
+        <li class="list-inline-item user-count-list-item" >
+            <div>
+                <div>
+                    {{ 'COUNT_FOLLOWING' | translate }}
+                </div>
+                <div class="user-count-number">
+                    {{ user.following }}
+                </div>
+            </div>	
+        </li>
+    </ul>
+    <h5 class="card-title user-title">{{ user.name }}</h5>
+    </div>
+</a>

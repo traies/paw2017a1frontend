@@ -6,7 +6,11 @@ define(['paw2017a1frontend','services/restService','services/GameService', 'serv
 		if (!auth.isLoggedIn())
 			$location.url('/welcome');
 		
-		$scope.posts = GameService.feed({gameId: 730});
+		$scope.posts = GameService.feed({gameId: 730}, function() {
+			// success
+		}, function(error) {
+			// error handling
+		});
 		$scope.triggerTextForm = function(){
 		 	$scope.showTextForm = !$scope.showTextForm;
 		 	$scope.showVideoForm = false;

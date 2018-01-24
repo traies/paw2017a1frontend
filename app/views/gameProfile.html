@@ -1,0 +1,135 @@
+<div class="row align-items-end justify-content-center game_background" >
+    <div class="col-md-5 game_head ">
+        <img ng-src="{{game.logoUrl}}" class="img-rounded game_logo img-fluid"/>
+    </div>
+    <div class="col-md-5"> <span class="game_header" >
+        <h1>
+            {{game.name}}
+        </h1>
+        </span>
+    </div>
+</div>
+<div class="row navbar game_navbar navbar-toggleable-md navbar-light bg-faded" role="navigation">
+    <div class="push-md-6 col-md-6 collapse navbar-collapse" id="gameMessageCategoryNav">
+        <ul class="navbar-nav mr-auto game_message_navbar">
+                    <li class="nav-item {{type == 'posts' ? 'active' : ''}}">
+              <h3>
+                <a class="nav-link game_category_link" ng-click="gameProfile.select(gameProfile.tabs[0])"> 
+                        <div class = "row justify-content-center">
+                            <span class="game_message_category" >
+                                {{'COUNT_MESSAGES' | translate}}
+                            </span>
+                        </div>
+                        <div class="row justify-content-center">
+                            <span class="game_message_category_number">
+                                {{ game.messages }}
+                            </span>
+                        </div>
+                    
+                </a>
+              </h3>
+          </li>
+          
+         
+            <li class="nav-item  {{type == 'followers' ? 'active' : ''">
+                <h3>
+                    <a class="nav-link game_category_link" href="/game/steam/{{game.appid}}/followers">
+                        <div class = "row justify-content-center">
+                            <span class="game_message_category" >
+                                {{'COUNT_FOLLOWERS' | translate}}
+                            </span>
+                        </div>
+                        <div class="row justify-content-center">
+                            <span class="game_message_category_number" >
+                                {{ game.followers }}
+                            </span>
+                        </div>
+                    </a>
+                </h3>
+            </li>
+        </ul>
+        <!--
+        <c:choose>
+                <c:when test="${isFollowing}">
+                    <form method="post" style="margin-top:1rem;"action="${pageContext.servletContext.contextPath}/unfollowGame">
+                        <button class="btn btn-primary" type="submit">
+                            <spring:message code="profile.unfollow"></spring:message>
+                        </button>
+                        <input type="hidden" name="game" value="${game.appid }">
+                    </form>
+                </c:when>
+
+                <c:when test="${currentUser == null}">
+                            <a  style="margin-top:1rem;" href="<c:url value='/login?loginURL=/game/steam/${game.appid}' />">
+                                <button class="btn btn-primary" >
+                                <spring:message code="profile.follow"></spring:message>
+                                </button>
+                            </a>
+                        </c:when>
+                <c:otherwise>
+                    <form method="post"  style="margin-top:1rem;" action="${pageContext.servletContext.contextPath}/followGame">
+                        <button class="btn btn-primary" type="submit">
+                            <spring:message code="profile.follow"></spring:message>
+                        </button>
+                        <input type="hidden" name="game" value="${game.appid}">
+                    </form>
+                </c:otherwise>
+        </c:choose>
+        -->
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 game_info_cont">
+        <div class="game_info">
+            <div class="game_info_about">{{game.about }}</div>
+            <div class="game_info_developers">
+                <span class="game_info_label">
+                    {{'GAME_DEVELOPER' | translate}}
+                </span>
+                <span class="game_info_value">
+                    <a ng-repeat="developer in game.developers" class="game_info_value_link" ng-href="/search">
+                            {{developer.name}}
+                    </a>
+                </span>
+            </div>
+            
+            <div class="game_info_publishers">
+                <span class="game_info_label">
+                    {{'GAME_PUBLISHER' | translate}}
+                </span>
+                <span class="game_info_value">
+                    <a ng-repeat="publisher in game.publishers" class="game_info_value_link" ng-href="/search">
+                        {{publisher.name}}
+                    </a>
+                </span>
+            </div>
+            
+            <div class="game_info_release"> 
+                <span class="game_info_label">
+                        {{'GAME_RELEASE_DATE' | translate}} 
+                </span> 
+                <span class="game_info_value">
+                    {{ game.releaseDate }}
+                </span>
+            </div>
+            <div class="game_info_platforms">
+                <span class="game_info_label" >
+                    {{'GAME_PLATFORMS' | translate}}
+                </span>
+                <span class="game_info_value">
+                    <span ng-if="game.supportswindows > 0">
+                        {{'GAME_WINDOWS' | translate }}
+                    </span>
+                    <span ng-if="game.supportsmac > 0">
+                        {{'GAME_MAC' | translate }}
+                    </span>
+                    <span ng-if="game.supportslinux > 0">
+                        {{'GAME_LINUX' | translate }}
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 game_content"><ng-transclude></ng-transclude></div>
+</div>

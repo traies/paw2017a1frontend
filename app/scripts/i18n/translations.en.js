@@ -52,6 +52,16 @@ define([], function() {
 		GAMES : 'Games',
 		TYPE_REVIEW : 'Review',
 		TYPE_COMMENT : 'Comment',
-		TYPE_WALKTHROUGH : 'Walkthrough'
+		TYPE_WALKTHROUGH : 'Walkthrough',
+		COUNT_MESSAGES: 'MESSAGES',
+		COUNT_FOLLOWERS: 'FOLLOWERS',
+		COUNT_FOLLOWING: 'FOLLOWING',
+		COUNT_GAMES: 'GAMES',
+		GAME_DEVELOPER: 'Developer:',
+		GAME_PUBLISHER: 'Publisher:',
+		GAME_PLATFORMS: 'Platforms:',
+		GAME_WINDOWS: 'Windows',
+		GAME_MAC: 'Mac',
+		GAME_LINUX: 'Linux',
 	};
 });

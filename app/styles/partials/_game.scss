@@ -1,0 +1,75 @@
+html {
+	height:100% !important;
+}
+
+body {
+	min-height:100% !important; 
+	background-color:#1b2838 !important;
+}
+
+.game_profile_container.container .row.game_background {
+	height:202px;
+	position:relative;
+}
+
+.game_profile_container.container .row.game_background .game_head{
+	position:relative; 
+	bottom:-3rem; 
+	z-index:2;
+}
+
+img.game_logo {
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.69); 
+}
+
+span.game_header {
+	position:relative; 
+	color:#292929;
+}
+
+.navbar.game_navbar {
+	height:5rem; 
+	background-color: white; 
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.69);
+}
+
+ul.navbar_padding {
+	padding-left:55%;
+}
+
+.game_info {
+	margin-top:1rem;
+	padding: 1rem;
+	background-color: black;
+	color: #e0dada;
+}
+
+span.game_info_label {
+	color: grey;
+}
+
+.game_info_developers {
+	margin-top: 0.5rem;
+}
+
+
+.message_container {
+	margin-top: 1rem;
+}
+
+.game_info_cont {
+	margin-top: 1rem;
+}
+
+a.game_info_value_link {
+	color:white;
+}
+
+a.game_info_value_link:hover {
+	color:white;
+}
+
+div.game_content {
+	margin-top: 1rem;
+}
+

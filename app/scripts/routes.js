@@ -19,6 +19,10 @@ define([], function() {
             '/register': {
                 templateUrl: '/views/register.html',
                 controller: 'RegisterCtrl'
+            },
+            '/game/:id': {
+                templateUrl: '/views/game.html',
+                controller: 'GameCtrl'
             }
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */
