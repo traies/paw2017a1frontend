@@ -25,9 +25,20 @@ define([], function() {
                 controller: 'RegisterCtrl'
             },
             '/game/:id': {
+                abstract: true,
                 name: 'Game',
                 templateUrl: '/views/game.html',
                 controller: 'GameCtrl'
+            },
+            '/followers': {
+                name: 'Game.followers',
+                templateUrl: 'views/gameFollowers.html',
+                controller: 'GameFollowersCtrl'
+            },
+            '/messages': {
+                name: 'Game.messages',
+                templateUrl: 'views/gameFeed.html',
+                controller: 'GameFeedCtrl'
             }
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */
