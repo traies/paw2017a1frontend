@@ -33,7 +33,8 @@ require.config({
         'jwt-decode': '../../bower_components/jwt-decode/build/jwt-decode',
         'angular-resource': '../../bower_components/angular-resource/angular-resource',
         affix: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix',
-        transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition'
+        transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition',
+        'angular-ui-router': '../../bower_components/angular-ui-router/release/angular-ui-router'
     },
     shim: {
         angular: {
@@ -93,6 +94,11 @@ require.config({
             ]
         },
         'angular-translate': {
+            deps: [
+                'angular'
+            ]
+        },
+        'angular-ui-router': {
             deps: [
                 'angular'
             ]

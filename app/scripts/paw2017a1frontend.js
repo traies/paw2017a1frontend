@@ -8,7 +8,8 @@ define(['routes',
 	'angular-bootstrap',
 	'bootstrap',
 	'angular-translate',
-	'angular-jwt'
+	'angular-jwt',
+	'angular-ui-router'
 	],
 	function(config, dependencyResolverFor, i18n) {
 		var paw2017a1frontend = angular.module('paw2017a1frontend', [
@@ -16,7 +17,8 @@ define(['routes',
 			'ngResource',
 			'pascalprecht.translate',
 			'ui.bootstrap',
-			'angular-jwt'
+			'angular-jwt',
+			'ui.router'
 		]);
 		paw2017a1frontend
 			.config(
@@ -28,7 +30,9 @@ define(['routes',
 				'$translateProvider',
 				'$httpProvider',
 				'$logProvider',
-				function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider, $httpProvider, $logProvider) {
+				'$stateProvider',
+				'$urlRouterProvider',
+				function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider, $httpProvider, $logProvider, $stateProvider, $urlRouterProvider) {
 
 					paw2017a1frontend.controller = $controllerProvider.register;
 					paw2017a1frontend.directive = $compileProvider.directive;
@@ -38,11 +42,17 @@ define(['routes',
 
 					if (config.routes !== undefined) {
 						angular.forEach(config.routes, function(route, path) {
-							$routeProvider.when(path, {templateUrl: route.templateUrl, resolve: dependencyResolverFor(['controllers/' + route.controller]), controller: route.controller, gaPageTitle: route.gaPageTitle});
+							$stateProvider.state(route.name, {
+								templateUrl: route.templateUrl,
+								url: path,
+								resolve: dependencyResolverFor(['controllers/' + route.controller]),
+								controller: route.controller,
+							});
+							//$routeProvider.when(path, {templateUrl: route.templateUrl, resolve: dependencyResolverFor(['controllers/' + route.controller]), controller: route.controller, gaPageTitle: route.gaPageTitle});
 						});
 					}
 					if (config.defaultRoutePath !== undefined) {
-						$routeProvider.otherwise({redirectTo: config.defaultRoutePath});
+						$urlRouterProvider.otherwise(config.defaultRoutePath);
 					}
 
 					$translateProvider.translations('preferredLanguage', i18n);
