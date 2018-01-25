@@ -67,6 +67,7 @@ define([], function() {
 		ERROR_WHILE_POSTING: 'An error ocurred while posting your message',
 		NO_MESSAGES_FOUND: 'No messages were found',
 		NO_USERS_FOUND: 'No users were found',
-		NO_GAMES_FOUND: 'No games were found'
+		NO_GAMES_FOUND: 'No games were found',
+		SERVER_ERROR: 'Sorry, the servers are not responding.'
 	};
 });
