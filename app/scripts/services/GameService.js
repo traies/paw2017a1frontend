@@ -6,7 +6,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
             followers: {
                 url: baseUrl + "/api/game/:gameId/followers",
                 method: 'GET',
-                isArray: true
+                isArray: false
             },
             feed: {
                 url: baseUrl + "/api/game/:gameId/messages",

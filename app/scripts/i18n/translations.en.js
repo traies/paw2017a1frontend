@@ -68,6 +68,10 @@ define([], function() {
 		NO_MESSAGES_FOUND: 'No messages were found',
 		NO_USERS_FOUND: 'No users were found',
 		NO_GAMES_FOUND: 'No games were found',
-		SERVER_ERROR: 'Sorry, the servers are not responding.'
+		SERVER_ERROR: 'Sorry, the servers are not responding.',
+		NAV_FIRST: 'First',
+		NAV_LAST: 'Last',
+		NAV_PREV: 'Previous',
+		NAV_NEXT: 'Next'
 	};
 });

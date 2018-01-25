@@ -99,7 +99,9 @@ define(['routes',
 
 					$logProvider.debugEnabled(true);			//  TODO change in production
 				}])
-				.constant('baseUrl','http://127.0.0.1:8080');	//  TODO change in production
+				.constant('baseUrl','http://127.0.0.1:8080')
+				.constant('maxPageHalf', 3)
+				.constant('perPage', 10);	//  TODO change in production
 
 		return paw2017a1frontend;
 	}

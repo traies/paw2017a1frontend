@@ -2,9 +2,9 @@
         <post-view post="p"/>
     </div>
 <div ng-if='isEmpty'>
-    <not-found>{{'NO_MESSAGES_FOUND' | translate}}</not-found>
+    <error-list>{{'NO_MESSAGES_FOUND' | translate}}</error-list>
 </div>
 
 <div ng-if='serverError'>
-    <not-found>{{'SERVER_ERROR' | translate}}</not-found>
+    <error-list>{{'SERVER_ERROR' | translate}}</error-list>
 </div>

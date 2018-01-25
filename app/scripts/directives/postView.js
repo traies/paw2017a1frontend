@@ -11,10 +11,12 @@ define(['paw2017a1frontend','services/authService','services/MessageService','co
 
         $scope.user = auth.getLoggedUser();
 
-        $scope.currUserShort = {
-          'id': $scope.user.id,
-          'name': $scope.user.name
-        };
+        if ($scope.user) {
+          $scope.currUserShort = {
+            'id': $scope.user.id,
+            'name': $scope.user.name
+          };
+        }
 
 				var post = $scope.post;
 				$scope.isSameUser = $scope.user ?  $scope.user.id === $scope.post.message.author.id : false;

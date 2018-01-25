@@ -29,17 +29,17 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
           followers: {
             url: baseUrl + "/api/user/:name/followers",
             method: 'GET',
-            isArray: true
+            isArray: false
           },
           following: {
             url: baseUrl + "/api/user/:name/following",
             method: 'GET',
-            isArray: true
+            isArray: false
           },
           gamesFollowing: {
             url: baseUrl + "/api/user/:name/games",
             method: 'GET',
-            isArray: true
+            isArray: false
           },
         });
     }]);

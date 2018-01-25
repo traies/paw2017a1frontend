@@ -1,4 +1,4 @@
-define(['paw2017a1frontend', 'services/UserService', 'services/sharedTypeService', 'directives/postView', 'directives/notFound'], function(paw2017a1frontend) {
+define(['paw2017a1frontend', 'services/UserService', 'services/sharedTypeService', 'directives/postView', 'directives/errorList'], function(paw2017a1frontend) {
 
     'use strict';
     paw2017a1frontend.controller('UserFeedCtrl', ['$scope', '$stateParams', 'UserService', 'sharedTypeService', function($scope, $stateParams, UserService, sharedTypeService) {

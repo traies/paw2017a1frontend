@@ -1,0 +1,60 @@
+<div class="col-md-12">
+    <nav>
+        <ul class="pagination justify-content-center" style="margin-top:1rem;">
+            <li class="page-item" ng-class="currentPage == 1 ? 'disabled' : ''">
+                <a class="page-link" ng-href="{{url}}?page=0">
+                    {{ 'NAV_FIRST' | translate }}
+                </a>
+            </li>
+            <li class="page-item" ng-class="currentPage == 1 ? 'disabled': ''">
+                <a class="page-link" ng-href="{{url}}?page={{currentPage-1}}">
+                    {{ 'NAV_PREV' | translate }}
+                </a>
+            </li>
+            <li ng-repeat='index in middleRange' class="page-item" ng-class="index == currentPage ? 'active' : ''">
+                <span ng-if='index == currentPage' class='page-link'>
+                    {{index}}
+                    <span class="sr-only">(current)</span>
+                </span>
+                <a ng-if="index != currentPage" ng-href="{{url}}?page={{index}}" class="page-link">
+                    {{index}}
+                </a>
+            </li>
+                <!--
+            <c:forEach var="i" begin="${ (1 >= currentPage - maxPagesHalf)? 1 : currentPage - maxPagesHalf}" end="${(pageTotal <= currentPage + maxPagesHalf)? pageTotal: currentPage + maxPagesHalf}">
+                <c:choose>
+                    <c:when test="${i == currentPage }">
+                        <li class="page-item active">
+                            <span class="page-link">
+                                <c:out value="${i }"/>
+                            <span class="sr-only">(current)</span>
+                            </span>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                            <a class="page-link" href="
+                                    <c:url value="/game/steam/${game.appid}/${type}">
+                                        <c:param name="page" value="${i}"/>
+                                    </c:url>
+                                    " >
+                                <c:out value="${i }"/>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        -->
+            <li class="page-item" ng-class="currentPage == lastPage ? 'disabled' : ''">   
+                <a class="page-link" ng-href="{{url}}?page={{currentPage + 1}}">
+                    {{ 'NAV_NEXT' | translate }}
+                </a>
+            </li>
+            <li class="page-item" ng-class="currentPage == lastPage ? 'disabled' : ''">
+                <a class="page-link" ng-href="{{url}}?page={{lastPage}}">
+                    {{ 'NAV_LAST' | translate }}
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

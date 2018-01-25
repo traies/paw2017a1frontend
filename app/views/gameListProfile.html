@@ -16,10 +16,11 @@
         </h6>
     </div>
 </a>
+<pagination ng-if='pagination' url='url' currentPage='currentPage' lastPage='lastPage' maxPagesHalf='maxPagesHalf' middleRange="middleRange" ></pagination>
 <div ng-if='isEmpty'>
-    <not-found>{{'NO_GAMES_FOUND' | translate}}</not-found>
+    <error-list>{{'NO_GAMES_FOUND' | translate}}</error-list>
 </div>
 
 <div ng-if='serverError'>
-    <not-found>{{'SERVER_ERROR' | translate}}</not-found>
+    <error-list>{{'SERVER_ERROR' | translate}}</error-list>
 </div>

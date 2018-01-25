@@ -31,7 +31,7 @@ define([], function() {
                 controller: 'GameCtrl'
             },
             'Game.followers': {
-                path: '/followers',
+                path: '/followers?page',
                 templateUrl: 'views/userListProfile.html',
                 controller: 'GameFollowersCtrl'
             },
@@ -47,7 +47,7 @@ define([], function() {
                 controller: 'UserCtrl'
             },
             'user.followers': {
-                path: '/followers',
+                path: '/followers?page',
                 templateUrl: 'views/userListProfile.html',
                 controller: 'UserFollowersCtrl'
             },
@@ -56,13 +56,13 @@ define([], function() {
                 templateUrl: 'views/feed.html',
                 controller: 'UserFeedCtrl'
             },
-            'user.following': {
-                path: '/following' ,
+            'user.following?page': {
+                path: '/following?page' ,
                 templateUrl: 'views/userListProfile.html',
                 controller: 'UserFollowingCtrl'
             },
             'user.gamesFollowing': {
-                path: '/games',
+                path: '/games?page',
                 templateUrl: 'views/gameListProfile.html',
                 controller: 'UserGamesFollowingCtrl'
             }
