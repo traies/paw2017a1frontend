@@ -41,10 +41,10 @@ define(['routes',
 					paw2017a1frontend.service = $provide.service;
 
 					if (config.routes !== undefined) {
-						angular.forEach(config.routes, function(route, path) {
-							$stateProvider.state(route.name, {
+						angular.forEach(config.routes, function(route, name) {
+							$stateProvider.state(name, {
 								templateUrl: route.templateUrl,
-								url: path,
+								url: route.path,
 								resolve: dependencyResolverFor(['controllers/' + route.controller]),
 								controller: route.controller,
 							});

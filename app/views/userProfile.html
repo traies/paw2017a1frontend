@@ -1,0 +1,240 @@
+<div class="row align-items-end justify-content-center game_background" >
+    <div class="col-md-2 game_head ">
+        <img ng-src="/user/avatar/{{targetuser.name}}" class="img-rounded game_logo img-fluid"/>
+    </div>
+    <div class="col-md-10"> <span class="game_header" >
+        <h1>
+            {{targetuser.name}}
+        </h1>
+        </span>
+    </div>
+</div>
+
+
+<div class="row navbar game_navbar navbar-toggleable-md navbar-light bg-faded" role="navigation">
+    <div class="push-md-2 col-md-10 collapse navbar-collapse" id="gameMessageCategoryNav">
+        <ul class="navbar-nav mr-auto game_message_navbar">
+                    <li class='nav-item' ng-class="type().type == 'messages' ? 'active'  : ''">
+            <h3>
+                <a class="nav-link game_category_link" 
+                    ng-href="/#!/user/{{targetuser.name}}/messages"> 
+                        <div class = "row justify-content-center">
+                            <span class="game_message_category" >
+                                {{'COUNT_MESSAGES' | translate}}
+                            </span>
+                        </div>
+                        <div class="row justify-content-center">
+                            <span class="game_message_category_number" >
+                                {{targetuser.messages}}
+                            </span>
+                        </div>
+                </a>
+            </h3>
+            </li>
+            <li class='nav-item' ng-class="type().type == 'followers' ? 'active'  : ''">
+                <h3>
+                    <a class="nav-link game_category_link" ng-href="/#!/user/{{targetuser.name}}/followers"> 
+                        <div class = "row justify-content-center">
+                            <span class="game_message_category" >
+                                {{'COUNT_FOLLOWERS' | translate}}
+                            </span>
+                        </div>
+                        <div class="row justify-content-center">
+                            <span class="game_message_category_number" >
+                                {{targetuser.followers}}
+                            </span>
+                        </div>
+                    </a>
+                </h3>
+            </li>
+            
+            <li class='nav-item' ng-class="type().type == 'following' ? 'active'  : ''">
+                <h3>
+                    <a class="nav-link game_category_link" ng-href="/#!/user/{{targetuser.name}}/following"> 
+                        <div class = "row justify-content-center">
+                            <span class="game_message_category" >
+                                {{'COUNT_FOLLOWING' | translate}}
+                            </span>
+                        </div>
+                        <div class="row justify-content-center">
+                            <span class="game_message_category_number" >
+                                {{targetuser.following}}
+                            </span>
+                        </div>
+                    </a>
+                </h3>
+            </li>
+            
+            <li class='nav-item' ng-class="type().type == 'games_following' ? 'active'  : ''">
+                <h3>
+                    <a class="nav-link game_category_link" ng-href="/user/{targetuser.name}/games"> 
+                        <div class = "row justify-content-center">
+                            <span class="game_message_category" >
+                                {{'COUNT_GAMES' | translate}}
+                            </span>
+                        </div>
+                        <div class="row justify-content-center">
+                            <span class="game_message_category_number" >
+                                {{targetuser.game_following}}
+                            </span>
+                        </div>
+                    </a>
+                </h3>
+            </li>
+        </ul>
+        <!--
+        <c:choose>
+            <c:when test="${not isCurrentUser}">
+                <c:choose>
+                        <c:when test="${isFollowing}">
+                            <form method="post" style="margin-top:1rem;" action="<c:url value="/unfollow" />">
+                                <button class="btn btn-primary" type="submit">
+                                <spring:message code="profile.unfollow"></spring:message>
+                                </button>
+                                <input type="hidden" name="username" value="${targetuser.name }">
+                            </form>
+                        </c:when>
+                        <c:when test="${currentUser == null}">
+                            <a  style="margin-top:1rem;" href="<c:url value='/login?loginURL=/user/${targetuser.name}' />">
+                                <button class="btn btn-primary" >
+                                <spring:message code="profile.follow"></spring:message>
+                                </button>
+                            </a>
+                        </c:when>
+                        <c:otherwise>
+                            <form method="post"  style="margin-top:1rem;" action="<c:url value="/follow" />">
+                                <button class="btn btn-primary" type="submit">
+                                <spring:message code="profile.follow"></spring:message>
+                                </button>
+                                <input type="hidden" name="username" value="${targetuser.name}">
+                            </form>
+                        </c:otherwise>
+                </c:choose>
+            </c:when>
+        </c:choose>
+    -->
+    </div>
+</div>
+<div class="push-md-1 col-md-10 game_content "><ui-view></ui-view></div>
+<!--
+<c:if test="${type == 'posts' }">
+    <div class="push-md-1 col-md-10 ">
+        <c:if test="${not empty posts }">
+        
+            <div class="message_container messages">
+                <jsp:include page="messageTemplate.jsp" >
+                    <jsp:param name="posts" value="${posts}"/>
+                </jsp:include>
+            </div>
+        </c:if>
+        <c:if test="${empty posts }">
+            <h5 class="content-not-found post-content"><spring:message code="user.no-posts" arguments="${targetuser.name }"></spring:message></h5>
+        </c:if>
+    </div>
+    
+</c:if>
+<c:if test="${type == 'following' || type == 'followers' }">
+    <div class="push-md-1 col-md-10" style="margin-top:2rem;">
+        <c:if test="${not empty userlist }">
+            
+            <ul  class="list-group list-group-flush user-list-group result-list">
+                <jsp:include page="user_list.jsp" >
+                    <jsp:param name="userlist" value="${userlist}"/>
+                </jsp:include>
+            </ul>
+            
+        </c:if>
+        <c:if test="${empty userlist }">
+            <c:if test="${ type == 'following'}">
+                <h5 class="content-not-found post-content"><spring:message code="user.no-following" arguments="${targetuser.name }"></spring:message></h5>
+            </c:if>
+            <c:if test="${type == 'followers' }">
+                <h5 class="content-not-found post-content"><spring:message code="user.no-followers" arguments="${targetuser.name }"></spring:message></h5>
+            </c:if>
+        </c:if>
+    </div>
+</c:if>
+
+<c:if test="${type == 'games'}">
+    <div class="push-md-1 col-md-10" style="margin-top:2rem;">
+        <c:if test="${not empty gameresults }">
+        
+            <ul  class="list-group list-group-flush user-list-group result-list">
+            
+                <jsp:include page="game_list.jsp" >
+                    <jsp:param name="gameresults" value="${gameresults }"/>
+                </jsp:include>
+            </ul>
+        </c:if>
+        <c:if test="${empty gameresults }">
+            <h5 class="content-not-found post-content"><spring:message code="user.no-games" arguments="${targetuser.name }"></spring:message></h5>
+        </c:if>
+    </div>
+</c:if>
+
+<c:if test="${type == 'games' || type == 'following' || type == 'followers' }">
+    <c:if test="${pageTotal > 1}" >
+        <nav>
+            <ul class="pagination justify-content-center" style="margin-top:1rem;">
+            <li class="page-item <c:if test="${currentPage == 1 }"> disabled</c:if>">
+                <a class="page-link" href="
+                    <c:url value="/user/${targetuser.name}/${type}">
+                        <c:param name="page" value="1"/>
+                    </c:url>
+                    ">
+                    <spring:message code="nav.first"></spring:message>
+                </a>
+            </li>
+            <li class="page-item <c:if test="${currentPage == 1 }"> disabled </c:if>">
+                <a class="page-link" href="
+                    <c:url value="/user/${targetuser.name}/${type}">
+                        <c:param name="page" value="${currentPage -1}"/>
+                    </c:url>
+                    ">
+                    <spring:message code="nav.previous"></spring:message>
+                </a>
+            <c:forEach var="i" begin="${ (1 >= currentPage - maxPagesHalf)? 1 : currentPage - maxPagesHalf}" end="${(pageTotal <= currentPage + maxPagesHalf)? pageTotal: currentPage + maxPagesHalf}">
+                <c:choose>
+                    <c:when test="${i == currentPage }">
+                        <li class="page-item active">
+                            <span class="page-link">
+                                <c:out value="${i }"/>
+                            <span class="sr-only">(current)</span>
+                            </span>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                            <a class="page-link" href="
+                                    <c:url value="/user/${targetuser.name}/${type}">
+                                        <c:param name="page" value="${i}"/>
+                                    </c:url>
+                                    " >
+                                <c:out value="${i }"/>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+            <li class="page-item <c:if test="${currentPage == pageTotal }"> disabled </c:if>">   
+                <a class="page-link" href="
+                                    <c:url value="/user/${targetuser.name}/${type}">
+                                        <c:param name="page" value="${currentPage + 1}"/>
+                                    </c:url>
+                                    ">
+                    <spring:message code="nav.next"></spring:message>
+                </a>
+                </li>
+                <li class="page-item <c:if test="${currentPage == pageTotal }"> disabled</c:if>">
+            <a class="page-link" href="
+                <c:url value="/user/${targetuser.name}/${type}">
+                    <c:param name="page" value="${pageTotal }"/>
+                </c:url>
+                ">
+                <spring:message code="nav.last"></spring:message>
+                </a>
+            </li>
+            </ul>
+        </nav>
+    </c:if>
+</c:if>

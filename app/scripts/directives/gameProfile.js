@@ -1,14 +1,13 @@
 define(['paw2017a1frontend', 'services/GameService', 'services/sharedTypeService'], function(paw2017a1frontend) {
 
     'use strict';
-    paw2017a1frontend.directive('gameProfile', ['GameService', 'sharedTypeService',function(GameService) {
+    paw2017a1frontend.directive('gameProfile', ['GameService', 'sharedTypeService',function(GameService, sharedTypeService) {
         return {
             restrict: 'E',
             transclude: true,
             templateUrl: 'views/gameProfile.html',
             scope: {
-                id: '=',
-                type: '='
+                id: '='
             },
             controllerAs: 'gameProfile',
             controller: ['$scope', '$state', 'GameService', 'sharedTypeService', function($scope, $state, GameService, sharedTypeService){
