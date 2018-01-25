@@ -64,5 +64,6 @@ define([], function() {
 		GAME_WINDOWS: 'Windows',
 		GAME_MAC: 'Mac',
 		GAME_LINUX: 'Linux',
+		ERROR_WHILE_POSTING: 'An error ocurred while posting your message'
 	};
 });

@@ -1,7 +1,7 @@
 	<div class="card message-creator"  >
-		
+
 		<form class="inline sendMessageForm" id="sendMessageForm" name="messageForm" ng-submit="submitMessage();" novalidate>
-				<div class="message-form " id="message-form">						
+				<div class="message-form " id="message-form">
 					<div class="form-group input" ng-class="{'has-danger' : (messageForm.title.$error.maxlength || messageForm.title.$error.required )&& messageForm.$submitted }">
 				    	<input type="text" class="form-control title" name="title" ng-model="title" id="title" placeholder="Title" ng-maxlength="100" required >
 					    <label  class="form-text error " ng-show="messageForm.title.$error.maxlength && messageForm.$submitted" >{{'TITLE_FULL' | translate}}</label>
@@ -10,7 +10,7 @@
 
 					<div class="dropdown" id="typeDropdown">
 					  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownTypeButton" name="type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							{{newMessageType}}				 
+							{{newMessageType}}
 					</button>
 					  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					    <div ng-click="newMessageType = 'Comment' " class="dropdown-item type clickable"  >  {{'TYPE_COMMENT' | translate}}</div>
@@ -18,14 +18,14 @@
 					    <div  ng-click="newMessageType = 'Walkthrough' " class="dropdown-item type clickable" >  {{'TYPE_WALKTHROUGH' | translate}}</div>
 					  </div>
 					</div>
-				
-	
-					<div class="form-group input " ng-if="showVideoForm" ng-class="{'has-danger' : (messageForm.link.$error.pattern || messageForm.link.$error.required )&& messageForm.$submitted }">
-					    <input type="text" class="form-control link" id="link" placeholder="Link" name="link" ng-model="$parent.link" ng-pattern="youtubePattern" required>
-					    <label  class="form-text error "   ng-show="messageForm.link.$error.pattern && messageForm.$submitted">{{'LINK_INVALID' | translate}}</label>
-					     <label  class="form-text error " ng-show="messageForm.link.$error.required && messageForm.$submitted"  >{{'LINK_EMPTY' | translate}}</label>
+
+
+					<div class="form-group input " ng-if="showVideoForm" ng-class="{'has-danger' : (messageForm.body.$error.pattern || messageForm.body.$error.required )&& messageForm.$submitted }">
+					    <input type="text" class="form-control link" id="body" placeholder="Link" name="body" ng-model="$parent.body" ng-pattern="youtubePattern" required>
+					    <label  class="form-text error "   ng-show="messageForm.body.$error.pattern && messageForm.$submitted">{{'LINK_INVALID' | translate}}</label>
+					     <label  class="form-text error " ng-show="messageForm.body.$error.required && messageForm.$submitted"  >{{'LINK_EMPTY' | translate}}</label>
 					</div>
-	
+
 					<div class="form-group input " ng-if="showTextForm" ng-class="{'has-danger' : messageForm.body.$error.maxlength && messageForm.$submitted }" >
 					    <textarea type="text" class="form-control body" id="body" name="body" ng-model="$parent.body" placeholder="Body" rows="3" ng-maxlength="1000"></textarea>
 					    <label  class="form-text error " ng-show="messageForm.body.$error.maxlength && messageForm.$submitted" >{{'BODY_FULL' | translate}}</label>
@@ -38,25 +38,25 @@
 						<label  class="form-text error" ng-show="repeatedGame" >{{'TAGS_REPEATED' | translate}}</label>
 						<label  class="form-text error " ng-show="moreThanOneInReview" >{{'TAGS_CONSTRAINTS_REVIEW' | translate}}</label>
 					</div>
-					<div class="form-group tag-cont">	
-						<h4 class="tag-container" ng-repeat="game in messageGames">  
-							<span class="badge badge-tag badge-default"><span class="tag-name">{{game.name}}</span>  
+					<div class="form-group tag-cont">
+						<h4 class="tag-container" ng-repeat="game in messageGames">
+							<span class="badge badge-tag badge-default"><span class="tag-name">{{game.name}}</span>
 							<span class="fa fa-remove clickable " ng-click="removeGame($index)" aria-hidden="true"></span>
 						</h4>
 					</div>
-	
-	
-					<div class=" btn-group  inline"  ng-if="newMessageType ==='Review'" ng-init="positiveReview = true" id="positive-negative" role="group">
-							<button class="btn btn-outline-primary review-button " ng-click="positiveReview = true" ng-class="{'active' : positiveReview}" type="button"><span class="fa fa-thumbs-up" aria-hidden="true"></span></button> 
-							<button class="btn btn-outline-primary review-button " ng-click="positiveReview = false" type="button" ng-class="{'active' : !positiveReview}" ><span class="fa fa-thumbs-down" aria-hidden="true"></span></button> 
+
+
+					<div class=" btn-group  inline"  ng-if="newMessageType === 'Review' " id="positive-negative" role="group">
+							<button class="btn btn-outline-primary review-button " ng-click="setReview(true)" ng-class="{'active' : positiveReview}" type="button"><span class="fa fa-thumbs-up" aria-hidden="true"></span></button>
+							<button class="btn btn-outline-primary review-button " ng-click="setReview(false)" type="button" ng-class="{'active' : !positiveReview}" ><span class="fa fa-thumbs-down" aria-hidden="true"></span></button>
 					</div>
 					<br/>
-
-					<button type="submit" class="btn btn-outline-primary "  id="write"><span  class="fa fa-pencil " ng-disable="isSendingMessage"> </span>  </button>		
+					<p id="errorPost" ng-if="postError">{{'ERROR_WHILE_POSTING' | translate}}</p>
+					<button type="submit" class="btn btn-outline-primary "  id="write"><span  class="fa fa-pencil " ng-disable="isSendingMessage"> </span>  </button>
 				</div>
 		</form>
 
 
 
-	  	
+
 	</div>
