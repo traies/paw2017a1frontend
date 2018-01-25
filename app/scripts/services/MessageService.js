@@ -12,15 +12,24 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
           'content-type': 'application/json'
         }});
 
-        var genericMessageResource = $resource(baseUrl + '/api/message/:id');
+        var idMessageResource = $resource(baseUrl + '/api/message/:id',{id: '@id'},{
+          share: {
+            url: baseUrl + "/api/message/share/:id",
+            method: 'PUT',
+          },
+          unshare: {
+            url: baseUrl + "/api/message/unshare/:id",
+            method: 'PUT'
+          }
+        });
 
         MessageService.postResource = function(){
           return postMessageResource;
         };
 
-        MessageService.genericMessageResource = function(){
-          return genericMessageResource;
-        }
+        MessageService.idMessageResource = function(){
+          return idMessageResource;
+        };
 
         return MessageService;
 

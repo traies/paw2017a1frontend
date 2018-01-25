@@ -54,11 +54,11 @@
 		</form>
 	</div>
 
-  	<form ng-if="!isSameUser && user!= null && !haveShared" class="inline retweetForm" >
+  	<form ng-click="share(post.message.id)" ng-if="!isSameUser && user!= null && !haveShared" class="inline retweetForm" >
 			<button type="submit" class="btn-link"><span> {{post.times_shared}}<span  class="fa fa-retweet "> </span> </span> </button>
 	</form>
 
-	<form  ng-if="!isSameUser && user!= null && haveShared" class="inline retweetForm" >
+	<form  ng-click="unshare(post.message.id)" ng-if="!isSameUser && user!= null && haveShared" class="inline retweetForm" >
 		<button type="submit" class="btn-link black cant-share"><span> {{post.times_shared}}<span  class="fa fa-retweet "> </span> </span> </button>
 	</form>
 
