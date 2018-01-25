@@ -4,41 +4,67 @@ define([], function() {
     return {
         defaultRoutePath: '/',
         routes: {
-            '/': {
-                name: 'Home',
+            'Home': {
+                path: '/',
                 templateUrl: '/views/home.html',
                 controller: 'HomeCtrl'
             },
-            '/welcome': {
-                name: 'Welcome',
+            'Welcome': {
+                path: '/welcome',
                 templateUrl: '/views/welcome.html',
                 controller: 'WelcomeCtrl'
             },
-            '/login': {
-                name: 'Login',
+            'Login': {
+                path: '/login',
                 templateUrl: '/views/login.html',
                 controller: 'LoginCtrl'
             },
-            '/register': {
-                name: 'Register',
+            'Register': {
+                path: '/register',
                 templateUrl: '/views/register.html',
                 controller: 'RegisterCtrl'
             },
-            '/game/:id': {
+            'Game': {
                 abstract: true,
-                name: 'Game',
+                path: '/game/:id',
                 templateUrl: '/views/game.html',
                 controller: 'GameCtrl'
             },
-            '/followers': {
-                name: 'Game.followers',
-                templateUrl: 'views/gameFollowers.html',
+            'Game.followers': {
+                path: '/followers',
+                templateUrl: 'views/userListProfile.html',
                 controller: 'GameFollowersCtrl'
             },
-            '/messages': {
-                name: 'Game.messages',
-                templateUrl: 'views/gameFeed.html',
+            'Game.messages': {
+                path: '/messages' ,
+                templateUrl: 'views/feed.html',
                 controller: 'GameFeedCtrl'
+            },
+            'user': {
+                abstract: true,
+                path: '/user/:name' ,
+                templateUrl: '/views/user.html',
+                controller: 'UserCtrl'
+            },
+            'user.followers': {
+                path: '/followers',
+                templateUrl: 'views/userListProfile.html',
+                controller: 'UserFollowersCtrl'
+            },
+            'user.messages': {
+                path: '/messages' ,
+                templateUrl: 'views/feed.html',
+                controller: 'UserFeedCtrl'
+            },
+            'user.following': {
+                path: '/following' ,
+                templateUrl: 'views/userListProfile.html',
+                controller: 'UserFollowingCtrl'
+            },
+            'user.gamesFollowing': {
+                path: '/games',
+                templateUrl: 'views/gameListProfile.html',
+                controller: 'UserGamesFollowingCtrl'
             }
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */

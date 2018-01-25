@@ -41,10 +41,11 @@ define(['routes',
 					paw2017a1frontend.service = $provide.service;
 
 					if (config.routes !== undefined) {
-						angular.forEach(config.routes, function(route, path) {
-							$stateProvider.state(route.name, {
+						angular.forEach(config.routes, function(route, name) {
+							$stateProvider.state(name, {
+								abstract: route.abstract,
 								templateUrl: route.templateUrl,
-								url: path,
+								url: route.path,
 								resolve: dependencyResolverFor(['controllers/' + route.controller]),
 								controller: route.controller,
 							});
@@ -89,11 +90,8 @@ define(['routes',
 									 if(auth.isLoggedIn() && token != null){
 										 auth.updateTokenData(token);
 									 }
-
-
 									 return response;
 								 }
-
 							 };
 				 	}];
 
@@ -101,7 +99,7 @@ define(['routes',
 
 					$logProvider.debugEnabled(true);			//  TODO change in production
 				}])
-				.constant('baseUrl','http://192.168.1.106:8080');	//  TODO change in production
+				.constant('baseUrl','http://127.0.0.1:8080');	//  TODO change in production
 
 		return paw2017a1frontend;
 	}

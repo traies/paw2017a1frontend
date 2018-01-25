@@ -1,4 +1,4 @@
-<a  class="list-group-item list-group-item-action" ng-href="#!/game/1">
+<a ng-repeat="user in users" user="user" class="list-group-item list-group-item-action" ng-href="#!/user/{{user.name}}/messages">
     <div class="card-block" style="padding:.1rem;">
     <img class="float-left img-thumbnail user-image" ng-src="/user/avatar/{{user.name}}"/>
     
@@ -47,3 +47,7 @@
     <h5 class="card-title user-title">{{ user.name }}</h5>
     </div>
 </a>
+
+<div ng-if='isEmpty'>
+    <not-found>{{'NO_USERS_FOUND' | translate}}</not-found>
+</div>
