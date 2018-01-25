@@ -31,6 +31,11 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
             method: 'GET',
             isArray: true
           },
+          gamesFollowing: {
+            url: baseUrl + "/api/user/:name/games",
+            method: 'GET',
+            isArray: true
+          },
         });
     }]);
 });

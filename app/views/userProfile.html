@@ -65,9 +65,9 @@
                 </h3>
             </li>
             
-            <li class='nav-item' ng-class="type().type == 'games_following' ? 'active'  : ''">
+            <li class='nav-item' ng-class="type().type == 'gamesFollowing' ? 'active'  : ''">
                 <h3>
-                    <a class="nav-link game_category_link" ng-href="/user/{targetuser.name}/games"> 
+                    <a class="nav-link game_category_link" ng-href="#!/user/{{targetuser.name}}/games"> 
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_GAMES' | translate}}

@@ -1,0 +1,18 @@
+<a class="list-group-item list-group-item-action" ng-href="#!/game/{{game.appid}}/messages">
+    <div class="card-block game-block">
+        <img class="float-left img-thumbnail game-logo" ng-src="{{game.logoUrl ? game.logoUrl : 'images/no-game.jpg'}}" alt="Game logo">
+        <h5 class="card-title">{{game.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <span class="game-attr">
+                <spring:message code="game.releasedate"></spring:message>
+            </span>
+            {{game.releaseDate}}
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <span class="game-attr">{{'GAME_DEVELOPER' | translate}}</span> 
+            <span ng-repeat = "developer in game.developers">
+                   {{ developer.name }}
+            </span>
+        </h6>
+    </div>
+</a>

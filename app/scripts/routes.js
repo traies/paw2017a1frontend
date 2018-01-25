@@ -60,6 +60,11 @@ define([], function() {
                 path: '/following' ,
                 templateUrl: 'views/userFollowers.html',
                 controller: 'UserFollowingCtrl'
+            },
+            'user.gamesFollowing': {
+                path: '/games',
+                templateUrl: 'views/userGamesFollowing.html',
+                controller: 'UserGamesFollowingCtrl'
             }
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */
