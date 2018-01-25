@@ -12,9 +12,15 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
           'content-type': 'application/json'
         }});
 
+        var genericMessageResource = $resource(baseUrl + '/api/message/:id');
+
         MessageService.postResource = function(){
           return postMessageResource;
         };
+
+        MessageService.genericMessageResource = function(){
+          return genericMessageResource;
+        }
 
         return MessageService;
 

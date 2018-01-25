@@ -1,4 +1,4 @@
-define(['paw2017a1frontend','services/authService','controllers/ReplyModalCtrl'], function(paw2017a1frontend) {
+define(['paw2017a1frontend','services/authService','services/MessageService','controllers/ReplyModalCtrl'], function(paw2017a1frontend) {
 
     'use strict';
     paw2017a1frontend.directive('postView', function() {
@@ -7,8 +7,9 @@ define(['paw2017a1frontend','services/authService','controllers/ReplyModalCtrl']
 			replace: 'true',
 			templateUrl: 'views/postView.html',
 			scope: {post: '='},
-			controller: ['$scope','$sce','authService','$uibModal' ,function($scope,$sce,auth,$uibModal) {
-				$scope.user = auth.getLoggedUser();
+			controller: ['$scope','$sce','authService','MessageService','$uibModal' ,function($scope,$sce,auth,messageService,$uibModal) {
+
+        $scope.user = auth.getLoggedUser();
 				var post = $scope.post;
 				$scope.isSameUser = $scope.user ?  $scope.user.id === $scope.post.message.author.id : false;
 
@@ -20,6 +21,19 @@ define(['paw2017a1frontend','services/authService','controllers/ReplyModalCtrl']
 				$scope.trustedVideoUrl = function(url) {
 					return $sce.trustAsResourceUrl(url);
 				};
+
+        $scope.deleteMessage = function(id){
+          messageService.genericMessageResource()
+          .delete({id: id})
+          .$promise.then(
+            function (data) {
+              $scope.post.deleted = true;
+            },
+            function (error){
+
+            }
+          );
+        };
 
 				$scope.replyModal = function(){
 					return $uibModal.open({

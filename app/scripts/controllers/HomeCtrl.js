@@ -1,16 +1,32 @@
 'use strict';
-define(['paw2017a1frontend','services/restService','services/GameService', 'services/authService','directives/postView','directives/messageForm'], function(paw2017a1frontend) {
+define(
+	['paw2017a1frontend',
+	'services/restService',
+	'services/GameService',
+	'services/authService',
+	'services/UserService',
+	'directives/postView',
+	'directives/messageForm'],
+	function(paw2017a1frontend) {
 
-	paw2017a1frontend.controller('HomeCtrl',[ '$scope','$location', 'GameService', 'restService','authService',function($scope,$location, GameService, restService, auth) {
+	paw2017a1frontend.controller('HomeCtrl',
+		['$scope',
+		'$location',
+		'GameService',
+		'restService',
+		'authService',
+		'UserService',
+	function($scope,$location, GameService, restService, auth, UserService) {
 		$scope.homePageText = 'This is your homepage';
 		if (!auth.isLoggedIn())
 			$location.url('/welcome');
-		
-		$scope.posts = GameService.feed({gameId: 730}, function() {
-			// success
-		}, function(error) {
-			// error handling
+
+		UserService.mainFeed().$promise.then(function(data){
+			$scope.posts = data;
+		}, function(err){
+
 		});
+
 		$scope.triggerTextForm = function(){
 		 	$scope.showTextForm = !$scope.showTextForm;
 		 	$scope.showVideoForm = false;

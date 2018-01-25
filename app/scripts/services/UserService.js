@@ -21,6 +21,11 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
             method: 'GET',
             isArray: true
           },
+          mainFeed: {
+            url: baseUrl + "/api/feed/main",
+            method: 'GET',
+            isArray: true
+          },
           followers: {
             url: baseUrl + "/api/user/:name/followers",
             method: 'GET',

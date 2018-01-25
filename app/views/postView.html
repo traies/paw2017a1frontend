@@ -2,23 +2,22 @@
  <a class="card-link-absolute" ng-href="/post?id={{post.message.id}}"></a>
  <div class=" shared" ng-if="post.sharers.length > 0">
 		   	<span ng-if="post.sharers.length == 1" > <a ng-href="user/{{post.sharers[0].name}}">{{post.sharers[0].name}} </a> has shared it </span>
-		   
+
 		   	<span ng-if="post.sharers.length > 1" >
 		   		<div ng-repeat="sharer in post.sharers" style="display:inline;">
-		   			<a ng-href="/user/{{sharer.name}}">{{sharer.name}} </a> 
+		   			<a ng-href="/user/{{sharer.name}}">{{sharer.name}} </a>
 		   			<span ng-if="$index < post.sharers.length - 2">,</span>
 		   			<span ng-if="$index == post.sharers.length - 2">and</span>
-		   		</div> 
+		   		</div>
 		   		have shared it
 		   	</span>
- 	
-   
+
   </div>
 
   <div class="card-block header">
   <img ng-src="/user/avatar/{{post.message.author.name}}" class="img-rounded message_logo"/>
-    <a class="message-user" ng-href="#!/user/{{post.message.author.name}}/messages"> {{post.message.author.name}} </a> 
-    <span class="message-date">{{post.message.date}} </span>
+    <a class="message-user" ng-href="#!/user/{{post.message.author.name}}/messages"> {{post.message.author.name}} </a>
+    <span class="message-date">{{post.message.date | date:'dd/MM/yyyy @ h:mma'}} </span>
   </div>
 
   <div class="card-block">
@@ -30,15 +29,15 @@
 	</div>
   </div>
 
-  <div  ng-if="post.message.type === 'Video'" class="card-block">  
+  <div  ng-if="post.message.type === 'Video'" class="card-block">
 			<div class="video-container">
 				<div class="embed-responsive embed-responsive-16by9">
 				<iframe class="embed-responsive-item" ng-src="{{trustedVideoUrl(post.message.contentd.body)}}"></iframe>
 				</div>
 			</div>
 	</div>
-		
-	
+
+
 
  <div class="card-block interaction ">
 
@@ -51,31 +50,25 @@
 	<div ng-if="isSameUser" >
 		 <a class="card-link grey cant-share"> <span> {{post.times_shared}}<span  class="fa fa-retweet "> </span> </span> </a>
 		  <form class="inline deleteForm" >
-			<button type="submit" class="btn-link  cant-share"><span  class="fa fa-trash "> </span></button>
-		</form> 
+			<button type="submit" ng-click="deleteMessage(post.message.id)" class="btn-link  cant-share"><span  class="fa fa-trash "> </span></button>
+		</form>
 	</div>
 
   	<form ng-if="!isSameUser && user!= null && !haveShared" class="inline retweetForm" >
 			<button type="submit" class="btn-link"><span> {{post.times_shared}}<span  class="fa fa-retweet "> </span> </span> </button>
-	</form> 
+	</form>
 
 	<form  ng-if="!isSameUser && user!= null && haveShared" class="inline retweetForm" >
 		<button type="submit" class="btn-link black cant-share"><span> {{post.times_shared}}<span  class="fa fa-retweet "> </span> </span> </button>
-	</form> 
-   
+	</form>
+
 
  <span class="right">{{post.message.message_type}}</span>
- 	<div ng-if="post.message.message_type === 'Review'" style="display:inline;"> 
-			<span ng-if="post.message.reviewd.positive == 'true' " class="fa fa-thumbs-up right"></span> 
- 			<span ng-if="post.message.reviewd.positive == 'false' " class="fa fa-thumbs-down right"></span> 
- 	</div> 
+ 	<div ng-if="post.message.message_type === 'Review'" style="display:inline;">
+			<span ng-if="post.message.reviewd.positive == 'true' " class="fa fa-thumbs-up right"></span>
+ 			<span ng-if="post.message.reviewd.positive == 'false' " class="fa fa-thumbs-down right"></span>
+ 	</div>
 
-	
+
   </div>
-</div> 
-	
-	    		
-	 
-
-
-
+</div>
