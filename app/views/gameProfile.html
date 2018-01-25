@@ -14,7 +14,7 @@
         <ul class="navbar-nav mr-auto game_message_navbar">
                     <li class='nav-item' ng-class="type().type == 'messages' ? 'active'  : ''">
               <h3>
-                <a class="nav-link game_category_link" ng-href="#!/game/730/messages"> 
+                <a class="nav-link game_category_link" ng-href="#!/game/{{game.appid}}/messages"> 
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_MESSAGES' | translate}}
@@ -33,7 +33,7 @@
          
             <li class='nav-item' ng-class="type().type == 'followers'? 'active'  : ''">
                 <h3>
-                    <a class="nav-link game_category_link" ng-href="#!/game/730/followers">
+                    <a class="nav-link game_category_link" ng-href="#!/game/{{game.appid}}/followers">
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_FOLLOWERS' | translate}}

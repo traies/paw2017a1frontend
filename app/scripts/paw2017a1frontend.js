@@ -43,6 +43,7 @@ define(['routes',
 					if (config.routes !== undefined) {
 						angular.forEach(config.routes, function(route, name) {
 							$stateProvider.state(name, {
+								abstract: route.abstract,
 								templateUrl: route.templateUrl,
 								url: route.path,
 								resolve: dependencyResolverFor(['controllers/' + route.controller]),
@@ -89,11 +90,8 @@ define(['routes',
 									 if(auth.isLoggedIn() && token != null){
 										 auth.updateTokenData(token);
 									 }
-
-
 									 return response;
 								 }
-
 							 };
 				 	}];
 

@@ -20,7 +20,7 @@
               <div class="col center">
 	                <h2 >{{'GAME_TRENDING' | translate}}</h2>
 					<div ng-repeat="game in trendings" >
-							<a class="list-group-item list-group-item-action" ng-href="/game/steam/{{game.appid}}">
+							<a class="list-group-item list-group-item-action" ng-href="#!/game/{{game.appid}}/messages">
 							  <div class="card-block game-block">
 									<img ng-if="game.logoUrl" class="float-left img-thumbnail game-logo" ng-src="{{game.logoUrl}}" alt="Game logo">
 									<img ng-if="!game.logoUrl" class="float-left img-thumbnail game-logo" src="images/no-game.jpg" alt="Game logo">
@@ -43,7 +43,7 @@
               <div class="col center offset-md-2">
                  <h2 >{{'GAME_POPULAR' | translate}}</h2>
 					<div ng-repeat="game in populars" >
-							<a class="list-group-item list-group-item-action" ng-href="/game/steam/{{game.appid}}">
+							<a class="list-group-item list-group-item-action" ng-href="#!/game/{{game.appid}}">
 							  <div class="card-block game-block">
 									<img ng-if="game.logoUrl" class="float-left img-thumbnail game-logo" ng-src="{{game.logoUrl}}" alt="Game logo">
 									<img ng-if="!game.logoUrl" class="float-left img-thumbnail game-logo" src="images/no-game.jpg" alt="Game logo">

@@ -32,12 +32,12 @@ define([], function() {
             },
             'Game.followers': {
                 path: '/followers',
-                templateUrl: 'views/gameFollowers.html',
+                templateUrl: 'views/userListProfile.html',
                 controller: 'GameFollowersCtrl'
             },
             'Game.messages': {
                 path: '/messages' ,
-                templateUrl: 'views/gameFeed.html',
+                templateUrl: 'views/feed.html',
                 controller: 'GameFeedCtrl'
             },
             'user': {
@@ -48,22 +48,22 @@ define([], function() {
             },
             'user.followers': {
                 path: '/followers',
-                templateUrl: 'views/userFollowers.html',
+                templateUrl: 'views/userListProfile.html',
                 controller: 'UserFollowersCtrl'
             },
             'user.messages': {
                 path: '/messages' ,
-                templateUrl: 'views/userFeed.html',
+                templateUrl: 'views/feed.html',
                 controller: 'UserFeedCtrl'
             },
             'user.following': {
                 path: '/following' ,
-                templateUrl: 'views/userFollowers.html',
+                templateUrl: 'views/userListProfile.html',
                 controller: 'UserFollowingCtrl'
             },
             'user.gamesFollowing': {
                 path: '/games',
-                templateUrl: 'views/userGamesFollowing.html',
+                templateUrl: 'views/gameListProfile.html',
                 controller: 'UserGamesFollowingCtrl'
             }
             /* ===== yeoman hook ===== */

@@ -64,6 +64,9 @@ define([], function() {
 		GAME_WINDOWS: 'Windows',
 		GAME_MAC: 'Mac',
 		GAME_LINUX: 'Linux',
-		ERROR_WHILE_POSTING: 'An error ocurred while posting your message'
+		ERROR_WHILE_POSTING: 'An error ocurred while posting your message',
+		NO_MESSAGES_FOUND: 'No messages were found',
+		NO_USERS_FOUND: 'No users were found',
+		NO_GAMES_FOUND: 'No games were found'
 	};
 });

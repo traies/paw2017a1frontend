@@ -1,0 +1,6 @@
+<div  ng-repeat="p in posts">
+        <post-view post="p"/>
+    </div>
+<div ng-if='isEmpty'>
+    <not-found>{{'NO_MESSAGES_FOUND' | translate}}</not-found>
+</div>
