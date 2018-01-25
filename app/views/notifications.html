@@ -16,7 +16,7 @@
                   <p style="word-break: break-word; white-space:normal;">
                 <a ng-href="/folnotif?id={{notif.id}}">
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    {{notif.follower.name}}
+                    {{notif.userFollowedDetails.name}}
                     followed you
                 </a>
               </p>
@@ -25,13 +25,13 @@
                   <p style="word-break: normal; white-space:normal;">
                 <a ng-href="/msgnotif?id={{notif.id}}">
                       <i class="fa fa-retweet" aria-hidden="true"></i>
-                    <div ng-repeat = "sharer in notif.sharers" >
-                      {{sharer.user.name}}
-                      <span ng-if="$index == notif.sharers.length - 2" > and </span>
-                      <span ng-if="$index < notif.sharers.length - 2"> , </span>
+                    <div ng-repeat = "sharer in notif.sharedMessageDetails.users" >
+                      {{sharer.username}}
+                      <span ng-if="$index == notif.sharedMessageDetails.users.length - 2" > and </span>
+                      <span ng-if="$index < notif.sharedMessageDetails.users.length - 2"> , </span>
                     </div>
                     shared your message
-                    <em style="color: blue;">{{notif.message.title}}</em>
+                    <em style="color: blue;">{{notif.sharedMessageDetails.title}}</em>
                 </a>
               </p>
             </div>
@@ -39,13 +39,13 @@
                   <p style="word-break: normal; white-space:normal;">
                 <a ng-href="/msgnotif?id={{notif.id}}">
                     <i class="fa fa-reply" aria-hidden="true"></i>
-                  <div ng-repeat="replier in notif.repliers">
-                    {{replier.user.name}}
-                    <span ng-if="$index == notif.repliers.length - 2" > and </span>
-                    <span ng-if="$index < notif.repliers.length - 2"> , </span>
+                  <div ng-repeat="replier in notif.repliedMessageDetails.users">
+                    {{replier.username}}
+                    <span ng-if="$index == notif.repliedMessageDetails.users.length - 2" > and </span>
+                    <span ng-if="$index < notif.repliedMessageDetails.users.length - 2"> , </span>
                   </div>
                   replied your message
-                  <em style="color: blue;">{{notif.message.title}}</em>
+                  <em style="color: blue;">{{notif.repliedMessageDetails.title}}</em>
                 </a>
               </p>
             </div>
