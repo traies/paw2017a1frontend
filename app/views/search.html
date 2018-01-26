@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 push-2">
+            <ul class="list-inline search-tab-list">
+                <a ng-href="#!/search/games/{{shared().term}}" class="list-inline-item search-tab-list-item" ng-class="shared().type == 'games' ? 'active' : ''"> 
+                    {{'SEARCH_GAMES' | translate}}
+                </a>
+                <a ng-href="#!/search/users/{{shared().term}}" class="list-inline-item search-tab-list-item" ng-class="shared().type == 'users' ? 'active' : ''">
+                    {{'SEARCH_USERS' | translate}}
+                </a>
+                <a ng-href="#!/search/messages/{{shared().term }}" class="list-inline-item search-tab-list-item" ng-class="shared().type == 'messages' ? 'active' : ''">
+                    {{'SEARCH_MESSAGES' | translate}}
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div class="row" style="margin-top:1rem;">
+        <div class="push-2 col-md-8">
+            <h2 ng-if='developer'>{{ 'SEARCH_DEVELOPER' | translate }} {{developer.name}} </h2>
+            <h2 ng-if='publisher'>{{ 'SEARCH_PUBLISHER' | translate }} {{publisher.name}}</h2>
+            <h2 ng-if='shared().term'>{{ 'SEARCH_RESULTS_FOR' | translate }}<span> {{shared().term}} </span></h2>
+        </div>	
+    </div>
+    <div class="row" >
+        <div class="push-2 col-md-8">
+            <h5 ng-if='shared().resultsTotal > 0' translate='SEARCH_RESULTS_FOUND' translate-value-type='{{shared().type}}' translate-value-results-total='{{shared().resultsTotal}}'/>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="list-group list-group-flush push-2 col-md-8 user-list-group result-list ">
+            <ui-view></ui-view>
+        </ul>
+    </div>
+</div>

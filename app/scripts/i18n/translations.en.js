@@ -72,6 +72,12 @@ define([], function() {
 		NAV_FIRST: 'First',
 		NAV_LAST: 'Last',
 		NAV_PREV: 'Previous',
-		NAV_NEXT: 'Next'
+		NAV_NEXT: 'Next',
+		SEARCH_GAMES: 'Games',
+		SEARCH_USERS: 'Users',
+		SEARCH_MESSAGES: 'Messages',
+		SEARCH_RESULTS_NOT_FOUND: 'No {{type}} were found.',
+		SEARCH_RESULTS_FOUND: '{{resultsTotal}} {{type}} were found.',
+		SEARCH_RESULTS_FOR: 'Results for :',
 	};
 });

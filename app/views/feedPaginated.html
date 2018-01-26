@@ -1,6 +1,7 @@
 <div  ng-repeat="p in posts">
     <post-view post="p"/>
 </div>
+<pagination ng-if='pagination' url='url' currentPage='currentPage' lastPage='lastPage' maxPagesHalf='maxPagesHalf' middleRange="middleRange" ></pagination>
 <div ng-if='isEmpty'>
     <error-list>{{'NO_MESSAGES_FOUND' | translate}}</error-list>
 </div>

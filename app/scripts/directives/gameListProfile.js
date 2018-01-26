@@ -4,6 +4,9 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
     paw2017a1frontend.directive('gameListProfile', function() {
         return {
             restrict: 'E',
+            scope: {
+                games: '=games'
+            },
             templateUrl: 'views/gameListProfile.html'
         }
     });

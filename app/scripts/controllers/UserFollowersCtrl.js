@@ -3,11 +3,13 @@ define(['paw2017a1frontend', 'directives/userListProfile', 'services/UserService
     'use strict';
     paw2017a1frontend.controller('UserFollowersCtrl', ['$scope', '$stateParams', '$location', 'maxPageHalf', 'perPage', 'PaginationService', 'UserService','sharedTypeService',function($scope, $stateParams, $location, maxPageHalf, perPage, PaginationService, UserService, sharedTypeService) {
         $scope.users = UserService.followers({name: $stateParams.name}, function(data) {
-            if (data.length <= 0) {
+            if (data.items.length <= 0) {
                 $scope.isEmpty = true;
+            } else {
+                $scope.users = data.items;
+                PaginationService.activate($scope, data.currentPage, data.lastPage, maxPageHalf);
             }
-            $scope.users = data.items;
-            PaginationService.activate($scope, data.currentPage, data.lastPage, maxPageHalf);
+           
             $scope.url = '#!'+$location.path();
         }, function(error) {
             if (error) {

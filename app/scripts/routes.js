@@ -65,6 +65,27 @@ define([], function() {
                 path: '/games?page',
                 templateUrl: 'views/gameListProfile.html',
                 controller: 'UserGamesFollowingCtrl'
+            },
+            'search': {
+                abstract: true,
+                path: '/search',
+                templateUrl: 'views/search.html',
+                controller: 'SearchCtrl'
+            },
+            'search.games': {
+                path: '/games/:term?page',
+                templateUrl: 'views/gameListProfile.html',
+                controller: 'SearchGamesCtrl'
+            },
+            'search.users': {
+                path: '/users/:term?page',
+                templateUrl: 'views/userListProfile.html',
+                controller: 'SearchUsersCtrl'
+            },
+            'search.messages': {
+                path: '/messages/:term?page',
+                templateUrl: 'views/feedPaginated.html',
+                controller: 'SearchMessagesCtrl'
             }
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */
