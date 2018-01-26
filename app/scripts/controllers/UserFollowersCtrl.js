@@ -1,25 +1,13 @@
-define(['paw2017a1frontend', 'directives/userListProfile', 'services/UserService', 'services/sharedTypeService', 'directives/errorList', 'directives/pagination'], function(paw2017a1frontend) {
+define(['paw2017a1frontend', 'directives/userListProfile', 'services/UserService', 'services/sharedTypeService', 'services/PaginationService', 'directives/errorList', 'directives/pagination'], function(paw2017a1frontend) {
 
     'use strict';
-    paw2017a1frontend.controller('UserFollowersCtrl', ['$scope', '$stateParams', '$location', 'maxPageHalf', 'perPage', 'UserService','sharedTypeService',function($scope, $stateParams, $location, maxPageHalf, perPage, UserService, sharedTypeService) {
+    paw2017a1frontend.controller('UserFollowersCtrl', ['$scope', '$stateParams', '$location', 'maxPageHalf', 'perPage', 'PaginationService', 'UserService','sharedTypeService',function($scope, $stateParams, $location, maxPageHalf, perPage, PaginationService, UserService, sharedTypeService) {
         $scope.users = UserService.followers({name: $stateParams.name}, function(data) {
             if (data.length <= 0) {
                 $scope.isEmpty = true;
             }
-            function range(from, to) {
-                var ret = [];
-                for (var i = from; i <= to; i++) {
-                    ret.push(i);
-                }
-                return ret;
-            }
             $scope.users = data.items;
-            $scope.lastPage = data.lastPage + 1;
-            var leftBound = data.currentPage - maxPageHalf > 0 ? data.currentPage - maxPageHalf : 0;
-            var rightBound = data.currentPage + maxPageHalf < data.lastPage ? data.currentPage + maxPageHalf : data.lastPage;
-            $scope.middleRange = range(leftBound + 1, rightBound + 1);
-            $scope.currentPage = data.currentPage + 1;
-            $scope.pagination = true;
+            PaginationService.activate($scope, data.currentPage, data.lastPage, maxPageHalf);
             $scope.url = '#!'+$location.path();
         }, function(error) {
             if (error) {
