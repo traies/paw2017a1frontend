@@ -30,9 +30,10 @@ define(
 				$location.url('/welcome');
 			};
 
-			$scope.$on('$viewContentLoaded', function() {
-			   autoComplete.initialize();
+			angular.element(function () {
+				autoComplete.initialize();
 			});
+			
 
 
 			$scope.$on('user:updated', function() {

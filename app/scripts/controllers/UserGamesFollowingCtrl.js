@@ -17,6 +17,7 @@ define(['paw2017a1frontend', 'directives/pagination','directives/gameListProfile
                 $scope.serverError = true;
             }
         });
-        sharedTypeService.setType('gamesFollowing')
+        sharedTypeService.setType('gamesFollowing');
+        $scope.games = undefined;
     }]);
 });

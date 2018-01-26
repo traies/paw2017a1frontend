@@ -21,6 +21,7 @@ define(['paw2017a1frontend', 'directives/pagination', 'directives/postView', 'se
         SharedService.set('resultsTotal', undefined);
         SharedService.set('type', 'messages');
         SharedService.set('term', $stateParams.term);
+        $scope.posts = undefined;
     }]);
 
 });

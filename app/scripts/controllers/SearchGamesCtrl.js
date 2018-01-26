@@ -21,6 +21,7 @@ define(['paw2017a1frontend', 'directives/pagination', 'directives/gameListProfil
         SharedService.set('resultsTotal', undefined);
         SharedService.set('type', 'games');
         SharedService.set('term', $stateParams.term);
+        $scope.games = undefined;
     }]);
 
 });

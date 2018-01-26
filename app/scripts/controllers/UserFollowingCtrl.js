@@ -18,6 +18,7 @@ define(['paw2017a1frontend', 'directives/userListProfile', 'services/UserService
                 $scope.serverError = true;
             }
         });
-        sharedTypeService.setType('following')
+        sharedTypeService.setType('following');
+        $scope.users = undefined;
     }]);
 });

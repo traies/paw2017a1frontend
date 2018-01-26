@@ -82,12 +82,12 @@
 
 
       </div>
-      <form  style="float:right;" class="autocomplete form-inline my-2 my-lg-0" action="/search" method="get" >
-        <input style="width: 20rem" class="search typeahead form-control mr-sm-2" type="text" placeholder="Search games, users and messages" name="term"/>
-      </form>
     </div>
 
-
+    <form  style="float:right;" class="autocomplete form-inline my-2 my-lg-0" ng-action="/search/{{term}}" method="get" >
+      <input style="width: 20rem" class="search typeahead form-control mr-sm-2" type="text" placeholder="Search games, users and messages" ng-model="term"/>
+    </form>
+    
     <div ng-if="!isLoggedIn">
       <div style="float: right">
         <a id="login" href="#!/login"><h5
@@ -105,6 +105,7 @@
 
       </div>
     </div>
+    
 </nav>
   <!--[if lt IE 7]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

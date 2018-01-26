@@ -11,22 +11,22 @@ $(document).ready(function() {
 	
 	$(".typeahead.search").on( "typeahead:select", function(ev, sugestion) {
 		if (sugestion.type == "game") {
-			window.location.href = contextPath + "/game/steam/"+encodeURIComponent(sugestion.appid)
+			window.location.href = contextPath + "#!/game/"+encodeURIComponent(sugestion.appid)
 		}
 		if (sugestion.type == "user") {
-			window.location.href = contextPath + "/user/"+ encodeURIComponent(sugestion.name)
+			window.location.href = contextPath + "#!/user/"+ encodeURIComponent(sugestion.name)
 		}
 		if (sugestion.type == "message") {
-			window.location.href = contextPath + "/post?id="+ encodeURIComponent(sugestion.id)
+			window.location.href = contextPath + "#!/post?id="+ encodeURIComponent(sugestion.id)
 		}
 		if (sugestion.type == "search-games") {
-			window.location.href = contextPath + "/search?term=" + encodeURIComponent(sugestion.query)
+			window.location.href = contextPath + "#!/search/games/" + encodeURIComponent(sugestion.query)
 		}
 		if (sugestion.type == "search-users") {
-			window.location.href = contextPath + "/search?type=users&term=" + encodeURIComponent(sugestion.query)
+			window.location.href = contextPath + "#!/search/users/" + encodeURIComponent(sugestion.query)
 		}
 		if (sugestion.type == "search-messages") {
-			window.location.href = contextPath + "/search?type=messages&term=" + encodeURIComponent(sugestion.query)
+			window.location.href = contextPath + "#!/search/messages/" + encodeURIComponent(sugestion.query)
 		}
 	})
 	
