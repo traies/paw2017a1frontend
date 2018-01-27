@@ -23,6 +23,7 @@ define(
 				$scope.moreThanOneInReview = false;
 				$scope.repeatedGame = false;
         $scope.postError = false;
+        $scope.body = '';
 
 
         $scope.setReview = function(bool){
@@ -55,6 +56,7 @@ define(
               .save(post)
               .$promise.then(
                 function(data){
+                  $scope.posts.unshift(data);
                   $scope.postError = false;
                   $scope.isSendingMessage=false;
                 },

@@ -29,10 +29,10 @@
 	</div>
   </div>
 
-  <div  ng-if="post.message.type === 'Video'" class="card-block">
+  <div  ng-if="post.message.content_type == 'VIDEO'" class="card-block">
 			<div class="video-container">
 				<div class="embed-responsive embed-responsive-16by9">
-				<iframe class="embed-responsive-item" ng-src="{{trustedVideoUrl(post.message.contentd.body)}}"></iframe>
+				<iframe class="embed-responsive-item" ng-src="{{trustedVideoUrl(post.message.content_data)}}"></iframe>
 				</div>
 			</div>
 	</div>
