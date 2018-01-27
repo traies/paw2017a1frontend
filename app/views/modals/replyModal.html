@@ -6,10 +6,10 @@
 						   </button>
 			      </div>
 		      <div class="modal-body">
-	
+
 			 		<div class="dropdown replyContent">
 			          	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownReplyMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			           	 {{contentType}}
+			           	 {{contentType == 'text' ? ('CONTENT_TEXT' | translate) : ('CONTENT_VIDEO' | translate)}}
 			          	</button>
 				          <div class="dropdown-menu " aria-labelledby="dropdownReplyMenu">
 				             <button class="dropdown-item " ng-click=" setContentText();" > {{'CONTENT_TEXT' | translate}}</button>
@@ -18,22 +18,22 @@
 			        </div>
 			      <form class="replyForm"  id="replyForm" ng-submit="submitReply()"  name="replyForm" novalidate >
 
-				     	<div class="form-group input " ng-class="{'has-danger':(replyForm.link.$error.pattern || replyForm.link.$error.required) && replyForm.$submitted}"  ng-if="contentType === 'Video'">
-					    	<input name="link" ng-model="$parent.link" type="text" class="form-control replyLink" id="replyLink" placeholder="Link" ng-pattern="youtubePattern" required >
-					    	<label  class="form-text error " ng-if="replyForm.link.$error.required && replyForm.$submitted" >{{'REPLY_LINK_EMPTY' | translate}}</label>
-					    	<label  class="form-text error " ng-if="replyForm.link.$error.pattern && replyForm.$submitted" >{{'REPLY_LINK_INVALID' | translate}}</label>
+				     	<div class="form-group input " ng-class="{'has-danger':(replyForm.body.$error.pattern || replyForm.body.$error.required) && replyForm.$submitted}"  ng-if="contentType === 'video'">
+					    	<input name="body" ng-model="$parent.body" type="text" class="form-control replyLink" id="replyLink" placeholder="Link" ng-pattern="youtubePattern" required >
+					    	<label  class="form-text error " ng-if="replyForm.body.$error.required && replyForm.$submitted" >{{'REPLY_LINK_EMPTY' | translate}}</label>
+					    	<label  class="form-text error " ng-if="replyForm.body.$error.pattern && replyForm.$submitted" >{{'REPLY_LINK_INVALID' | translate}}</label>
 						</div>
 
-						<div class="form-group input " ng-class="{'has-danger':(replyForm.body.$error.maxlength || replyForm.body.$error.required) && replyForm.$submitted}" ng-if="contentType === 'Text'">
+						<div class="form-group input " ng-class="{'has-danger':(replyForm.body.$error.maxlength || replyForm.body.$error.required) && replyForm.$submitted}" ng-if="contentType === 'text'">
 						    <textarea ng-model="$parent.body" type="text" class="form-control replyBody" id="replyBody" placeholder="Body" rows="3"  ng-maxlength="1000" name="body" required></textarea>
 						    <label  ng-show="replyForm.body.$error.maxlength && replyForm.$submitted" class="form-text error "  >{{'REPLY_BODY_FULL' | translate}}</label>
 						    <label   ng-show="replyForm.body.$error.required && replyForm.$submitted" class="form-text error "   >{{'REPLY_BODY_EMPTY' | translate}}</label>
 						</div>
 				      <div class="modal-footer">
-				        <button type="submit" ng-disable="isReplying" class="btn btn-primary " ><span  class="fa fa-pencil "></span></button>			        
+								<p id="errorPost" ng-if="postError">{{'ERROR_WHILE_POSTING' | translate}}</p>
+				        <button type="submit" ng-disable="isReplying" class="btn btn-primary " ><span  class="fa fa-pencil "></span></button>
 				      </div>
-			     </form> 
+			     </form>
 
 		    </div>
 	  </div>
-

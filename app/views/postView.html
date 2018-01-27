@@ -1,5 +1,5 @@
-<div class="card message clickable"  id="{{post.message.id}}"  user="{{post.message.author.name}}">
- <a class="card-link-absolute" ng-href="/post?id={{post.message.id}}"></a>
+<div class="card message"  id="{{post.message.id}}"  user="{{post.message.author.name}}">
+ <!--<a class="card-link-absolute" ng-href="/post?id={{post.message.id}}"></a>-->
  <div class=" shared" ng-if="post.sharers.length > 0">
 		   	<span ng-if="post.sharers.length == 1" > <a ng-href="user/{{post.sharers[0].name}}">{{post.sharers[0].name}} </a> has shared it </span>
 
@@ -41,7 +41,7 @@
 
  <div class="card-block interaction ">
 
-   	<a ng-if="user != null" ng-click="replyModal()"  class="card-link reply"  modal="replyModal"  ><span>{{post.times_replied}}<span class="fa fa-reply "> </span>  </span> </a>
+   	<a ng-if="user != null" ng-click="replyModal()"  class="card-link reply clickable"  modal="replyModal"  ><span>{{post.times_replied}}<span class="fa fa-reply "> </span>  </span> </a>
 
    	<a ng-if="user == null"  class="card-link "   ><span>{{post.times_replied}}<span class="fa fa-reply "> </span>  </span> </a>
 
@@ -64,9 +64,9 @@
 
 
  <span class="right">{{post.message.message_type}}</span>
- 	<div ng-if="post.message.message_type === 'Review'" style="display:inline;">
-			<span ng-if="post.message.reviewd.positive == 'true' " class="fa fa-thumbs-up right"></span>
- 			<span ng-if="post.message.reviewd.positive == 'false' " class="fa fa-thumbs-down right"></span>
+ 	<div ng-if="post.message.message_type === 'REVIEW'" style="display:inline;">
+			<span ng-if="post.message.positive == true" class="fa fa-thumbs-up right"></span>
+ 			<span ng-if="post.message.positive == false" class="fa fa-thumbs-down right"></span>
  	</div>
 
 

@@ -20,6 +20,16 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
           unshare: {
             url: baseUrl + "/api/message/unshare/:id",
             method: 'PUT'
+          },
+          reply: {
+            url: baseUrl + "/api/message/reply/:id/:media",
+            method: 'POST',
+            headers: {
+              "content-type": "application/json"
+            },
+            params: {
+              media: '@media'
+            }
           }
         });
 

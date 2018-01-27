@@ -101,7 +101,8 @@ define(['routes',
 				}])
 				.constant('baseUrl','http://127.0.0.1:8080')
 				.constant('maxPageHalf', 3)
-				.constant('perPage', 10);	//  TODO change in production
+				.constant('perPage', 10)	//  TODO change in production
+				.constant('youtubePattern', /^(?:https:\/\/(?:www\.)?)?((?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:\?t=(?:[0-9]+m)?[0-9]+s)?)$/);
 
 		return paw2017a1frontend;
 	}

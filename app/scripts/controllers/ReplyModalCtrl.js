@@ -1,32 +1,52 @@
 'use strict';
-define(['paw2017a1frontend','services/restService','typeahead','typeahead-jquery'], function(paw2017a1frontend) {
+define(
+	['paw2017a1frontend',
+	'services/MessageService',
+	'typeahead',
+	'typeahead-jquery'],
+	function(paw2017a1frontend) {
 
-	paw2017a1frontend.controller('ReplyModalCtrl', ['$scope','restService','post','$uibModalInstance' ,function($scope,rest,post,$replyModal) {
-		$scope.postUsername = post.message.user.name;
-		$scope.contentType = 'Text';
+	paw2017a1frontend.controller('ReplyModalCtrl',
+	['$scope',
+	'MessageService',
+	'post',
+	'$uibModalInstance',
+	'youtubePattern',
+	function($scope, messageService, post, $replyModal, youtubePattern) {
+		$scope.postUsername = post.message.author.name;
+		$scope.contentType = 'text';
 		$scope.body = '';
-		$scope.link = '';
-		$scope.youtubePattern = /^(?:https:\/\/(?:www\.)?)?((?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:\?t=(?:[0-9]+m)?[0-9]+s)?)$/;
+		$scope.youtubePattern = youtubePattern;
+		$scope.postError = false;
 
 
 		$scope.setContentText = function (){
-			$scope.contentType = 'Text';
+			$scope.contentType = 'text';
 		};
 		$scope.setContentVideo = function (){
-			$scope.contentType = 'Video';
+			$scope.contentType = 'video';
 		};
 
 
 		$scope.submitReply= function (){
 			if($scope.replyForm.$valid) {
-				console.log("submiting reply");
-				//post
-				$replyModal.close(true);
+				messageService.idMessageResource().reply({
+					id: post.message.id,
+					media: $scope.contentType,
+					body: $scope.body
+				}).$promise.then(function(data){
+					$scope.postError = false;
+					post.times_replied ++;
+					$replyModal.close(true);
+				}, function(err){
+					$scope.postError = true;
+					console.log('error');
+				});
 			}
 		}
+
 		$scope.closeModal = function(){
 			$replyModal.close(true);
 		}
 	}]);
 });
-
