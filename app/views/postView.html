@@ -15,7 +15,7 @@
   </div>
 
   <div class="card-block header">
-  <img ng-src="/user/avatar/{{post.message.author.name}}" class="img-rounded message_logo"/>
+  <img ng-src="{{baseUrl}}/api/user/{{post.message.author.name}}/avatar" class="img-rounded message_logo"/>
     <a class="message-user" ng-href="#!/user/{{post.message.author.name}}/messages"> {{post.message.author.name}} </a>
     <span class="message-date">{{post.message.date | date:'dd/MM/yyyy @ h:mma'}} </span>
   </div>

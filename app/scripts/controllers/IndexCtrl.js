@@ -15,9 +15,11 @@ define(
 		'$location',
 		'notificationsService',
 		'autoCompleteService',
-		'authService' ,
-		function($scope, $location, notif, autoComplete, auth) {
+		'authService',
+		'baseUrl',
+		function($scope, $location, notif, autoComplete, auth, baseUrl) {
 
+			$scope.baseUrl = baseUrl;
 			$scope.welcomeText = 'Welcome to your paw2017a1frontend page';
 			$scope.isLoggedIn = auth.isLoggedIn();
 			$scope.user = auth.getLoggedUser();
@@ -33,7 +35,7 @@ define(
 			angular.element(function () {
 				autoComplete.initialize();
 			});
-			
+
 
 
 			$scope.$on('user:updated', function() {

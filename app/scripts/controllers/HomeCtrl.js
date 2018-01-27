@@ -21,11 +21,10 @@ define(
 		if (!auth.isLoggedIn())
 			$location.url('/welcome');
 
-		UserService.mainFeed().$promise.then(function(data){
-			$scope.posts = data;
-		}, function(err){
-
-		});
+		if(auth.isLoggedIn())
+			UserService.mainFeed().$promise.then(function(data){
+				$scope.posts = data;
+			}, function(err){});
 
 		$scope.triggerTextForm = function(){
 		 	$scope.showTextForm = !$scope.showTextForm;

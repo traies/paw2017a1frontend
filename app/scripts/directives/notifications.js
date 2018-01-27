@@ -14,7 +14,7 @@ define(['paw2017a1frontend', 'services/sessionService', 'services/notificationsS
         function($scope, session, notif){
 
           $scope.getNotifications = function(){
-            return session.getUser().notifications;
+            return notif.getNotifications();
           };
 
           $scope.updateNotifications = function(){

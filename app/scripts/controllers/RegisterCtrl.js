@@ -60,7 +60,7 @@ define(
 
             auth.loginWithToken(token, false);
             $rootScope.$broadcast('showNavBar');
-            $location.path($scope.url);
+            $location.path($scope.url).replace();
 
           }, function(error){
             $scope.registerError = true;

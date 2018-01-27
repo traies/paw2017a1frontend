@@ -3,9 +3,7 @@ define(['paw2017a1frontend','services/authService'], function(paw2017a1frontend)
     'use strict';
     paw2017a1frontend.controller('LoginCtrl', ['$scope','$location','authService','$rootScope',function($scope,$location,auth,$rootScope) {
 
-
         $rootScope.$broadcast('hideNavBar');
-
         //will change this
         $scope.url = '/';
 
@@ -19,7 +17,7 @@ define(['paw2017a1frontend','services/authService'], function(paw2017a1frontend)
         $scope.$on('login:ok', function() {
           $scope.loginFailed = false;
           $rootScope.$broadcast('showNavBar');
-          $location.path($scope.url);
+          $location.path($scope.url).replace();
         });
 
         $scope.$on('login:failed', function(){

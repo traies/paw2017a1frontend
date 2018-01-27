@@ -16,7 +16,6 @@ define(
    function($http, notif,  session, $q, $rootScope, jwtHelper, baseUrl) {
 
     var AuthService = {};
-		AuthService.loggedUser = session.getUser();
 
 		AuthService.logIn = function(username, password, rememberMe) {
 			var self = this;
@@ -43,20 +42,14 @@ define(
 
     AuthService.loginWithToken = function(token, rememberMe){
       var self = this;
-
       var payload = jwtHelper.decodeToken(token);
       var user = {
         name: payload.username,
         id: payload.userId,
         token: token,
-        tokenPayload: payload,
-        notifications: []
+        tokenPayload: payload
       };
       session.setUser(user, rememberMe);
-      self.loggedUser = user;
-      //Todo: see if can trigger this when event
-      //fired or once in a while
-      notif.update();
       $rootScope.$broadcast('user:updated');
     };
 
@@ -66,26 +59,24 @@ define(
         name: payload.username,
         id: payload.userId,
         token: token,
-        tokenPayload: payload,
-        notifications: session.getUser().notifications
+        tokenPayload: payload
       };
       session.updateUser(user);
-      self.loggedUser = user;
       $rootScope.$broadcast('user:updated');
     };
 
 		AuthService.isLoggedIn = function() {
-			return !!this.loggedUser;
+			return !!session.getUser();
 		};
 
 		AuthService.logOut = function() {
 			session.destroy();
-			this.loggedUser = null;
 		};
 
 		AuthService.getLoggedUser = function() {
-			return this.loggedUser;
-		}
+			return session.getUser();
+		};
+    
 		return AuthService;
 	}]);
 

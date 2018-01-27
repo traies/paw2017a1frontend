@@ -7,8 +7,9 @@ define(['paw2017a1frontend','services/authService','services/MessageService','co
 			replace: 'true',
 			templateUrl: 'views/postView.html',
 			scope: {post: '='},
-			controller: ['$scope','$sce','authService','MessageService','$uibModal' ,function($scope,$sce,auth,messageService,$uibModal) {
+			controller: ['$scope','$sce','authService','MessageService','$uibModal','baseUrl',function($scope,$sce,auth,messageService,$uibModal, baseUrl) {
 
+        $scope.baseUrl = baseUrl;
         $scope.user = auth.getLoggedUser();
 
         if ($scope.user) {
