@@ -1,26 +1,28 @@
 define(['paw2017a1frontend'], function(paw2017a1frontend) {
 
     'use strict';
-    paw2017a1frontend.factory('autoCompleteService', function($window) {
+    paw2017a1frontend.factory('autoCompleteService', [ '$location', 'baseUrl', '$window',function($location, baseUrl, $window) {
 
     	var Autocomplete = {};
-
+		var contexturl = '#!';
     	var sourceGames = new Bloodhound({
 				queryTokenizer: Bloodhound.tokenizers.whitespace,
 				datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
 				remote: {
 					wildcard: '%QUERY',
-					url: contextPath + "/autocomplete?term=%QUERY",
+					url: baseUrl + "/api/autocomplete/games/%QUERY",
+					
 					transform: function(response) {
-						a =  $.map(response, function(game) {
+						var a =  $.map(response, function(game) {
 							return {
 								name: game.name,
-								appid: game.appid,
+								id: game.id,
 								type: "game"
 							}
 						});
 						return a ;
-					}
+					},
+					
 				}
 			});
 			sourceGames.initialize();
@@ -43,7 +45,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 				datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
 				remote: {
 					wildcard: '%QUERY',
-					url: contextPath + "/autocompleteUsers?term=%QUERY",
+					url: baseUrl + "/api/autocomplete/users/%QUERY",
 					transform: function(response) {
 						
 						return $.map(response, function(user) {
@@ -53,8 +55,9 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 								type: "user"
 							}
 						})
-					}
-				}
+					},
+					
+				},
 			});
 		    
 		    var adapterUsers = function (query,  cb, cb2) {
@@ -77,12 +80,12 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 				datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
 				remote: {
 					wildcard: '%QUERY',
-					url: contextPath + "/autocompleteMessages?term=%QUERY",
+					url: baseUrl + "/api/autocomplete/messages/%QUERY",
 					transform: function(response) {
 						
 						return $.map(response, function(message) {
 							return {
-								name: message.title,
+								name: message.name,
 								id: message.id,
 								type: "message"
 							}
@@ -118,17 +121,16 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 							datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
 							remote: {
 								wildcard: '%QUERY',
-								url: contextPath + "/autocomplete?term=%QUERY",
+								url: baseUrl + "#!/autocomplete/games/%QUERY",
 								transform: function(response) {
 									return $.map(response, function(game) {
 										return {
 											name: game.name,
-											appid: game.appid,
 											id: game.id
 										}
 									})
 								}
-							}
+							},
 						}),
 						display: 'name'
 					}
@@ -143,22 +145,22 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 
 		 	$(".typeahead.search").on( "typeahead:select", function(ev, sugestion) {
 				if (sugestion.type == "game") {
-					$window.location.href = contextPath + "#!/game/"+encodeURIComponent(sugestion.appid);
+					$window.location.href = "#!/game/"+encodeURIComponent(sugestion.id) + "/messages";
 				}
 				if (sugestion.type == "user") {
-					$window.location.href = contextPath + "#!/user/"+ encodeURIComponent(sugestion.name);
+					$window.location.href = "#!/user/"+ encodeURIComponent(sugestion.name) + "/messages";
 				}
 				if (sugestion.type == "message") {
-					$window.location.href = contextPath + "#!/post?id="+ encodeURIComponent(sugestion.id);
+					$window.location.href = "#!/post?id="+ encodeURIComponent(sugestion.id) ;
 				}
 				if (sugestion.type == "search-games") {
-					$window.location.href = contextPath + "#!/search/games/" + encodeURIComponent(sugestion.query);
+					$window.location.href = "#!/search/games/" + encodeURIComponent(sugestion.query);
 				}
 				if (sugestion.type == "search-users") {
-					$window.location.href = contextPath + "#!/search/users/" + encodeURIComponent(sugestion.query);
+					$window.location.href = "#!/search/users/" + encodeURIComponent(sugestion.query);
 				}
 				if (sugestion.type == "search-messages") {
-					$window.location.href = contextPath + "#!/search/messages/" + encodeURIComponent(sugestion.query);
+					$window.location.href = "#!/search/messages/" + encodeURIComponent(sugestion.query);
 				}
 				$(".typeahead").typeahead('val', '');
 			});
@@ -234,7 +236,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 		};
 
 		return Autocomplete;
-    });
+    }]);
 
 });
 
