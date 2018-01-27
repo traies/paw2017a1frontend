@@ -16,6 +16,7 @@
     "angular-jwt": "^0.1.9",
     "angular-resource": "^1.6.8",
     "bootstrap-sass": "bootstrap-sass-official#^3.3.7",
+    "bootstrap-sass-official": "bootstrap-sass-official#^3.3.7",
     "angular-ui-router": "^1.0.13"
   },
   "resolutions": {
