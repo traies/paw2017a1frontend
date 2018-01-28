@@ -90,14 +90,14 @@
 
     <div ng-if="!isLoggedIn">
       <div style="float: right">
-        <a id="login" href="#!/login"><h5
+        <a id="login" ng-click="logIn()"><h5
             class="white clickable">
             Login
           </h5></a>
       </div>
 
       <div style="float: right" id ="registerNavDiv">
-          <a id="register" href="#!/register"><h5
+          <a id="register" ng-click="register()"><h5
               class="white clickable">
               Register
             </h5></a>

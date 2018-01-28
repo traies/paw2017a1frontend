@@ -10,7 +10,8 @@ define(['paw2017a1frontend', 'services/UserService', 'services/sharedTypeService
                 name: '=name'
             },
             controllerAs: 'userProfile',
-            controller: ['$scope', '$state', 'UserService', 'sharedTypeService', function($scope, $state, UserService, sharedTypeService){
+            controller: ['$scope', '$state', 'UserService', 'sharedTypeService','baseUrl', function($scope, $state, UserService, sharedTypeService, baseUrl){
+                $scope.baseUrl = baseUrl;
                 $scope.targetuser = UserService.get({name: $scope.name});
                 $scope.type = sharedTypeService.getType;
             }]

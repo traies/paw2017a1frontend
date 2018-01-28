@@ -1,6 +1,6 @@
 <div class="row align-items-end justify-content-center game_background" >
     <div class="col-md-2 game_head ">
-        <img ng-src="/user/avatar/{{targetuser.name}}" class="img-rounded game_logo img-fluid"/>
+        <img ng-src="{{baseUrl}}/api/user/{{targetuser.name}}/avatar" class="img-rounded game_logo img-fluid"/>
     </div>
     <div class="col-md-10"> <span class="game_header" >
         <h1>
@@ -16,8 +16,8 @@
         <ul class="navbar-nav mr-auto game_message_navbar">
                     <li class='nav-item' ng-class="type().type == 'messages' ? 'active'  : ''">
             <h3>
-                <a class="nav-link game_category_link" 
-                    ng-href="/#!/user/{{targetuser.name}}/messages"> 
+                <a class="nav-link game_category_link"
+                    ng-href="/#!/user/{{targetuser.name}}/messages">
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_MESSAGES' | translate}}
@@ -33,7 +33,7 @@
             </li>
             <li class='nav-item' ng-class="type().type == 'followers' ? 'active'  : ''">
                 <h3>
-                    <a class="nav-link game_category_link" ng-href="/#!/user/{{targetuser.name}}/followers"> 
+                    <a class="nav-link game_category_link" ng-href="/#!/user/{{targetuser.name}}/followers">
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_FOLLOWERS' | translate}}
@@ -47,10 +47,10 @@
                     </a>
                 </h3>
             </li>
-            
+
             <li class='nav-item' ng-class="type().type == 'following' ? 'active'  : ''">
                 <h3>
-                    <a class="nav-link game_category_link" ng-href="/#!/user/{{targetuser.name}}/following"> 
+                    <a class="nav-link game_category_link" ng-href="/#!/user/{{targetuser.name}}/following">
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_FOLLOWING' | translate}}
@@ -64,10 +64,10 @@
                     </a>
                 </h3>
             </li>
-            
+
             <li class='nav-item' ng-class="type().type == 'gamesFollowing' ? 'active'  : ''">
                 <h3>
-                    <a class="nav-link game_category_link" ng-href="#!/user/{{targetuser.name}}/games"> 
+                    <a class="nav-link game_category_link" ng-href="#!/user/{{targetuser.name}}/games">
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_GAMES' | translate}}
@@ -120,7 +120,7 @@
 <c:if test="${type == 'posts' }">
     <div class="push-md-1 col-md-10 ">
         <c:if test="${not empty posts }">
-        
+
             <div class="message_container messages">
                 <jsp:include page="messageTemplate.jsp" >
                     <jsp:param name="posts" value="${posts}"/>
@@ -131,18 +131,18 @@
             <h5 class="content-not-found post-content"><spring:message code="user.no-posts" arguments="${targetuser.name }"></spring:message></h5>
         </c:if>
     </div>
-    
+
 </c:if>
 <c:if test="${type == 'following' || type == 'followers' }">
     <div class="push-md-1 col-md-10" style="margin-top:2rem;">
         <c:if test="${not empty userlist }">
-            
+
             <ul  class="list-group list-group-flush user-list-group result-list">
                 <jsp:include page="user_list.jsp" >
                     <jsp:param name="userlist" value="${userlist}"/>
                 </jsp:include>
             </ul>
-            
+
         </c:if>
         <c:if test="${empty userlist }">
             <c:if test="${ type == 'following'}">
@@ -158,9 +158,9 @@
 <c:if test="${type == 'games'}">
     <div class="push-md-1 col-md-10" style="margin-top:2rem;">
         <c:if test="${not empty gameresults }">
-        
+
             <ul  class="list-group list-group-flush user-list-group result-list">
-            
+
                 <jsp:include page="game_list.jsp" >
                     <jsp:param name="gameresults" value="${gameresults }"/>
                 </jsp:include>
@@ -216,7 +216,7 @@
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
-            <li class="page-item <c:if test="${currentPage == pageTotal }"> disabled </c:if>">   
+            <li class="page-item <c:if test="${currentPage == pageTotal }"> disabled </c:if>">
                 <a class="page-link" href="
                                     <c:url value="/user/${targetuser.name}/${type}">
                                         <c:param name="page" value="${currentPage + 1}"/>

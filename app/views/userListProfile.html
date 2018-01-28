@@ -1,7 +1,7 @@
 <a ng-repeat="user in users" user="user" class="list-group-item list-group-item-action" ng-href="#!/user/{{user.name}}/messages">
     <div class="card-block" style="padding:.1rem;">
-    <img class="float-left img-thumbnail user-image" ng-src="/user/avatar/{{user.name}}"/>
-    
+    <img class="float-left img-thumbnail user-image" ng-src="{{baseUrl}}/api/user/{{user.name}}/avatar"/>
+
     <ul class="float-right list-inline user-count-list">
         <li class="list-inline-item user-count-list-item">
             <div >
@@ -11,7 +11,7 @@
                 <div class="user-count-number">
                     {{ user.messages }}
                 </div>
-            </div>	
+            </div>
         </li>
         <li class="list-inline-item user-count-list-item" >
             <div>
@@ -21,7 +21,7 @@
                 <div class="user-count-number">
                     {{ user.game_following }}
                 </div>
-            </div>	
+            </div>
         </li>
         <li class="list-inline-item user-count-list-item" >
             <div>
@@ -31,7 +31,7 @@
                 <div class="user-count-number">
                     {{ user.followers }}
                 </div>
-            </div>	
+            </div>
         </li>
         <li class="list-inline-item user-count-list-item" >
             <div>
@@ -41,7 +41,7 @@
                 <div class="user-count-number">
                     {{ user.following }}
                 </div>
-            </div>	
+            </div>
         </li>
     </ul>
     <h5 class="card-title user-title">{{ user.name }}</h5>

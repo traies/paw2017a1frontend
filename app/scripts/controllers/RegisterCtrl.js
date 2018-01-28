@@ -18,9 +18,10 @@ define(
 
         $scope.registerError = false;
 
-        $scope.registerSubmit = function(registerUrl){
+        $scope.registerSubmit = function(){
 
-            $scope.url = registerUrl != null ? registerUrl : '/';
+            var next = $location.search().next;
+            $scope.url = next != null ? next : '/';
 
             $scope.resetErrors();
 

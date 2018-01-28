@@ -32,6 +32,20 @@ define(
 				$location.url('/welcome');
 			};
 
+			$scope.logIn = function(){
+				var curr = $location.path();
+				$location.path('/login').search({
+					next: curr
+				});
+			};
+
+			$scope.register = function(){
+				var curr = $location.path();
+				$location.path('/register').search({
+					next: curr
+				});
+			};
+
 			angular.element(function () {
 				autoComplete.initialize();
 			});

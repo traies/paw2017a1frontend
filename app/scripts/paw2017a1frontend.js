@@ -3,7 +3,6 @@ define(['routes',
 	'services/dependencyResolverFor',
 	'i18n/i18nLoader!',
 	'angular',
-	'angular-route',
 	'angular-resource',
 	'angular-bootstrap',
 	'bootstrap',
@@ -13,7 +12,6 @@ define(['routes',
 	],
 	function(config, dependencyResolverFor, i18n) {
 		var paw2017a1frontend = angular.module('paw2017a1frontend', [
-			'ngRoute',
 			'ngResource',
 			'pascalprecht.translate',
 			'ui.bootstrap',
@@ -22,8 +20,7 @@ define(['routes',
 		]);
 		paw2017a1frontend
 			.config(
-				['$routeProvider',
-				'$controllerProvider',
+				['$controllerProvider',
 				'$compileProvider',
 				'$filterProvider',
 				'$provide',
@@ -32,7 +29,7 @@ define(['routes',
 				'$logProvider',
 				'$stateProvider',
 				'$urlRouterProvider',
-				function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider, $httpProvider, $logProvider, $stateProvider, $urlRouterProvider) {
+				function($controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider, $httpProvider, $logProvider, $stateProvider, $urlRouterProvider) {
 
 					paw2017a1frontend.controller = $controllerProvider.register;
 					paw2017a1frontend.directive = $compileProvider.directive;
@@ -49,7 +46,6 @@ define(['routes',
 								resolve: dependencyResolverFor(['controllers/' + route.controller]),
 								controller: route.controller,
 							});
-							//$routeProvider.when(path, {templateUrl: route.templateUrl, resolve: dependencyResolverFor(['controllers/' + route.controller]), controller: route.controller, gaPageTitle: route.gaPageTitle});
 						});
 					}
 					if (config.defaultRoutePath !== undefined) {
@@ -99,6 +95,10 @@ define(['routes',
 
 					$logProvider.debugEnabled(true);			//  TODO change in production
 				}])
+				.filter("trust", ['$sce', function($sce) {
+  				return function(htmlCode){
+    				return $sce.trustAsHtml(htmlCode);
+  				}}])
 				.constant('baseUrl','http://127.0.0.1:8080')
 				.constant('maxPageHalf', 3)
 				.constant('perPage', 10)	//  TODO change in production

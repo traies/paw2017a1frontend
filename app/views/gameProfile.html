@@ -14,7 +14,7 @@
         <ul class="navbar-nav mr-auto game_message_navbar">
                     <li class='nav-item' ng-class="type().type == 'messages' ? 'active'  : ''">
               <h3>
-                <a class="nav-link game_category_link" ng-href="#!/game/{{game.appid}}/messages"> 
+                <a class="nav-link game_category_link" ng-href="#!/game/{{game.appid}}/messages">
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_MESSAGES' | translate}}
@@ -25,12 +25,12 @@
                                 {{ game.messages }}
                             </span>
                         </div>
-                    
+
                 </a>
               </h3>
           </li>
-          
-         
+
+
             <li class='nav-item' ng-class="type().type == 'followers'? 'active'  : ''">
                 <h3>
                     <a class="nav-link game_category_link" ng-href="#!/game/{{game.appid}}/followers">
@@ -82,7 +82,7 @@
 <div class="row">
     <div class="col-md-4 game_info_cont">
         <div class="game_info">
-            <div class="game_info_about">{{game.about }}</div>
+            <div ng-bind-html="game.about | trust" class="game_info_about"></div>
             <div class="game_info_developers">
                 <span class="game_info_label">
                     {{'GAME_DEVELOPER' | translate}}
@@ -93,7 +93,7 @@
                     </a>
                 </span>
             </div>
-            
+
             <div class="game_info_publishers">
                 <span class="game_info_label">
                     {{'GAME_PUBLISHER' | translate}}
@@ -104,11 +104,11 @@
                     </a>
                 </span>
             </div>
-            
-            <div class="game_info_release"> 
+
+            <div class="game_info_release">
                 <span class="game_info_label">
-                        {{'GAME_RELEASE_DATE' | translate}} 
-                </span> 
+                        {{'GAME_RELEASE_DATE' | translate}}
+                </span>
                 <span class="game_info_value">
                     {{ game.releaseDate }}
                 </span>

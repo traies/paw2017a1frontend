@@ -4,13 +4,14 @@ define(['paw2017a1frontend','services/authService'], function(paw2017a1frontend)
     paw2017a1frontend.controller('LoginCtrl', ['$scope','$location','authService','$rootScope',function($scope,$location,auth,$rootScope) {
 
         $rootScope.$broadcast('hideNavBar');
-        //will change this
-        $scope.url = '/';
 
+
+        $scope.url = '/';
         $scope.loginFailed = false;
 
-        $scope.loginSubmit = function(loginUrl){
-          $scope.url = loginUrl != null ? loginUrl : '/';
+        $scope.loginSubmit = function(){
+          var next = $location.search().next;
+          $scope.url = next != null ? next : '/';
         	auth.logIn($scope.loginForm.username, $scope.loginForm.password, $scope.loginForm.rememberMe);
         };
 
