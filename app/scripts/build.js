@@ -35,7 +35,8 @@ require.config({
         transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition',
         'angular-ui-router': '../../bower_components/angular-ui-router/release/angular-ui-router',
         'bootstrap-sass': '../../bower_components/bootstrap-sass/assets/javascripts/bootstrap',
-        'bootstrap-sass-official': '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap'
+        'bootstrap-sass-official': '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap',
+        'angular-route': '../../bower_components/angular-route/angular-route'
     },
     shim: {
         angular: {

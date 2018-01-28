@@ -33,14 +33,14 @@ define(
 			};
 
 			$scope.logIn = function(){
-				var curr = $location.path();
+				var curr = $location.path() != '/welcome' ? $location.path() : "/";
 				$location.path('/login').search({
 					next: curr
 				});
 			};
 
 			$scope.register = function(){
-				var curr = $location.path();
+				var curr = $location.path() != '/welcome' ? $location.path() : "/";
 				$location.path('/register').search({
 					next: curr
 				});
