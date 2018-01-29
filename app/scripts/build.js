@@ -103,7 +103,7 @@ require.config({
         },
         'ng-file-upload': {
             deps: [
-              'angular'
+                'angular'
             ]
         }
     },
