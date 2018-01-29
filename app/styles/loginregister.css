@@ -148,6 +148,12 @@ body, html {
 }
 .btn-danger {
     background-color: #B73333;
+    margin-bottom: 1em;
+    border-radius: 0.25rem !important;
+}
+
+.btn-danger i {
+    padding-right: .5em;
 }
 
 /* File Upload */
@@ -178,5 +184,3 @@ body, html {
 .title h3 {
 	text-align: center;
 }
-
-

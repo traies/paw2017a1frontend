@@ -66,7 +66,7 @@
             <a class="dropdown-item"
               ng-href="#!/user/{{user.name}}/messages"><strong>{{user.name}}</strong><br /> View my profile</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/changepic">Update your Avatar</a>
+            <div class="dropdown-item clickable" ng-click="changeAvatar()">Update your Avatar</div>
             <div ng-if="user.steamId == null || user.steamId == 0">
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/steam-link">Link with your Steam account</a>

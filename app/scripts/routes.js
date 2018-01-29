@@ -86,6 +86,11 @@ define([], function() {
                 path: '/messages/:term?page',
                 templateUrl: 'views/feedPaginated.html',
                 controller: 'SearchMessagesCtrl'
+            },
+            'changeavatar' : {
+              path: '/changeavatar',
+              templateUrl: 'views/avatarChange.html',
+              controller: 'AvatarChangeController'
             }
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */

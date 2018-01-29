@@ -8,7 +8,8 @@ define(['routes',
 	'bootstrap',
 	'angular-translate',
 	'angular-jwt',
-	'angular-ui-router'
+	'angular-ui-router',
+	'ng-file-upload'
 	],
 	function(config, dependencyResolverFor, i18n) {
 		var paw2017a1frontend = angular.module('paw2017a1frontend', [
@@ -16,7 +17,8 @@ define(['routes',
 			'pascalprecht.translate',
 			'ui.bootstrap',
 			'angular-jwt',
-			'ui.router'
+			'ui.router',
+			'ngFileUpload'
 		]);
 		paw2017a1frontend
 			.config(

@@ -39,6 +39,13 @@ define(
 				});
 			};
 
+			$scope.changeAvatar = function(){
+				var curr = $location.path() != '/welcome' ? $location.path() : "/";
+				$location.path('/changeavatar').search({
+					next: curr
+				});
+			};
+
 			$scope.register = function(){
 				var curr = $location.path() != '/welcome' ? $location.path() : "/";
 				$location.path('/register').search({

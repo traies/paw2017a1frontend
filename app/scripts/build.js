@@ -36,7 +36,8 @@ require.config({
         'angular-ui-router': '../../bower_components/angular-ui-router/release/angular-ui-router',
         'bootstrap-sass': '../../bower_components/bootstrap-sass/assets/javascripts/bootstrap',
         'bootstrap-sass-official': '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap',
-        'angular-route': '../../bower_components/angular-route/angular-route'
+        'angular-route': '../../bower_components/angular-route/angular-route',
+        'ng-file-upload': '../../bower_components/ng-file-upload/ng-file-upload'
     },
     shim: {
         angular: {
@@ -98,6 +99,11 @@ require.config({
         'angular-ui-router': {
             deps: [
                 'angular'
+            ]
+        },
+        'ng-file-upload': {
+            deps: [
+              'angular'
             ]
         }
     },

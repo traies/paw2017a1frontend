@@ -73,8 +73,11 @@ label.error{
 }
 
 .thumbnail.img-preview{
+	text-align: center;
 	margin-bottom: 5px!important;
 	margin-left:10% !important;
+	border-style: solid;
+	border-color: grey;
 }
 
 
@@ -595,6 +598,12 @@ a.btn.omit-button {
 
 #errorRepeat,#errorPassword,#errorUser,#errorPost{
 	color : red;
+	text-align:center;
+	font-size:14px;
+	margin-bottom:5px;
+}
+
+#warnMssg {
 	text-align:center;
 	font-size:14px;
 	margin-bottom:5px;

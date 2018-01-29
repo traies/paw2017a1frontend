@@ -79,5 +79,11 @@ define([], function() {
 		SEARCH_RESULTS_NOT_FOUND: 'No {{type}} were found.',
 		SEARCH_RESULTS_FOUND: '{{resultsTotal}} {{type}} were found.',
 		SEARCH_RESULTS_FOR: 'Results for :',
+		CHANGE_AVATAR: 'Choose your new avatar',
+		SUBMIT: 'Submit',
+		SELECT: 'Select',
+		BAD_AVATAR: 'Please select a valid avatar. Avatars should not be greater than 5MB',
+		PLEASE_CHOOSE: 'Please choose an avatar',
+		ERROR_AVATAR: 'There was an error while uploading your avatar'
 	};
 });

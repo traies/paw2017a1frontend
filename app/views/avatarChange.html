@@ -1,0 +1,25 @@
+<div class="card card-container" id="registerCard">
+
+  <p id="profile-name" class="profile-name-card">{{'CHANGE_AVATAR' | translate}}</p>
+
+
+  <form name="avatarForm">
+
+    <div class="main-img-preview">
+      <img class="thumbnail img-preview" ngf-thumbnail="avatar || 'images/profile.jpg' "></img>
+    </div>
+
+    <div class="input-group-btn">
+      <div id="logo-id" class="fileUpload btn btn-danger fake-shadow" ngf-select ng-model="avatar" name="avatar" ngf-pattern="'image/*'"
+        ngf-accept="'image/jpeg'" ngf-max-size="5MB" ngf-min-height="100"
+        ngf-resize="{width: 2048, height: 2048}">
+        <span><i class="fa fa-file-image-o" aria-hidden="true"/>{{'SELECT' | translate}}</span>
+      </div>
+    </div>
+
+    <p ng-if="!avatarForm.$valid" id="errorPost">{{'BAD_AVATAR' | translate}}</p>
+    <p ng-if="avatarError" id="errorPost">{{'ERROR_AVATAR' | translate}}</p>
+    <p ng-if="!avatar" id="warnMssg">{{'PLEASE_CHOOSE' | translate}}</p>
+    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" ng-click="submit()">{{'SUBMIT' | translate}}</button>
+  </form>
+</div><!-- /card-container -->
