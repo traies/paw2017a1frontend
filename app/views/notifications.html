@@ -12,15 +12,13 @@
       </div>
       <div ng-if="getNotifications().length != 0" >
         <div ng-repeat="notif in getNotifications()"  varStatus="gen">
-                <div ng-if="notif.type == 'FOLLOWED' " class="dropdown-item">
-                  <p style="word-break: break-word; white-space:normal;">
-                <a ng-href="/folnotif?id={{notif.id}}">
-                    <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    {{notif.userFollowedDetails.name}}
-                    followed you
-                </a>
-              </p>
-            </div>
+
+                <div ng-click="goToUserProfile(notif.id, notif.userFollowedDetails.name)" ng-if="notif.type == 'FOLLOWED' " class="dropdown-item">
+                    <p class="clickable" style="word-break: break-word; white-space:normal;">
+                      <a><i class="fa fa-user-plus" aria-hidden="true"></i>{{notif.userFollowedDetails.name}} followed you</a>
+                    </p>
+                </div>
+
                 <div ng-if="notif.type == 'SHARED' " class="dropdown-item">
                   <p style="word-break: normal; white-space:normal;">
                 <a ng-href="/msgnotif?id={{notif.id}}">
