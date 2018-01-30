@@ -1,6 +1,6 @@
 # paw2017a1frontend
 
-#Checklist
+# Checklist
 
 - Mostrar juegos recomendados en feed principal
 - Si una búsqueda no encuentra mensajes, defaultear a otra categoría con resultados.
