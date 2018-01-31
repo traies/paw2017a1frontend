@@ -21,6 +21,7 @@ define(['paw2017a1frontend', 'services/GameService', 'services/sharedTypeService
                   GameService.follow({id: $scope.id}).$promise
                              .then(function(data){
                                $scope.game.currentUserFollows = true;
+                               $scope.game.followers++;
                              },function(err){
 
                              });
@@ -33,6 +34,7 @@ define(['paw2017a1frontend', 'services/GameService', 'services/sharedTypeService
                   GameService.unfollow({id: $scope.id}).$promise
                              .then(function(data){
                                $scope.game.currentUserFollows = false;
+                               $scope.game.followers--;
                              },function(err){
 
                              });

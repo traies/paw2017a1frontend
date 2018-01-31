@@ -12,7 +12,7 @@
 - Infinite scrolling en feed de juego.
 - Infinite scrolling en feed de usuario.
 - ~~Boton de follow game.~~
-- Boton de follow user.
+- ~~Boton de follow user.~~
 - Página de thread de un mensaje.
 - Autocomplete en messageForm.
 - Crear mensaje en página de juego.
