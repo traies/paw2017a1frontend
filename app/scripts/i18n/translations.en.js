@@ -96,5 +96,7 @@ define([], function() {
 		STEAM_URL_ERROR: 'Please use a valid Steam Profile URL.',
 		STEAM_IN_USE: 'Sorry, that Steam profile is already in use.',
 		STEAM_SERVER_ERROR: 'Sorry, Steam is not responding at the moment.',
+		FOLLOW: 'Follow',
+		UNFOLLOW: 'Unfollow',
 	};
 });

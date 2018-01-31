@@ -8,9 +8,10 @@
 - ~~Revisar clases sin modificadores de acceso en sus atributos.~~
 - ~~Hacer que las excepciones arrojadas por capas inferiores sean checked (en services).~~
 - ~~Hacer que la validacion de beans use los frameworks correctamente~~
+- ~~Tests mas concisos y que no dependan del orden de ejecucion~~
 - Infinite scrolling en feed de juego.
 - Infinite scrolling en feed de usuario.
-- Boton de follow game.
+- ~~Boton de follow game.~~
 - Boton de follow user.
 - Página de thread de un mensaje.
 - Autocomplete en messageForm.
@@ -24,6 +25,6 @@
 - [ ] `npm install -g bower grunt-cli yo`
 - [ ] `gem install compass`
 - [ ] `npm install -g generator-angular-require-fullstack`
-- [ ] En el directorio del proyecto `npm install` 
+- [ ] En el directorio del proyecto `npm install`
 - [ ] En el directorio del proyecto `bower install`
 - [ ] Para correr `grunt serve --force`

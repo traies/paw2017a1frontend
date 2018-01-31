@@ -48,6 +48,15 @@
                 </h3>
             </li>
         </ul>
+
+        <div ng-if"game.currentUserFollows != null"  style="margin-top:1rem;">
+          <button ng-click="unfollow()" ng-if="game.currentUserFollows == true" class="btn btn-primary" type="submit">
+            {{'UNFOLLOW' | translate }}
+          </button>
+          <button ng-click="follow()" ng-if="game.currentUserFollows != true" class="btn btn-primary" type="submit">
+            {{'FOLLOW' | translate }}
+          </button>
+        </div>
         <!--
         <c:choose>
                 <c:when test="${isFollowing}">

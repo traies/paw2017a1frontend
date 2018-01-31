@@ -10,9 +10,34 @@ define(['paw2017a1frontend', 'services/GameService', 'services/sharedTypeService
                 id: '='
             },
             controllerAs: 'gameProfile',
-            controller: ['$scope', '$state', 'GameService', 'sharedTypeService', function($scope, $state, GameService, sharedTypeService){
+            controller: ['$scope', '$state', 'GameService', 'sharedTypeService', 'sessionService', function($scope, $state, GameService, sharedTypeService, session){
                 $scope.game = GameService.get({gameId: $scope.id});
                 $scope.type = sharedTypeService.getType;
+
+                $scope.follow = function(){
+                  if(!session.isLoggedIn()){
+                    return ;
+                  }
+                  GameService.follow({id: $scope.id}).$promise
+                             .then(function(data){
+                               $scope.game.currentUserFollows = true;
+                             },function(err){
+
+                             });
+                };
+
+                $scope.unfollow = function(){
+                  if(!session.isLoggedIn()){
+                    return ;
+                  }
+                  GameService.unfollow({id: $scope.id}).$promise
+                             .then(function(data){
+                               $scope.game.currentUserFollows = false;
+                             },function(err){
+
+                             });
+
+                };
             }]
         };
     }]);
