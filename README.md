@@ -5,8 +5,9 @@
 - Mostrar juegos recomendados en feed principal
 - Si una búsqueda no encuentra mensajes, defaultear a otra categoría con resultados.
 - Vinculación a cuenta de Steam post-registración.
-- Revisar clases sin modificadores de acceso en sus atributos.
-- Hacer que las excepciones arrojadas por capas inferiores sean checked (en services).
+- ~~Revisar clases sin modificadores de acceso en sus atributos.~~
+- ~~Hacer que las excepciones arrojadas por capas inferiores sean checked (en services).~~
+- ~~Hacer que la validacion de beans use los frameworks correctamente~~
 - Infinite scrolling en feed de juego.
 - Infinite scrolling en feed de usuario.
 - Boton de follow game.
