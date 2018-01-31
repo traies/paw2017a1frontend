@@ -11,6 +11,7 @@
 - ~~Tests mas concisos y que no dependan del orden de ejecucion~~
 - Infinite scrolling en feed de juego.
 - Infinite scrolling en feed de usuario.
+- ~~Si la response es un 401, mandar a login.~~
 - ~~Boton de follow game.~~
 - ~~Boton de follow user.~~
 - Página de thread de un mensaje.
