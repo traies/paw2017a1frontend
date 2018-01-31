@@ -84,6 +84,17 @@ define([], function() {
 		SELECT: 'Select',
 		BAD_AVATAR: 'Please select a valid avatar. Avatars should not be greater than 5MB',
 		PLEASE_CHOOSE: 'Please choose an avatar',
-		ERROR_AVATAR: 'There was an error while uploading your avatar'
+		ERROR_AVATAR: 'There was an error while uploading your avatar',
+		STEAM_LINK: 'Steam link',
+		STEAM_LINK_SUBTITLE: 'You may want to share your Steam profile so your friends can find you more easily.',
+		STEAM_PROFILE_URL: 'Steam Profile URL',
+		STEAM_OMIT: 'Omit',
+		STEAM_SUBMIT: 'Submit',
+		STEAM_PROFILE_CONFIRM: 'Is this your steam profile?',
+		STEAM_CANCEL: 'Cancel',
+		STEAM_CONFIRM: 'Confirm',
+		STEAM_URL_ERROR: 'Please use a valid Steam Profile URL.',
+		STEAM_IN_USE: 'Sorry, that Steam profile is already in use.',
+		STEAM_SERVER_ERROR: 'Sorry, Steam is not responding at the moment.',
 	};
 });

@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 push-md-2">
+            <div class="card" style="margin-top:1rem">
+                <div class="card-block" >
+                    <h4 class="card-title">
+                        {{ 'STEAM_LINK' | translate }}
+                    </h4>
+                    <h6 class="card-subtitle text-muted">
+                        {{ 'STEAM_LINK_SUBTITLE' | translate }}
+                    </h6>
+                    <form ng-show='!steamdetails' name="steamLinkForm" ng-action="${get_url}" method="get" role="form" enctype="multipart/form-data" ng-submit = 'getDetails()'>
+                        <div class="form-group" style="margin-top:2rem">
+                            <label path="steamUrl" class="text-muted" for="steam-url">
+                                {{ 'STEAM_PROFILE_URL' | translate }}
+                            </label>
+                            <input type='url' class="form-control" path="steamUrl" ng-model='steamurl' name="steamurl" type="text" placeholder="Enter URL" />
+                            <label  class="form-text error " ng-show="steamLinkForm.steamurl.$error.url || error == 'PROFILE_INVALID'" >{{'STEAM_URL_ERROR' | translate}}</label>
+                            <label  class="form-text error " ng-show="error == 'PROFILE_IN_USE'" >{{'STEAM_IN_USE' | translate}}</label>
+                            <label  class="form-text error " ng-show="serverError" >{{'STEAM_SERVER_ERROR' | translate}}</label>
+                            <errors path="steamUrl" cssStyle="color: red;"></errors>
+                        </div>
+                        <a  class=" right btn" style="margin-left:1rem" ng-href="/">
+                            {{ 'STEAM_OMIT' | translate }}
+                        </a>
+                        <button class="right btn btn-primary" type="submit" > {{ 'STEAM_SUBMIT' | translate }}</button>
+                    </form>
+                </div>
+                <div class="card-block" ng-show='steamdetails'>
+                    <div class='card-title' >
+                        <h5 class="card-subtitle" style="margin-top:2rem;"> {{ 'STEAM_PROFILE_CONFIRM' | translate }} </h5>
+                        <div class="card-block">
+                            <img class="float-left img-thumbnail user-image" ng-src="{{steamdetails.avatarFullUrl}}" alt="profile">
+                            <h5 class="card-title user-title">{{steamdetails.fullSteamName}}</h5>
+                            </div>
+                        <form method="post" ng-action="/steam-set-id" ng-submit="confirm()">
+                            <button type='button' ng-click='cancel()' class="right btn " style="margin-left:1rem" >
+                                {{ 'STEAM_CANCEL' | translate }}
+                            </button>
+                            <input type="hidden" name="steamid" ng-value="steamdetails.steamId" />
+                            <button type="submit" class=" right btn btn-primary">{{ 'STEAM_CONFIRM' | translate }}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
