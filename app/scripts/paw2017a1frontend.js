@@ -57,9 +57,9 @@ define(['routes',
 					$translateProvider.translations('preferredLanguage', i18n);
 					$translateProvider.preferredLanguage('preferredLanguage');
 
-					var interceptor = ['sessionService', '$injector',
+					var interceptor = ['sessionService', '$injector', '$q', '$location',
 
-				    function(session, $injector) {
+				    function(session, $injector, $q, $location) {
 
 							return {
 
@@ -89,6 +89,20 @@ define(['routes',
 										 auth.updateTokenData(token);
 									 }
 									 return response;
+								 },
+
+								 responseError: function(response){
+									 var status = response.status;
+									 var ex = ['/welcome', '/login', '/register'];
+
+									 if(status == 401){
+										 session.destroy();
+										 var curr = !ex.includes($location.path()) ? $location.path() : "/";
+										 $location.path('/login').search({
+											 next: curr
+										 });
+									 }
+									 return $q.reject(response);
 								 }
 							 };
 				 	}];

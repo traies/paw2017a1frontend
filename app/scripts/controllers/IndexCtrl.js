@@ -57,19 +57,17 @@ define(
 				autoComplete.initialize();
 			});
 
-
+			$scope.$on('$locationChangeSuccess', function() {
+        if($location.path() == '/login' || $location.path() == '/register'){
+					$scope.showNavBar = false;
+				} else {
+					$scope.showNavBar = true;
+				}
+    	});
 
 			$scope.$on('user:updated', function() {
 				$scope.isLoggedIn = auth.isLoggedIn();
 				$scope.user = auth.getLoggedUser();
-			});
-
-			$scope.$on('hideNavBar', function() {
-				$scope.showNavBar = false;
-			});
-
-			$scope.$on('showNavBar', function() {
-				$scope.showNavBar = true;
 			});
 
 		}]);

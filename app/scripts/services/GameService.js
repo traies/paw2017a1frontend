@@ -12,6 +12,18 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
                 url: baseUrl + "/api/game/:gameId/messages",
                 method: 'GET',
                 isArray: true,
+                params: {
+                  page: '@page',
+                  'per_page': '@per_page'
+                }
+            },
+            follow: {
+                url: baseUrl + "/api/game/follow/:gameId",
+                method: 'PUT'
+            },
+            unfollow: {
+                url: baseUrl + "/api/game/unfollow/:gameId",
+                method: 'PUT'
             }
         });
     }]);

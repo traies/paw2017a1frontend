@@ -110,6 +110,8 @@ define([], function() {
 		STEAM_STEAM_NAME: 'Steam name',
 		STEAM_NO_GAMES: 'You do not seem to have any games.',
 		STEAM_NO_FRIENDS: 'We could not find any Steam friend. Be sure to make your Steam profile public so your friends can find you on Vapor.',
-		STEAM_CONFIRM_LINK: 'Are you sure you want to link this profile?'
-	};
+		STEAM_CONFIRM_LINK: 'Are you sure you want to link this profile?',
+		FOLLOW: 'Follow',
+		UNFOLLOW: 'Unfollow',
+
 });

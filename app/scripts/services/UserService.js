@@ -19,7 +19,11 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
           feed: {
             url: baseUrl + "/api/user/:name/messages",
             method: 'GET',
-            isArray: true
+            isArray: true,
+            params: {
+              page: '@page',
+              'per_page': '@per_page'
+            }
           },
           mainFeed: {
             url: baseUrl + "/api/feed/main",
@@ -41,6 +45,20 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
             method: 'GET',
             isArray: false
           },
+          follow: {
+            url: baseUrl + "/api/user/follow/:name",
+            method: 'PUT',
+            params: {
+              name: '@name'
+            }
+          },
+          unfollow: {
+            url: baseUrl + "/api/user/unfollow/:name",
+            method: 'PUT',
+            params: {
+              name: '@name'
+            }
+          }
         });
     }]);
 });

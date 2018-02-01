@@ -12,8 +12,6 @@ define(
     'authService',
     function($scope,$location,$rootScope, userService, auth) {
 
-    	$rootScope.$broadcast('hideNavBar');
-
         $scope.url = '/';
 
         $scope.registerError = false;
@@ -60,7 +58,6 @@ define(
             var token = response.$httpHeaders('x-auth-token');
 
             auth.loginWithToken(token, false);
-            $rootScope.$broadcast('showNavBar');
             $location.path($scope.url).replace();
 
           }, function(error){

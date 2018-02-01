@@ -7,7 +7,7 @@ define(['paw2017a1frontend','services/authService','services/MessageService','co
 			replace: 'true',
 			templateUrl: 'views/postView.html',
 			scope: {post: '='},
-			controller: ['$scope','$sce','authService','MessageService','$uibModal','baseUrl',function($scope,$sce,auth,messageService,$uibModal, baseUrl) {
+			controller: ['$scope', '$element','$sce','authService','MessageService','$uibModal','baseUrl',function($scope,$element,$sce,auth,messageService,$uibModal, baseUrl) {
 
         $scope.baseUrl = baseUrl;
         $scope.user = auth.getLoggedUser();
@@ -20,6 +20,11 @@ define(['paw2017a1frontend','services/authService','services/MessageService','co
         }
 
 				var post = $scope.post;
+
+        $scope.post.deleted = {
+          d: false
+        };
+
 				$scope.isSameUser = $scope.user ?  $scope.user.id === $scope.post.message.author.id : false;
 
 				$scope.post.sharers.forEach(function(element){
@@ -31,12 +36,20 @@ define(['paw2017a1frontend','services/authService','services/MessageService','co
 					return $sce.trustAsResourceUrl(url);
 				};
 
+        $scope.$watch("post.deleted.d", function(value, old){
+          if(value == true){
+            $element.hide();
+          } else {
+            $element.show();
+          }
+        }, true);
+
         $scope.deleteMessage = function(id){
           messageService.idMessageResource()
           .delete({id: id})
           .$promise.then(
             function (data) {
-              $scope.post.deleted = true;
+              $scope.post.deleted.d = true;
             },
             function (error){
 

@@ -10,10 +10,36 @@ define(['paw2017a1frontend', 'services/UserService', 'services/sharedTypeService
                 name: '=name'
             },
             controllerAs: 'userProfile',
-            controller: ['$scope', '$state', 'UserService', 'sharedTypeService','baseUrl', function($scope, $state, UserService, sharedTypeService, baseUrl){
+            controller: ['$scope', '$state', 'UserService', 'sharedTypeService','baseUrl', 'sessionService', function($scope, $state, UserService, sharedTypeService, baseUrl, session){
                 $scope.baseUrl = baseUrl;
                 $scope.targetuser = UserService.get({name: $scope.name});
                 $scope.type = sharedTypeService.getType;
+
+                $scope.follow = function(){
+                  if(!session.isLoggedIn()){
+                    return;
+                  }
+                  UserService.follow({name: $scope.targetuser.name}).$promise
+                             .then(function(data){
+                               $scope.targetuser.currentUserFollows = true;
+                               $scope.targetuser.followers++;
+                             }, function(err){
+
+                             });
+                };
+
+                $scope.unfollow = function(){
+                  if(!session.isLoggedIn()){
+                    return;
+                  }
+                  UserService.unfollow({name: $scope.targetuser.name}).$promise
+                             .then(function(data){
+                               $scope.targetuser.currentUserFollows = false;
+                               $scope.targetuser.followers--;
+                             }, function(err){
+
+                             });
+                };
             }]
         };
     }]);

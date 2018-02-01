@@ -1,10 +1,12 @@
-<div  ng-repeat="p in posts">
-    <post-view post="p"/>
-</div>
-<div ng-if='isEmpty'>
-    <error-list>{{'NO_MESSAGES_FOUND' | translate}}</error-list>
-</div>
+<div on-scroll-to-bottom="scroll()">
+  <div  ng-repeat="p in posts">
+      <post-view post="p"/>
+  </div>
+  <div ng-if='isEmpty'>
+      <error-list>{{'NO_MESSAGES_FOUND' | translate}}</error-list>
+  </div>
 
-<div ng-if='serverError'>
-    <error-list>{{'SERVER_ERROR' | translate}}</error-list>
+  <div ng-if='serverError'>
+      <error-list>{{'SERVER_ERROR' | translate}}</error-list>
+  </div>
 </div>
