@@ -113,5 +113,5 @@ define([], function() {
 		STEAM_CONFIRM_LINK: 'Are you sure you want to link this profile?',
 		FOLLOW: 'Follow',
 		UNFOLLOW: 'Unfollow',
-
+	}
 });
