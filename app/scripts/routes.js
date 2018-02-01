@@ -96,7 +96,7 @@ define([], function() {
                 path: '/steam-link',
                 templateUrl: 'views/steamLink.html',
                 controller: 'SteamLinkCtrl'
-            }
+            },
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */
         }

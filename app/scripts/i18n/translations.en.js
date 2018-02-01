@@ -96,7 +96,22 @@ define([], function() {
 		STEAM_URL_ERROR: 'Please use a valid Steam Profile URL.',
 		STEAM_IN_USE: 'Sorry, that Steam profile is already in use.',
 		STEAM_SERVER_ERROR: 'Sorry, Steam is not responding at the moment.',
+		STEAM_OWNED_GAMES: 'Owned games in Steam',
+		STEAM_OWNED_GAMES_SUBTITLE: 'You may be interested in following some of your games on Steam.',
+		STEAM_LOGO: 'Logo',
+		STEAM_NAME: 'Name',
+		STEAM_RELEASE_DATE: 'Release date',
+		STEAM_FOLLOW: 'Follow?',
+		STEAM_FRIENDS: 'Steam friends',
+		STEAM_FRIENDS_SUBTITLE: ' These are your Steam friends who are using Vapor.',
+		STEAM_VAPOR_AVATAR: 'Vapor avatar',
+		STEAM_STEAM_AVATAR: 'Steam avatar',
+		STEAM_VAPOR_NAME: 'Vapor name',
+		STEAM_STEAM_NAME: 'Steam name',
+		STEAM_NO_GAMES: 'You do not seem to have any games.',
+		STEAM_NO_FRIENDS: 'We could not find any Steam friend. Be sure to make your Steam profile public so your friends can find you on Vapor.',
+		STEAM_CONFIRM_LINK: 'Are you sure you want to link this profile?',
 		FOLLOW: 'Follow',
 		UNFOLLOW: 'Unfollow',
-	};
+	}
 });

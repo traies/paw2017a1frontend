@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8 push-md-2">
+        <div class="col-md-12">
             <div class="card" style="margin-top:1rem">
                 <div class="card-block" >
                     <h4 class="card-title">
@@ -31,15 +31,137 @@
                         <h5 class="card-subtitle" style="margin-top:2rem;"> {{ 'STEAM_PROFILE_CONFIRM' | translate }} </h5>
                         <div class="card-block">
                             <img class="float-left img-thumbnail user-image" ng-src="{{steamdetails.avatarFullUrl}}" alt="profile">
-                            <h5 class="card-title user-title">{{steamdetails.fullSteamName}}</h5>
+                            <h5 class="float-left card-title user-title">{{steamdetails.fullSteamName}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='row' ng-if='gameresults || userlist'>
+                <div class='col-md-6' ng-if='gameresults' style='padding-top:1rem;padding: 0;height:fit-content; position:sticky; top: 0 '>
+                    <div class='fake-top'>
+                        <div class="card" style="margin-top:1rem;">
+                            <div class="card-block" ng-if='gameresults'>
+                                <h4 class="card-title">{{ 'STEAM_OWNED_GAMES' | translate }}</h4>
+                                <h6 class="card-subtitle text-muted"> {{ 'STEAM_OWNED_GAMES_SUBTITLE' | translate }}</h6>
+                                <div class="card-text" ng-show='gameresults && gameresults.length == 0 && gameresults.done' style="margin-top:2rem;">
+                                    <h7>{{ 'STEAM_NO_GAMES' | translate }}</h7>
+                                </div>
+                                <div class="card-text" ng-show='gameresults && gameresults.error' style="margin-top:2rem;">
+                                    <h7>{{ 'STEAM_SERVER_ERROR' | translate }}</h7>
+                                </div>
                             </div>
-                        <form method="post" ng-action="/steam-set-id" ng-submit="confirm()">
-                            <button type='button' ng-click='cancel()' class="right btn " style="margin-left:1rem" >
-                                {{ 'STEAM_CANCEL' | translate }}
+                        </div>
+                    </div>
+                    <div class='card' ng-show='gameresults && gameresults.length > 0' style="margin-top:0;" >
+                        <div class="card-block" ng-if='gameresults'>
+                            <table class="table" >
+                                <thead >
+                                    <tr>
+                                        <th class='stick'>{{ 'STEAM_LOGO' | translate }}</th>
+                                        <th class='stick'>{{ 'STEAM_NAME' | translate }}</th>
+                                        <th class='stick' style="text-align: center;vertical-align: middle;">
+                                            {{ 'STEAM_FOLLOW' | translate }}
+                                        <input class='stick' class="checkall" type="checkbox" name="checkall" ng-model='all'></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat='game in gameresults'>
+                                        <td>
+                                            <img class="img-thumbnail game-logo" ng-src="{{ game.logoUrl ? game.logoUrl : '/images/no-game.jpg' }}" alt="Game logo">
+                                        </td>
+                                        <td><h5> {{ game.name }} </h5></td>
+                                        <td style="text-align: center;vertical-align: middle;">
+                                            <input ng-init="game.selected = true"  class="check" type="checkbox" checked='checked' ng-checked="all" name="games" ng-model="game.selected" checked>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-md-6' ng-if='userlist' style='padding-top:1rem; padding: 0; height:fit-content; position:sticky; top: 0 '>
+                    <div class='fake-top'>
+                        <div class="card"  style="margin-top:1rem; position:sticky; top:0; z-index:100">
+                            <div class="card-block" >
+                                <h4 class="card-title">{{ 'STEAM_FRIENDS' | translate }}</h4>
+                                <h6 class="card-subtitle text-muted">{{ 'STEAM_FRIENDS_SUBTITLE' | translate }}</h6>                            
+                                <div class="card-text" ng-show='userlist && userlist.length == 0 && userlist.done' style="margin-top:2rem;">
+                                    <h7>{{ 'STEAM_NO_FRIENDS' | translate }}</h7>
+                                </div>
+                                <div class="card-text" ng-show='userlist.error' style="margin-top:2rem;">
+                                    <h7>{{ 'STEAM_SERVER_ERROR' | translate }}</h7>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" ng-show='userlist && userlist.length > 0' style="margin:0; border-top:0;">
+                        <div class='card-block'  >
+                            <table class="table" >
+                                <thead>
+                                    <tr>
+                                        <th class='stick' style="text-align: center;vertical-align: middle;">
+                                            {{ 'STEAM_VAPOR_AVATAR' | translate }}
+                                        </th>
+                                        <th class='stick' style="text-align: center;vertical-align: middle;">
+                                            {{ 'STEAM_VAPOR_NAME' | translate }}
+                                        </th>
+                                        <th class='stick' style="text-align: center;vertical-align: middle;">
+                                            {{ 'STEAM_STEAM_AVATAR' | translate }}
+                                        </th>
+                                        <th class='stick' style="text-align: center;vertical-align: middle;">
+                                            {{ 'STEAM_STEAM_NAME' | translate }}
+                                        </th>
+                                        <th class='stick' style="text-align: center;vertical-align: middle;">
+                                            {{ 'STEAM_FOLLOW' | translate }}
+                                        <input class="checkall" type="checkbox" name="checkall" checked="checked" ng-model='all'></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat='user in userlist' >
+                                        <td style="text-align: center;vertical-align: middle;">
+                                            <img class="img-thumbnail game-logo" style="width:5rem" ng-src="{{baseUrl}}/api/user/{{user.name}}/avatar" alt="Game logo">
+                                        </td>
+                                        <td style="text-align: center;vertical-align: middle;">
+                                            <h6>{{ user.name }}</h6>
+                                        </td>
+                                        <td style="text-align: center;vertical-align: middle;">
+                                            <img class="img-thumbnail game-logo" ng-src="{{ user.avatarUrl }}" alt="Game logo">
+                                        </td>
+                                        <td style="text-align: center;vertical-align: middle;">
+                                            <h6>{{user.fullSteamName}}</h6>
+                                        </td>
+                                        <td style="text-align: center;vertical-align: middle;">
+                                            <input ng-init='user.selected = true' class="check" type="checkbox"  ng-checked='all' name="friends" ng-model='user.selected' checked>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="navbar fixed-bottom sticky-navbar" ng-show='gameresults || userlist' >
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12 fake-bottom" >
+                <div class="card border-top-remove" >
+                    <div class="card-block" >
+                        <a ng-click='cancel()' class="right btn btn-default omit-button">
+                            {{ 'STEAM_CANCEL' | translate }}
+                        </a>
+                        <form method="post" ng-action="#!/steam-owned-follow" ng-submit='submit()'>
+                            <button type="submit" class=" right btn btn-primary">
+                                {{ 'STEAM_SUBMIT' | translate }}
                             </button>
-                            <input type="hidden" name="steamid" ng-value="steamdetails.steamId" />
-                            <button type="submit" class=" right btn btn-primary">{{ 'STEAM_CONFIRM' | translate }}</button>
                         </form>
+                        <h5 class='right' style='padding-top: .4rem;padding-right: 1rem;'>
+                            {{'STEAM_CONFIRM_LINK' | translate }}
+                        </h5>
                     </div>
                 </div>
             </div>
