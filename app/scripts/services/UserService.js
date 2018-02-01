@@ -19,7 +19,11 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
           feed: {
             url: baseUrl + "/api/user/:name/messages",
             method: 'GET',
-            isArray: true
+            isArray: true,
+            params: {
+              page: '@page',
+              'per_page': '@per_page'
+            }
           },
           mainFeed: {
             url: baseUrl + "/api/feed/main",
