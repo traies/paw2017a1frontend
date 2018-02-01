@@ -9,6 +9,16 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
                 headers: {
                     "content-type": "application/json"
                 },
+            },
+            getOwned: {
+                method: 'GET',
+                url: baseUrl + "/api/steam/owned",
+                isArray: true,
+            },
+            getFriends: {
+                method: 'GET',
+                url: baseUrl + "/api/steam/friends",
+                isArray: true,
             }
         });
     }]);
