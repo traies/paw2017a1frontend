@@ -1,5 +1,5 @@
 <div class="game_profile_container container">
-    <game-profile id='gameId'></game-profile>
+    <game-profile id='gameId' id-name='gameName'></game-profile>
 </div>
 
         <!--
@@ -47,7 +47,7 @@
                     </c:otherwise>
                    </c:choose>
             </c:forEach>
-            <li class="page-item <c:if test="${currentPage == pageTotal }"> disabled </c:if>">   
+            <li class="page-item <c:if test="${currentPage == pageTotal }"> disabled </c:if>">
                 <a class="page-link" href="
                                     <c:url value="/game/steam/${game.appid}/${type}">
                                         <c:param name="page" value="${currentPage + 1}"/>

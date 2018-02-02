@@ -11,7 +11,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 				remote: {
 					wildcard: '%QUERY',
 					url: baseUrl + "/api/autocomplete/games/%QUERY",
-					
+
 					transform: function(response) {
 						var a =  $.map(response, function(game) {
 							return {
@@ -22,11 +22,11 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 						});
 						return a ;
 					},
-					
+
 				}
 			});
 			sourceGames.initialize();
-		    
+
 		    var adapterGames = function (query,  cb, cb2) {
 				sourceGames.search(query, function(matches) {
 					matches.push({
@@ -39,7 +39,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 					cb2(matches);
 				});
 			};
-		    
+
 		    var sourceUsers = new Bloodhound({
 				queryTokenizer: Bloodhound.tokenizers.whitespace,
 				datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
@@ -47,7 +47,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 					wildcard: '%QUERY',
 					url: baseUrl + "/api/autocomplete/users/%QUERY",
 					transform: function(response) {
-						
+
 						return $.map(response, function(user) {
 							return {
 								name: user.name,
@@ -56,10 +56,10 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 							}
 						})
 					},
-					
+
 				},
 			});
-		    
+
 		    var adapterUsers = function (query,  cb, cb2) {
 				sourceUsers.search(query, function(matches) {
 					matches.push( {
@@ -72,7 +72,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 					cb2(matches);
 				});
 			};
-		    
+
 		    sourceUsers.initialize();
 
 		    var sourceMessages = new Bloodhound({
@@ -82,7 +82,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 					wildcard: '%QUERY',
 					url: baseUrl + "/api/autocomplete/messages/%QUERY",
 					transform: function(response) {
-						
+
 						return $.map(response, function(message) {
 							return {
 								name: message.name,
@@ -93,7 +93,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 					}
 				}
 			});
-		    
+
 		    var adapterMessages = function (query,  cb, cb2) {
 				sourceMessages.search(query, function(matches) {
 					matches.push( {
@@ -106,7 +106,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 					cb2(matches);
 				});
 			};
-		    
+
 		    sourceMessages.initialize();
 
 		  Autocomplete.initializeTagsAutoComplete = function(updateTags){
@@ -121,7 +121,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 							datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
 							remote: {
 								wildcard: '%QUERY',
-								url: baseUrl + "#!/autocomplete/games/%QUERY",
+								url: baseUrl + "/api/autocomplete/games/%QUERY",
 								transform: function(response) {
 									return $.map(response, function(game) {
 										return {
@@ -134,14 +134,14 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 						}),
 						display: 'name'
 					}
-				
+
 				);
 				$(".typeahead.tags").on( "typeahead:select", function(ev, sugestion) {
-							updateTags(ev,sugestion);	
+							updateTags(ev,sugestion);
 				});
 		    };
 
-        Autocomplete.initialize = function() { 
+        Autocomplete.initialize = function() {
 
 		 	$(".typeahead.search").on( "typeahead:select", function(ev, sugestion) {
 				if (sugestion.type == "game") {
@@ -164,18 +164,18 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 				}
 				$(".typeahead").typeahead('val', '');
 			});
-			
+
 			$(".typeahead.search").on("typeahead:cursorchange", function(ev, suggestion) {
 				if (suggestion && (suggestion.type == "search-games" || suggestion.type == "search-users" || suggestion.type == "search-messages")){
 					$(".typeahead").typeahead('val', suggestion.query);
 				}
-			}); 
+			});
 
 			$('.typeahead.search').typeahead({
 					minLength: 3,
 					highlight: true,
 					autoselect: true,
-					
+
 				},
 				{
 					name: 'game-dataset',
@@ -209,7 +209,7 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 					    	}
 					    }
 					},
-					
+
 				},
 				{
 					name: 'messages-dataset',
@@ -226,12 +226,12 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 					    	}
 					    }
 					},
-					
+
 				}
-			
+
 			).on("typeahead:render", function(event, suggestions, flag, name) {
 				$('.autocomplete').parent().find('.tt-selectable:first').addClass('tt-cursor');
-				
+
 			});
 		};
 

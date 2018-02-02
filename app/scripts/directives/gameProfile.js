@@ -7,7 +7,8 @@ define(['paw2017a1frontend', 'services/GameService', 'services/sharedTypeService
             transclude: true,
             templateUrl: 'views/gameProfile.html',
             scope: {
-                id: '='
+                id: '=',
+                idName: '='
             },
             controllerAs: 'gameProfile',
             controller: ['$scope', '$state', 'GameService', 'sharedTypeService', 'sessionService', function($scope, $state, GameService, sharedTypeService, session){

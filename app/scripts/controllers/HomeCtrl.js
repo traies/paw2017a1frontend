@@ -47,6 +47,10 @@ define(
 			$scope.scroll();
 		}
 
+		$scope.appendToPosts = function(post){
+			$scope.posts.unshift(post);
+		};
+
 
 		$scope.triggerTextForm = function(){
 		 	$scope.showTextForm = !$scope.showTextForm;

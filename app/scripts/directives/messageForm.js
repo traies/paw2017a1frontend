@@ -9,22 +9,37 @@ define(
 			restrict: 'E',
 			replace: 'true',
 			templateUrl: 'views/messageForm.html',
+      scope: {
+        showTextForm: '=',
+        showVideoForm: '=',
+        idName: '=',
+        append: '&'
+      },
 			controller:
       ['$scope',
        'autoCompleteService',
        'MessageService',
-       function($scope, autoComplete, messageService) {
+       'youtubePattern',
+       function($scope, autoComplete, messageService, youtubePattern) {
 
 
         $scope.positiveReview = true;
 				$scope.newMessageType = 'Comment' ;
-				$scope.youtubePattern = /^(?:https:\/\/(?:www\.)?)?((?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:\?t=(?:[0-9]+m)?[0-9]+s)?)$/;
+				$scope.youtubePattern = youtubePattern;
 				$scope.moreThanFive = false;
 				$scope.moreThanOneInReview = false;
 				$scope.repeatedGame = false;
         $scope.postError = false;
         $scope.body = '';
+        $scope.messageGames = {
+          games: []
+        } ;
 
+        if($scope.idName){
+          $scope.idName.$promise.then(function(data){
+            $scope.messageGames.games.push(data);
+          });
+        }
 
         $scope.setReview = function(bool){
           $scope.positiveReview = bool;
@@ -38,7 +53,7 @@ define(
 
             var media = $scope.showTextForm ? 'text' : $scope.showVideoForm ? 'video' : '';
             var tags = [];
-            $scope.messageGames.forEach(function(element){
+            $scope.messageGames.games.forEach(function(element){
               tags[tags.length] = element.name;
             });
             var post = {
@@ -56,7 +71,7 @@ define(
               .save(post)
               .$promise.then(
                 function(data){
-                  $scope.posts.unshift(data);
+                  $scope.append()(data);
                   $scope.postError = false;
                   $scope.isSendingMessage=false;
                 },
@@ -69,10 +84,8 @@ define(
 					}
 				};
 
-				$scope.messageGames=[{name:'Counter-Strike'}];
-
 				$scope.removeGame = function(index){
-					$scope.messageGames.splice(index, 1);
+					$scope.messageGames.games.splice(index, 1);
 					$scope.moreThanFive = false;
 				}
 
@@ -81,24 +94,26 @@ define(
 					$scope.moreThanOneInReview = false;
 					$scope.repeatedGame = false;
 
-					$scope.messageGames.forEach(function(element){
+					$scope.messageGames.games.forEach(function(element){
 						if(element.id == suggestion.id){
 							$scope.repeatedGame = true;
 							return;
 						}
 					})
 
-					if($scope.newMessageType === 'Review' && $scope.messageGames.length == 1){
+					if($scope.newMessageType === 'Review' && $scope.messageGames.games.length == 1){
 							$scope.moreThanOneInReview = true;
 							return;
 					}
 
-					if($scope.messageGames.length == 5){
+					if($scope.messageGames.games.length == 5){
 							$scope.moreThanFive = true;
 							return;
 					}
-					$scope.messageGames.push(suggestion);
-					$('.typeahead').typeahead('val', '');
+					$scope.$apply( function(){
+            $scope.messageGames.games.push(suggestion);
+            $('.typeahead').typeahead('val', '');
+          });
 				});
 
 			}]

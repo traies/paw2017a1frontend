@@ -38,8 +38,9 @@
 						<label  class="form-text error" ng-show="repeatedGame" >{{'TAGS_REPEATED' | translate}}</label>
 						<label  class="form-text error " ng-show="moreThanOneInReview" >{{'TAGS_CONSTRAINTS_REVIEW' | translate}}</label>
 					</div>
+
 					<div class="form-group tag-cont">
-						<h4 class="tag-container" ng-repeat="game in messageGames">
+						<h4 class="tag-container" ng-repeat="game in messageGames.games">
 							<span class="badge badge-tag badge-default"><span class="tag-name">{{game.name}}</span>
 							<span class="fa fa-remove clickable " ng-click="removeGame($index)" aria-hidden="true"></span>
 						</h4>

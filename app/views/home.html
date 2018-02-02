@@ -22,7 +22,12 @@
 				<h5 id="messageEmpty"><spring:message code="messages.empty"> </spring:message></h5>
 			</c:if>-->
 
-			<message-form ng-show="showTextForm || showVideoForm" />
+			<message-form
+			show-text-form="showTextForm"
+			show-video-form="showVideoForm"
+			append="appendToPosts"
+			ng-show="showTextForm || showVideoForm" />
+
 			<div ng-repeat="p in posts">
 				<post-view post="p"/>
 			</div>

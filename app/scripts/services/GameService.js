@@ -24,6 +24,10 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
             unfollow: {
                 url: baseUrl + "/api/game/unfollow/:gameId",
                 method: 'PUT'
+            },
+            getgame: {
+                url: baseUrl + "/api/game/:gameId/name",
+                method: 'GET'
             }
         });
     }]);

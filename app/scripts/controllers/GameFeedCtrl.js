@@ -1,7 +1,9 @@
-define(['paw2017a1frontend', 'services/GameService', 'services/sharedTypeService', 'directives/postView', 'directives/errorList', 'directives/onScrollToBottom'], function(paw2017a1frontend) {
+define(['paw2017a1frontend', 'services/GameService', 'services/sharedTypeService', 'directives/postView', 'directives/errorList', 'directives/onScrollToBottom', 'directives/messageForm'], function(paw2017a1frontend) {
 
     'use strict';
     paw2017a1frontend.controller('GameFeedCtrl', ['$scope', 'GameService', 'sharedTypeService', 'perPage' , function($scope, GameService, sharedTypeService, perPage) {
+
+        $scope.game = true;
 
         var _page = 0;
     		var _loading = false;
@@ -45,6 +47,24 @@ define(['paw2017a1frontend', 'services/GameService', 'services/sharedTypeService
           _linked = false;
           $scope.posts= [];
         });
+
+        $scope.triggerTextForm = function(){
+          $scope.showTextForm = !$scope.showTextForm;
+          $scope.showVideoForm = false;
+        };
+        $scope.triggerVideoForm = function(){
+          $scope.showVideoForm = !$scope.showVideoForm;
+          $scope.showTextForm = false;
+        };
+
+        $scope.appendToPosts = function(post){
+          console.log($scope);
+          post.message.tags.forEach(function(element){
+            if(element.id == $scope.id){
+              $scope.posts.unshift(post);
+            }
+          });
+        };
 
     }]);
 });
