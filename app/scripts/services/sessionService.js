@@ -6,15 +6,17 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 		var Session = {};
 
 		Session.getUser = function(){
-			return JSON.parse($window.localStorage.getItem('session.user')) || JSON.parse($window.sessionStorage.getItem('session.user'));
+			//Give priority to the sessionStorage
+			return JSON.parse($window.sessionStorage.getItem('session.user')) ||
+						 JSON.parse($window.localStorage.getItem('session.user'));
 		};
 
-		Session.setUser = function(user, rememberMe){
-			$window.localStorage.setItem('session.remember.me', rememberMe);
-			if (rememberMe)
+		Session.setUser = function(user){
+			if (user.rememberMe) {
 				$window.localStorage.setItem('session.user', JSON.stringify(user));
-			else
+			} else {
 				$window.sessionStorage.setItem('session.user', JSON.stringify(user));
+			}
 			return this;
 		};
 
@@ -23,17 +25,24 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 		};
 
     Session.updateUser = function(user){
-      if ($window.localStorage.getItem('session.remember.me') || false)
+      if (user.rememberMe){
+				console.log('update');
         $window.localStorage.setItem('session.user', JSON.stringify(user));
-      else
+      } else {
+				console.log('update2');
         $window.sessionStorage.setItem('session.user', JSON.stringify(user));
+			}
       return this;
     }
 
 		Session.destroy = function destroy(){
-			$window.localStorage.setItem('session.remember.me', null);
-			$window.localStorage.setItem('session.user', null);
-			$window.sessionStorage.setItem('session.user', null);
+			if(Session.isLoggedIn()){
+				if(Session.getUser().rememberMe){
+						$window.localStorage.clear();
+				} else {
+						$window.sessionStorage.clear();
+				}
+			}
 		};
 
 		return Session;
