@@ -86,6 +86,11 @@ label.error{
   cursor:pointer;
 }
 
+.clickable.notification{
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
 .type-message {
 	color: #000000;
 	font-weight: bold;
@@ -645,9 +650,9 @@ table th.stick {
 }
 
 .fake-top {
-	position:sticky; 
+	position:sticky;
 	top:0;
-	z-index:100; 
-	padding-top:1rem; 
+	z-index:100;
+	padding-top:1rem;
 	background-color: #f7f7f7 !important
 }

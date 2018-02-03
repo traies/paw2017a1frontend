@@ -7,7 +7,7 @@
                 <h5 ng-if='user' id="replyEmpty">{{ 'REPLIES_EMPTY' | translate }}</h5>
                 <h5 ng-if='!user' id="replyEmpty">{{ 'REPLIES_EMPTY_ANON' | translate }}</h5>
             </span>
-            <div class="card replyFormCard" ng-show='user'>            
+            <div class="card replyFormCard" ng-show='user'>
                 <div class="dropdown replyContent">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownReplyMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{contentType == 'text' ? ('CONTENT_TEXT' | translate) : ('CONTENT_VIDEO' | translate)}}
@@ -40,23 +40,23 @@
                     <div class="card-block header">
                         <h6 class="card-title mb-2 muted msg-user" >
                             <img ng-src="{{baseUrl}}/api/user/{{message.author.name}}/avatar" class="img-rounded message_logo"/>
-                                <a ng-href="#!/user/{{message.author.name}}"> 
+                                <a ng-href="#!/user/{{message.author.name}}">
                                     {{message.author.name}}
                                 </a>
                             <span class="message-date">{{message.date | date:'dd/MM/yyyy @ h:mma'}} </span>
-                        </h6> 
+                        </h6>
                     </div>
                     <div class="card-block">
                         <p class="card-text msg-body">
                             <span ng-if='message.content_type == "TEXT"' >{{message.content_data }}</span>
-                            
+
                         </p>
                         <div ng-if='message.content_type == "VIDEO"' class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item" ng-src="{{trustedVideoUrl(message.content_data)}}"></iframe>
                         </div>
                         <form ng-if='message.author.name == user.name' class="inline deleteForm" ng-submit="deleteMessage(message.id, $index)" method="POST">
                             <button type="submit" class="btn-link "><span  class="fa fa-trash "> </span> </button>
-                        </form> 
+                        </form>
                     </div>
                 </div>
             </ul>

@@ -14,7 +14,7 @@
 - ~~Si la response es un 401, mandar a login.~~
 - ~~Boton de follow game.~~
 - ~~Boton de follow user.~~
-- Página de thread de un mensaje.
+- ~~Página de thread de un mensaje.~~
 - ~~Autocomplete en messageForm.~~
 - ~~Crear mensaje en página de juego.~~
 - Tests con Karma (algún test de flujo de página/controller/servicio).

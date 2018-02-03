@@ -26,10 +26,8 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
 
     Session.updateUser = function(user){
       if (user.rememberMe){
-				console.log('update');
         $window.localStorage.setItem('session.user', JSON.stringify(user));
       } else {
-				console.log('update2');
         $window.sessionStorage.setItem('session.user', JSON.stringify(user));
 			}
       return this;

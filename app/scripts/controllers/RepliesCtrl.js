@@ -2,8 +2,10 @@ define(['paw2017a1frontend', 'directives/postView', 'services/MessageService'], 
 
     'use strict';
     paw2017a1frontend.controller('RepliesCtrl', ['$scope', '$sce', '$stateParams', 'MessageService', 'youtubePattern', function($scope, $sce, $stateParams, MessageService, youtubePattern) {
-        
-        
+
+
+        $scope.replies = [];
+
         MessageService.idMessageResource().get({id: $stateParams.id}).$promise.then(function(data) {
             $scope.post = data;
             $scope.setContentText = function (){
@@ -12,8 +14,8 @@ define(['paw2017a1frontend', 'directives/postView', 'services/MessageService'], 
             $scope.setContentVideo = function (){
                 $scope.contentType = 'video';
             };
-    
-    
+
+
             $scope.submitReply= function (){
                 if($scope.replyForm.$valid) {
                     MessageService.idMessageResource().reply({
@@ -23,7 +25,8 @@ define(['paw2017a1frontend', 'directives/postView', 'services/MessageService'], 
                     }).$promise.then(function(data){
                         $scope.postError = false;
                         $scope.post.times_replied ++;
-                        $scope.replies.push(data);
+                        $scope.replies.unshift(data);
+                        console.log(data);
                         $scope.body = undefined;
                         $scope.replyForm.$submitted = false;
                     }, function(err){
@@ -31,16 +34,16 @@ define(['paw2017a1frontend', 'directives/postView', 'services/MessageService'], 
                     });
                 }
             }
-    
+
             $scope.closeModal = function(){
                 $replyModal.close(true);
             }
         }, function(error) {
-            
+
         });
 
         MessageService.idMessageResource().replies({id: $stateParams.id}, function(data) {
-            $scope.replies = data;
+            Array.prototype.push.apply($scope.replies,data);
         }, function(error) {
 
         });
@@ -49,7 +52,7 @@ define(['paw2017a1frontend', 'directives/postView', 'services/MessageService'], 
 		$scope.body = '';
 		$scope.youtubePattern = youtubePattern;
         $scope.postError = false;
-        
+
         $scope.deleteMessage = function(id, index){
             MessageService.idMessageResource()
             .delete({id: id})

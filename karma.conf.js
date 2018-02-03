@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Sat Feb 03 2018 16:34:06 GMT-0300 (ART)
+// Generated on Sat Feb 03 2018 18:34:01 GMT-0300 (ART)
 
 module.exports = function(config) {
   config.set({
@@ -16,6 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'test-main.js',
+      {pattern: 'bower_components/**/*.js', included: false},
       {pattern: 'app/scripts/**/*.js', included: false},
       {pattern: 'app/test/**/*.js', included: false}
     ],
@@ -23,6 +24,9 @@ module.exports = function(config) {
 
     // list of files / patterns to exclude
     exclude: [
+      'app/scripts/build.js',
+      'app/scripts/routes.js',
+      'bower_components/**/test/**'
     ],
 
 

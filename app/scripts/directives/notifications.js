@@ -38,6 +38,11 @@ define(['paw2017a1frontend', 'services/sessionService', 'services/notificationsS
 						$location.path('/user/' + tgtName + '/messages');
 					};
 
+					$scope.goToReplies = function(id, postId){
+						$scope.delete(id);
+						$location.path('/post/' + postId);
+					};
+
         }]
 		};
 	});

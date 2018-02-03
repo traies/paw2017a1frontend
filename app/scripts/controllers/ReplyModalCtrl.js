@@ -8,11 +8,12 @@ define(
 
 	paw2017a1frontend.controller('ReplyModalCtrl',
 	['$scope',
+	'$location',
 	'MessageService',
 	'post',
 	'$uibModalInstance',
 	'youtubePattern',
-	function($scope, messageService, post, $replyModal, youtubePattern) {
+	function($scope, $location, messageService, post, $replyModal, youtubePattern) {
 		$scope.postUsername = post.message.author.name;
 		$scope.contentType = 'text';
 		$scope.body = '';
@@ -38,6 +39,7 @@ define(
 					$scope.postError = false;
 					post.times_replied ++;
 					$replyModal.close(true);
+					$location.path('/post/' + data.id);
 				}, function(err){
 					$scope.postError = true;
 					console.log('error');
