@@ -29,3 +29,7 @@
 - [ ] En el directorio del proyecto `npm install`
 - [ ] En el directorio del proyecto `bower install`
 - [ ] Para correr `grunt serve --force`
+
+# Karma
+- npm install karma karma-chrome-launcher karma-jasmine jasmine-core
+- sudo npm install karma-cli -g
