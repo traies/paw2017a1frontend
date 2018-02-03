@@ -6,7 +6,7 @@ define(['paw2017a1frontend','services/authService','services/MessageService','co
 			restrict: 'E',
 			replace: 'true',
 			templateUrl: 'views/postView.html',
-			scope: {post: '='},
+			scope: {post: '=post', body: '@body'},
 			controller: ['$scope', '$element','$sce','authService','MessageService','$uibModal','baseUrl',function($scope,$element,$sce,auth,messageService,$uibModal, baseUrl) {
 
         $scope.baseUrl = baseUrl;

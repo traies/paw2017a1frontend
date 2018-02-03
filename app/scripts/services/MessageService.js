@@ -30,6 +30,11 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
             params: {
               media: '@media'
             }
+          },
+          replies: {
+            url: baseUrl + "/api/message/:id/replies",
+            method: 'GET',
+            isArray: true
           }
         });
 

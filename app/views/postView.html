@@ -21,11 +21,14 @@
   </div>
 
   <div class="card-block">
-    <h4 class="card-title"><span class="type-message"><a class="card-title" ng-href="/post?id={{post.message.id }}">
+    <h4 class="card-title"><span class="type-message"><a class="card-title" ng-href="#!/post/{{post.message.id }}">
     {{post.message.title}}
-    </a></span></h4>
+	</a></span></h4>
+	<p ng-if='body && post.message.content_type == "TEXT"'>
+		{{ post.message.content_data}}
+	</p>
     <div ng-repeat="game in post.message.tags" style="display:inline;">
-		   	<a ng-href="#!/game/{{game.id}}/messages">#{{game.name}}</a>
+		<a ng-href="#!/game/{{game.id}}/messages">#{{game.name}}</a>
 	</div>
   </div>
 

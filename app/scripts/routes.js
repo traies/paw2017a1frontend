@@ -97,6 +97,11 @@ define([], function() {
                 templateUrl: 'views/steamLink.html',
                 controller: 'SteamLinkCtrl'
             },
+            'post': {
+                path: '/post/:id',
+                templateUrl: 'views/replies.html',
+                controller: 'RepliesCtrl'
+            }
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */
         }

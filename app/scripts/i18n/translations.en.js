@@ -113,5 +113,11 @@ define([], function() {
 		STEAM_CONFIRM_LINK: 'Are you sure you want to link this profile?',
 		FOLLOW: 'Follow',
 		UNFOLLOW: 'Unfollow',
+		REPLIES: 'Replies',
+		REPLIES_EMPTY: 'There are no replies to this message. Be the first one.',
+		REPLIES_EMPTY_ANON: 'You have no messages to read. We recommend you start searching for games you like.',
+		REPLY_LINK_VALID: 'Must be a valid Youtube\'s Link',
+		REPLY_BODY_FULL: 'Body must not exceed 1000 characters',
+		REPLY_BODY_EMPTY: 'Body must have at least 1 character',
 	}
 });

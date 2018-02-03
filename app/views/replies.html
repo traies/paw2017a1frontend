@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 messageAndReplies">
+            <post-view ng-if='post' body='true' post='post'></post-view>
+            <h5 id="replyMessage">{{'REPLIES' | translate }}</h5>
+            <span ng-if='replies.length == 0'>
+                <h5 ng-if='user' id="replyEmpty">{{ 'REPLIES_EMPTY' | translate }}</h5>
+                <h5 ng-if='!user' id="replyEmpty">{{ 'REPLIES_EMPTY_ANON' | translate }}</h5>
+            </span>
+            <div class="card replyFormCard" ng-if='user'>            
+                <div class="dropdown replyContent">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownReplyMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{'CONTENT_TEXT' | translate }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <a class="dropdown-item replyText"  > 
+                            {{'CONTENT_TEXT' | translate }}
+                        </a>
+                        <a class="dropdown-item replyVideo ">
+                            {{ 'CONTENT_VIDEO' | translate }}
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group input sr-only ">
+                    <input type="text" class="form-control replyLink" id="replyLink" placeholder="Link">
+                    <label  class="form-text error sr-only"  >
+                        {{'REPLY_LINK_VALID' | translate }}
+                    </label>
+                </div>
+                <div class="form-group input ">
+                    <textarea type="text" class="form-control replyBody" id="replyBody" placeholder="Body" rows="3"></textarea>
+                    <label  class="form-text error sr-only"  >{{'REPLY_BODY_FULL' | translate }}</label>
+                    <label  class="form-text error sr-only"  >{{'REPLY_BODY_EMPTY' | translate }}</label>
+                </div>
+                <div class="modal-footer">
+                <form class="replyForm" id="replyForm"  method="POST" ng-submit='' >
+                    <button type="submit" class="btn btn-primary " ><span  class="fa fa-pencil "></span></button>
+                </form> 
+                </div>
+            </div>
+            <ul ng-repeat='message in replies'>
+                <div class="card game_message" id="{{message.id}}">
+                    <div class="card-block header" ng-if='message.content_type == "TEXT"'>
+                        <h6 class="card-title mb-2 muted msg-user" >
+                            <img ng-src="{{baseUrl}}/api/user/{{message.author.name}}/avatar" class="img-rounded message_logo"/>
+                                <a ng-href="#!/user/{{message.author.name}}"> 
+                                    {{message.author.name}}
+                                </a>
+                            <span class="message-date">{{message.date | date:'dd/MM/yyyy @ h:mma'}} </span>
+                        </h6> 
+                    </div>
+                    <div class="card-block">
+                        <p class="card-text msg-body">
+                            <span ng-if='message.content_type == "TEXT"' >{{message.content_data }}</span>
+                            <div ng-if='message.content_type == "VIDEO"' class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" ng-src="{{message.content_data}}"></iframe>
+                            </div>
+                        </p>
+                        <form ng-if='message.author.name == user.name' class="inline deleteForm" ng-submit="deleteReply" method="POST">
+                            <button type="submit" class="btn-link "><span  class="fa fa-trash "> </span> </button>
+                        </form> 
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
