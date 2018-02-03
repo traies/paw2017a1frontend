@@ -2,7 +2,11 @@
   "name": "paw2017a1frontend",
   "version": "0.0.0",
   "dependencies": {
-    "angular-jwt": "^0.1.9"
+    "angular-jwt": "^0.1.9",
+    "jasmine-core": "^2.9.1",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1"
   },
   "devDependencies": {
     "bower": "^1.3.12",
@@ -30,6 +34,7 @@
     "grunt-svgmin": "^0.4.0",
     "grunt-usemin": "^2.1.1",
     "grunt-wiredep": "^1.7.0",
+    "karma-requirejs": "^1.1.0",
     "load-grunt-tasks": "^0.4.0",
     "requirejs": "^2.1.11",
     "time-grunt": "^0.3.1"
