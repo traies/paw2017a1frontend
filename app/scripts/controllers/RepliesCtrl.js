@@ -1,7 +1,7 @@
 define(['paw2017a1frontend', 'directives/postView', 'services/MessageService'], function(paw2017a1frontend) {
 
     'use strict';
-    paw2017a1frontend.controller('RepliesCtrl', ['$scope', '$stateParams', 'MessageService', 'youtubePattern', function($scope, $stateParams, MessageService, youtubePattern) {
+    paw2017a1frontend.controller('RepliesCtrl', ['$scope', '$sce', '$stateParams', 'MessageService', 'youtubePattern', function($scope, $sce, $stateParams, MessageService, youtubePattern) {
         
         
         MessageService.idMessageResource().get({id: $stateParams.id}).$promise.then(function(data) {
@@ -61,6 +61,10 @@ define(['paw2017a1frontend', 'directives/postView', 'services/MessageService'], 
                 function (error){
                 }
             );
+        };
+
+        $scope.trustedVideoUrl = function(url) {
+            return $sce.trustAsResourceUrl(url);
         };
     }]);
 

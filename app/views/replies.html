@@ -37,7 +37,7 @@
             </div>
             <ul ng-repeat='message in replies'>
                 <div class="card game_message" id="{{message.id}}">
-                    <div class="card-block header" ng-if='message.content_type == "TEXT"'>
+                    <div class="card-block header">
                         <h6 class="card-title mb-2 muted msg-user" >
                             <img ng-src="{{baseUrl}}/api/user/{{message.author.name}}/avatar" class="img-rounded message_logo"/>
                                 <a ng-href="#!/user/{{message.author.name}}"> 
@@ -49,10 +49,11 @@
                     <div class="card-block">
                         <p class="card-text msg-body">
                             <span ng-if='message.content_type == "TEXT"' >{{message.content_data }}</span>
-                            <div ng-if='message.content_type == "VIDEO"' class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" ng-src="{{message.content_data}}"></iframe>
-                            </div>
+                            
                         </p>
+                        <div ng-if='message.content_type == "VIDEO"' class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" ng-src="{{trustedVideoUrl(message.content_data)}}"></iframe>
+                        </div>
                         <form ng-if='message.author.name == user.name' class="inline deleteForm" ng-submit="deleteMessage(message.id, $index)" method="POST">
                             <button type="submit" class="btn-link "><span  class="fa fa-trash "> </span> </button>
                         </form> 
