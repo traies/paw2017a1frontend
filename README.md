@@ -33,3 +33,5 @@
 # Karma
 - npm install karma karma-chrome-launcher karma-jasmine jasmine-core
 - sudo npm install karma-cli -g
+- sudo npm install protractor -g
+- sudo webdriver-manager update

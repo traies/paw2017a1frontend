@@ -47,9 +47,10 @@ define(
         name: payload.username,
         id: payload.userId,
         token: token,
-        tokenPayload: payload
+        tokenPayload: payload,
+        rememberMe: rememberMe
       };
-      session.setUser(user, rememberMe);
+      session.setUser(user);
       $rootScope.$broadcast('user:updated');
     };
 
@@ -59,14 +60,15 @@ define(
         name: payload.username,
         id: payload.userId,
         token: token,
-        tokenPayload: payload
+        tokenPayload: payload,
+        rememberMe: session.getUser().rememberMe
       };
       session.updateUser(user);
       $rootScope.$broadcast('user:updated');
     };
 
 		AuthService.isLoggedIn = function() {
-			return !!session.getUser();
+			return session.isLoggedIn();
 		};
 
 		AuthService.logOut = function() {
@@ -76,7 +78,7 @@ define(
 		AuthService.getLoggedUser = function() {
 			return session.getUser();
 		};
-    
+
 		return AuthService;
 	}]);
 

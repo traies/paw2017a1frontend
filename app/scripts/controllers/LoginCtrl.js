@@ -9,6 +9,7 @@ define(['paw2017a1frontend','services/authService'], function(paw2017a1frontend)
         $scope.loginSubmit = function(){
           var next = $location.search().next;
           $scope.url = next != null ? next : '/';
+          $scope.loginForm.rememberMe = $scope.loginForm.rememberMe === undefined? false : true;
         	auth.logIn($scope.loginForm.username, $scope.loginForm.password, $scope.loginForm.rememberMe);
         };
 
