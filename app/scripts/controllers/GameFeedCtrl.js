@@ -8,11 +8,16 @@ define(['paw2017a1frontend', 'services/GameService', 'services/sharedTypeService
         var _page = 0;
     		var _loading = false;
         var _linked = true;
+        var _ready = false;
+
+        $scope.isLoading = function(){
+          return _loading && !_ready;
+        };
 
         $scope.posts= [];
 
     		$scope.scroll = function(){
-    			if(!_linked || _loading)
+    			if(!_linked || _loading || _ready)
     				return;
     			_loading = true;
           console.log(_page);
@@ -23,11 +28,10 @@ define(['paw2017a1frontend', 'services/GameService', 'services/sharedTypeService
     			}).$promise.then(function(data){
             $scope.serverError = false;
     				$scope.posts = $scope.posts.concat(data);
-            if($scope.posts.length == 0){
-              $scope.isEmpty = true;
+            if(!data.length == 0){
+              _page ++;
             } else {
-              $scope.isEmpty = false;
-              _page++;
+              _ready = true;
             }
     				_loading = false;
     			}, function(err){

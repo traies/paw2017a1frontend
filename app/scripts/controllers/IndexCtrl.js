@@ -5,6 +5,7 @@ define(
 	'services/notificationsService',
 	'services/autoCompleteService',
 	'services/authService',
+	'services/sessionService',
 	'bloodhound',
 	'typeahead',
 	'typeahead-jquery'],
@@ -17,7 +18,8 @@ define(
 		'autoCompleteService',
 		'authService',
 		'baseUrl',
-		function($scope, $location, notif, autoComplete, auth, baseUrl) {
+		'sessionService',
+		function($scope, $location, notif, autoComplete, auth, baseUrl, session) {
 
 			$scope.baseUrl = baseUrl;
 			$scope.welcomeText = 'Welcome to your paw2017a1frontend page';
@@ -25,11 +27,21 @@ define(
 			$scope.user = auth.getLoggedUser();
 			$scope.showNavBar = true;
 
+			if(!auth.isLoggedIn()){
+				$location.path('/welcome');
+			} else {
+				$location.path('/');
+			}
+
 			$scope.logOut = function(){
 				auth.logOut();
 				$scope.isLoggedIn = false;
 				$scope.user = null;
 				$location.url('/welcome');
+			};
+
+			$scope.isSteamLinked = function(){
+				return session.isSteamLinked();
 			};
 
 			$scope.logIn = function(){

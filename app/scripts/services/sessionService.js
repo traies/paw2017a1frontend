@@ -33,6 +33,16 @@ define(['paw2017a1frontend'], function(paw2017a1frontend) {
       return this;
     }
 
+		Session.isSteamLinked = function(){
+			if(!Session.isLoggedIn()){
+				return false;
+			}
+			if(Session.getUser().tokenPayload.steamId == -1){
+				return false;
+			}
+			return true;
+		};
+
 		Session.destroy = function destroy(){
 			if(Session.isLoggedIn()){
 				if(Session.getUser().rememberMe){

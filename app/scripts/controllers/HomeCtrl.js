@@ -7,7 +7,8 @@ define(
 	'services/UserService',
 	'directives/postView',
 	'directives/messageForm',
-  'directives/onScrollToBottom'],
+  'directives/onScrollToBottom',
+  'directives/errorList'],
 	function(paw2017a1frontend) {
 
 	paw2017a1frontend.controller('HomeCtrl',
@@ -19,12 +20,23 @@ define(
 		'UserService',
 		'perPage',
 	function($scope,$location, GameService, restService, auth, UserService, perPage) {
+
+		if (!auth.isLoggedIn()){
+			$location.url('/welcome');
+		}
+
 		$scope.homePageText = 'This is your homepage';
 
 		var _page = 0;
 		var _loading = false;
+		var _ready = false;
 
 		$scope.posts = [];
+		$scope.serverError = false;
+
+		$scope.isLoading = function(){
+			return _loading && !_ready;
+		};
 
 		$scope.scroll = function(){
 			if(_loading)
@@ -34,14 +46,18 @@ define(
 				page: _page,
 				'per_page': perPage
 			}).$promise.then(function(data){
+				$scope.serverError = false;
 				$scope.posts = $scope.posts.concat(data);
-				_page++;
+				if(!data.length == 0){
+					_page++;
+				} else {
+					_ready = true;
+				}
 				_loading = false;
-			}, function(err){});
+			}, function(err){
+				$scope.serverError = true;
+			});
 		};
-
-		if (!auth.isLoggedIn())
-			$location.url('/welcome');
 
 		if(auth.isLoggedIn()){
 			$scope.scroll();

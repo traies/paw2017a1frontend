@@ -28,8 +28,21 @@
 			append="appendToPosts"
 			ng-show="showTextForm || showVideoForm" />
 
-			<div ng-repeat="p in posts">
-				<post-view post="p"/>
+			<div>
+				<div ng-repeat="p in posts">
+					<post-view post="p"/>
+				</div>
+
+				<div ng-if="isLoading()" class="loader"></div>
+
+				<div ng-if="!isLoading() && posts.length == 0">
+						<error-list>{{'NO_MESSAGES_FOUND' | translate}}</error-list>
+				</div>
+
+				<div ng-if='serverError'>
+						<error-list>{{'SERVER_ERROR' | translate}}</error-list>
+				</div>
+
 			</div>
 
 	</div>

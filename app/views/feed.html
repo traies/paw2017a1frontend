@@ -28,7 +28,8 @@
   <div  ng-repeat="p in posts">
       <post-view post="p"/>
   </div>
-  <div ng-if='isEmpty'>
+  <div ng-if="isLoading()" class="loader"></div>
+  <div ng-if='!isLoading() && posts.length == 0'>
       <error-list>{{'NO_MESSAGES_FOUND' | translate}}</error-list>
   </div>
 

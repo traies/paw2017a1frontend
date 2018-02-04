@@ -656,3 +656,20 @@ table th.stick {
 	padding-top:1rem;
 	background-color: #f7f7f7 !important
 }
+
+
+.loader {
+	margin: 5em auto;
+  border: 5px solid #f3f3f3;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  border-top: 5px solid #555;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

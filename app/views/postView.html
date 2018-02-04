@@ -1,7 +1,7 @@
 <div class="card message"  id="{{post.message.id}}"  user="{{post.message.author.name}}">
  <!--<a class="card-link-absolute" ng-href="/post?id={{post.message.id}}"></a>-->
  <div class=" shared" ng-if="post.sharers.length > 0">
-		   	<span ng-if="post.sharers.length == 1" > <a ng-href="user/{{post.sharers[0].name}}">{{post.sharers[0].name}} </a> has shared it </span>
+		   	<span ng-if="post.sharers.length == 1" > <a ng-href="#!/user/{{post.sharers[0].name}}/messages">{{post.sharers[0].name}} </a> has shared it </span>
 
 		   	<span ng-if="post.sharers.length > 1" >
 		   		<div ng-repeat="sharer in post.sharers" style="display:inline;">
