@@ -91,6 +91,7 @@ define([], function() {
 		STEAM_OMIT: 'Omit',
 		STEAM_SUBMIT: 'Submit',
 		STEAM_PROFILE_CONFIRM: 'Is this your steam profile?',
+		STEAM_PROFILE_AVATAR: 'Set this as profile picture',
 		STEAM_CANCEL: 'Cancel',
 		STEAM_CONFIRM: 'Confirm',
 		STEAM_URL_ERROR: 'Please use a valid Steam Profile URL.',

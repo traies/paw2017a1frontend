@@ -27,11 +27,11 @@ define(
 			$scope.user = auth.getLoggedUser();
 			$scope.showNavBar = true;
 
-			if(!auth.isLoggedIn()){
-				$location.path('/welcome');
-			} else {
-				$location.path('/');
-			}
+			// if(!auth.isLoggedIn()){
+			// 	$location.path('/welcome');
+			// } else {
+			// 	$location.path('/');
+			// }
 
 			$scope.logOut = function(){
 				auth.logOut();
@@ -69,13 +69,13 @@ define(
 				autoComplete.initialize();
 			});
 
-			$scope.$on('$locationChangeSuccess', function() {
-        if($location.path() == '/login' || $location.path() == '/register'){
-					$scope.showNavBar = false;
-				} else {
-					$scope.showNavBar = true;
-				}
-    	});
+		// 	$scope.$on('$locationChangeSuccess', function() {
+        // if($location.path() == '/login' || $location.path() == '/register'){
+		// 			$scope.showNavBar = false;
+		// 		} else {
+		// 			$scope.showNavBar = true;
+		// 		}
+    	// });
 
 			$scope.$on('user:updated', function() {
 				$scope.isLoggedIn = auth.isLoggedIn();

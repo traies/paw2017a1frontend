@@ -2,7 +2,6 @@ define(['paw2017a1frontend', 'directives/userProfile', 'services/SteamService'],
 
     'use strict';
     paw2017a1frontend.controller('SteamLinkCtrl', ['$window', '$scope', '$state','$log', '$stateParams','SteamService', 'baseUrl', function($window, $scope, $state, $log, $stateParams, SteamService, baseUrl) {
-        $scope.targetUserName = $stateParams.name;
 
         $scope.getDetails = function() {
             $scope.steamdetails = undefined;
@@ -12,16 +11,20 @@ define(['paw2017a1frontend', 'directives/userProfile', 'services/SteamService'],
                 $scope.steamdetails = data;
                 $scope.games = {};
                 $scope.users = {};
-                $scope.gameresults = SteamService.getOwned({steamid: $scope.steamdetails.steamId},
+                $scope.gameresults = [];
+                $scope.userlist = [];
+                SteamService.getOwned({steamid: $scope.steamdetails.steamId},
                     function(data) {
                         $scope.gameresults.done = true;
+                        $scope.gameresults = data;
                     }, function(error) {
                         $scope.gameresults.error = true;
                     }
                 );
-                $scope.userlist = SteamService.getFriends({steamid: $scope.steamdetails.steamId},
+                SteamService.getFriends({steamid: $scope.steamdetails.steamId},
                     function(data) {
                         $scope.userlist.done = true;
+                        $scope.userlist = data;
                     }, function(error) {
                         $scope.userlist.error = true;
                     }
@@ -33,22 +36,21 @@ define(['paw2017a1frontend', 'directives/userProfile', 'services/SteamService'],
                     submit.games = [];
                     submit.users = [];
                     submit.steamid = $scope.steamdetails.steamId;
+                    submit.avatar = $scope.avatar;
+                    submit.avatarFullUrl = $scope.steamdetails.avatarFullUrl;
                     angular.forEach($scope.gameresults, function(game) {
                         if (game.selected) {
                             submit.games.push({name: game.name, id: game.appid });
                         }
-                    }).$promise.then(function() {
-                        angular.forEach($scope.userlist, function(user) {
-                            if (user.selected) {
-                                submit.users.push({name: user.name, id: user.id});
-                            }
-                        }).$promise.then(function() {
-                            SteamService.confirm({}, submit, function(data) {
-                                $window.location.href = '#!/';
-                            }, function (error) {
-
-                            });
-                        });
+                    });
+                    angular.forEach($scope.userlist, function(user) {
+                        if (user.selected) {
+                            submit.users.push({name: user.name, id: user.id});
+                        }
+                    });
+                    SteamService.confirm({}, submit, function(data) {
+                        $window.location.href = '#!/';
+                        }, function (error) {
                     });
                 }
             }, function(error) {

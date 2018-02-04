@@ -28,10 +28,17 @@
                 </div>
                 <div class="card-block" ng-show='steamdetails'>
                     <div class='card-title' >
-                        <h5 class="card-subtitle" style="margin-top:2rem;"> {{ 'STEAM_PROFILE_CONFIRM' | translate }} </h5>
+                        
                         <div class="card-block">
                             <img class="float-left img-thumbnail user-image" ng-src="{{steamdetails.avatarFullUrl}}" alt="profile">
-                            <h5 class="float-left card-title user-title">{{steamdetails.fullSteamName}}</h5>
+                            <div class='float-left '>
+                                <h5 class="card-title user-title">{{steamdetails.fullSteamName}}</h5>
+                                <form>
+                                    <div class="checkbox">
+                                        <input ng-init='avatar = true' type="checkbox" name='avatar' ng-model='avatar'> {{ 'STEAM_PROFILE_AVATAR' | translate }} </label>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
