@@ -6,38 +6,10 @@ define(['paw2017a1frontend', 'directives/postView', 'services/MessageService'], 
 
         $scope.replies = [];
 
-        MessageService.idMessageResource().get({id: $stateParams.id}).$promise.then(function(data) {
+        MessageService.idMessageResource().get({
+          id: $stateParams.id
+        }).$promise.then(function(data) {
             $scope.post = data;
-            $scope.setContentText = function (){
-                $scope.contentType = 'text';
-            };
-            $scope.setContentVideo = function (){
-                $scope.contentType = 'video';
-            };
-
-
-            $scope.submitReply= function (){
-                if($scope.replyForm.$valid) {
-                    MessageService.idMessageResource().reply({
-                        id: $stateParams.id,
-                        media: $scope.contentType,
-                        body: $scope.body
-                    }).$promise.then(function(data){
-                        $scope.postError = false;
-                        $scope.post.times_replied ++;
-                        $scope.replies.unshift(data);
-                        console.log(data);
-                        $scope.body = undefined;
-                        $scope.replyForm.$submitted = false;
-                    }, function(err){
-                        $scope.postError = true;
-                    });
-                }
-            }
-
-            $scope.closeModal = function(){
-                $replyModal.close(true);
-            }
         }, function(error) {
 
         });
@@ -48,9 +20,39 @@ define(['paw2017a1frontend', 'directives/postView', 'services/MessageService'], 
 
         });
 
-		$scope.contentType = 'text';
-		$scope.body = '';
-		$scope.youtubePattern = youtubePattern;
+        $scope.setContentText = function (){
+            $scope.contentType = 'text';
+        };
+        $scope.setContentVideo = function (){
+            $scope.contentType = 'video';
+        };
+
+
+        $scope.submitReply= function (){
+            if($scope.replyForm.$valid) {
+                MessageService.idMessageResource().reply({
+                    id: $stateParams.id,
+                    media: $scope.contentType,
+                    body: $scope.body
+                }).$promise.then(function(data){
+                    $scope.postError = false;
+                    $scope.post.times_replied ++;
+                    $scope.replies.push(data.message);
+                    $scope.body = undefined;
+                    $scope.replyForm.$submitted = false;
+                }, function(err){
+                    $scope.postError = true;
+                });
+            }
+        }
+
+        $scope.closeModal = function(){
+            $replyModal.close(true);
+        };
+
+		    $scope.contentType = 'text';
+		    $scope.body = '';
+		    $scope.youtubePattern = youtubePattern;
         $scope.postError = false;
 
         $scope.deleteMessage = function(id, index){
