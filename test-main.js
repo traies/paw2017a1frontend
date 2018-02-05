@@ -8,9 +8,11 @@ Object.keys(window.__karma__.files).forEach(function (file) {
     // If you require sub-dependencies of test files to be loaded as-is (requiring file extension)
     // then do not normalize the paths
     var normalizedTestModule = file.replace(/^\/base\/|\.js$/g, '')
-    allTestFiles.push(normalizedTestModule)
+    allTestFiles.push('../../' + normalizedTestModule)
   }
 })
+
+window.Tether = {};
 
 require.config({
   // Karma serves files under /base, which is the basePath from your config file
@@ -51,12 +53,18 @@ require.config({
       'bootstrap-sass': '../../bower_components/bootstrap-sass/assets/javascripts/bootstrap',
       'bootstrap-sass-official': '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap',
       'angular-route': '../../bower_components/angular-route/angular-route',
-      'ng-file-upload': '../../bower_components/ng-file-upload/ng-file-upload'
+      'ng-file-upload': '../../bower_components/ng-file-upload/ng-file-upload',
+      'angular-mocks': '../../bower_components/angular-mocks/angular-mocks'
   },
   shim: {
       angular: {
           deps: [
               'jquery'
+          ]
+      },
+      'angular-mocks': {
+          deps: [
+              'angular'
           ]
       },
       'angular-bootstrap': {
