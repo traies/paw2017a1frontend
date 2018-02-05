@@ -8,7 +8,6 @@ require.config({
         'angular-translate': '../../bower_components/angular-translate/angular-translate',
         button: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button',
         bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap',
-        bloodhound: '../../bower_components/corejs-typeahead/dist/bloodhound',
         carousel: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel',
         collapse: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse',
         dropdown: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown',
@@ -22,14 +21,9 @@ require.config({
         scrollspy: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy',
         util: '../../bower_components/bootstrap/js/dist/util',
         tab: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab',
-        tooltip: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip',
-        typeahead: '../../bower_components/corejs-typeahead/dist/typeahead.bundle',
-        'typeahead-jquery': '../../bower_components/corejs-typeahead/dist/typeahead.jquery',
         tether: '../../bower_components/tether/dist/js/tether',
-        'corejs-typeahead': '../../bower_components/corejs-typeahead/dist/typeahead.bundle',
         'angular-bootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls',
         'angular-jwt': '../../bower_components/angular-jwt/dist/angular-jwt',
-        'jwt-decode': '../../bower_components/jwt-decode/build/jwt-decode',
         'angular-resource': '../../bower_components/angular-resource/angular-resource',
         affix: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix',
         transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition',
@@ -37,7 +31,11 @@ require.config({
         'bootstrap-sass': '../../bower_components/bootstrap-sass/assets/javascripts/bootstrap',
         'bootstrap-sass-official': '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap',
         'angular-route': '../../bower_components/angular-route/angular-route',
-        'ng-file-upload': '../../bower_components/ng-file-upload/ng-file-upload'
+        'ng-file-upload': '../../bower_components/ng-file-upload/ng-file-upload',
+        'concrete-promise': '../../bower_components/concrete-promise/src/promise',
+        'typeahead-jquery': '../../bower_components/typeahead.js/dist/typeahead.jquery',
+        bloodhound: '../../bower_components/typeahead.js/dist/bloodhound',
+        typeahead: '../../bower_components/typeahead.js/dist/typeahead.bundle'
     },
     shim: {
         angular: {
@@ -47,7 +45,8 @@ require.config({
         },
         'angular-bootstrap': {
             deps: [
-                'angular'
+                'angular',
+                'tether-amd-wrapper'
             ]
         },
         'angular-jwt': {
@@ -63,30 +62,11 @@ require.config({
         bootstrap: {
             deps: [
                 'jquery',
-                'modal'
+                'modal',
+                'tether-amd-wrapper'
             ]
         },
         modal: {
-            deps: [
-                'jquery'
-            ]
-        },
-        tooltip: {
-            deps: [
-                'jquery'
-            ]
-        },
-        typeahead: {
-            deps: [
-                'jquery'
-            ]
-        },
-        bloodhound: {
-            deps: [
-                'jquery'
-            ]
-        },
-        'typeahead-jquery': {
             deps: [
                 'jquery'
             ]
@@ -105,6 +85,20 @@ require.config({
             deps: [
                 'angular'
             ]
+        },
+        'typeahead-jquery': {
+            deps: [
+                'jquery'
+            ],
+            init: function ($) {
+return require.s.contexts._.registry['typeahead.js'].factory( $ );
+},
+            bloodhound: {
+                deps: [
+                    'jquery'
+                ],
+                exports: 'Bloodhound'
+            }
         }
     },
     packages: [

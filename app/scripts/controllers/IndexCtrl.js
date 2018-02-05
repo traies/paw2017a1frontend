@@ -6,9 +6,8 @@ define(
 	'services/autoCompleteService',
 	'services/authService',
 	'services/sessionService',
-	'bloodhound',
-	'typeahead',
-	'typeahead-jquery'],
+	'typeahead-jquery',
+	'bloodhound'],
 	function(paw2017a1frontend) {
 
 		paw2017a1frontend.controller('IndexCtrl',

@@ -2,8 +2,8 @@
 define(
 	['paw2017a1frontend',
 	'services/MessageService',
-	'typeahead',
-	'typeahead-jquery'],
+	'typeahead-jquery',
+	'bloodhound'],
 	function(paw2017a1frontend) {
 
 	paw2017a1frontend.controller('ReplyModalCtrl',

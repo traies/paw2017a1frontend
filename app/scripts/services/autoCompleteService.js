@@ -1,7 +1,7 @@
-define(['paw2017a1frontend'], function(paw2017a1frontend) {
+define(['paw2017a1frontend', 'typeahead'], function(paw2017a1frontend) {
 
     'use strict';
-    paw2017a1frontend.factory('autoCompleteService', [ '$location', 'baseUrl', '$window',function($location, baseUrl, $window) {
+    paw2017a1frontend.factory('autoCompleteService', [ '$location', 'baseUrl', '$window', function($location, baseUrl, $window) {
 
     	var Autocomplete = {};
 		var contexturl = '#!';
