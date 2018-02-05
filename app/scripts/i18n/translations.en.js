@@ -14,7 +14,6 @@ define([], function() {
 		PASSWORD : 'Password',
 		REPEAT_PASSWORD : 'Repeat password',
 		REMEMBER_ME : 'Remember me',
-		REGISTER_NOW : 'Register now!',
 		REGISTER : 'Register',
 		SIGN_IN : 'Sign in',
 		LOGIN : 'Log in',
@@ -117,14 +116,11 @@ define([], function() {
 		REPLIES: 'Replies',
 		REPLIES_EMPTY: 'There are no replies to this message. Be the first one.',
 		REPLIES_EMPTY_ANON: 'You have no messages to read. We recommend you start searching for games you like.',
-		REPLY_LINK_VALID: 'Must be a valid Youtube\'s Link',
-		REPLY_BODY_FULL: 'Body must not exceed 1000 characters',
-		REPLY_BODY_EMPTY: 'Body must have at least 1 character',
 		NOTIFICATIONS: 'Notifications',
 		NO_NOTIFICATIONS: 'You don\'t have notifications',
 		SHARED_MESSAGE: 'shared your message',
 		REPLIED_MESSAGE: 'replied to your message',
 		FOLLOWED: 'followed you',
-		AND: 'and',
+		AND: 'and'
 	}
 });
