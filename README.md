@@ -4,7 +4,7 @@
 
 - Mostrar juegos recomendados en feed principal (DONE IN API)
 - Si una búsqueda no encuentra mensajes, defaultear a otra categoría con resultados.
-- Vinculación a cuenta de Steam post-registración.
+- ~~Vinculación a cuenta de Steam post-registración.~~
 - ~~Revisar clases sin modificadores de acceso en sus atributos.~~
 - ~~Hacer que las excepciones arrojadas por capas inferiores sean checked (en services).~~
 - ~~Hacer que la validacion de beans use los frameworks correctamente~~
@@ -17,7 +17,7 @@
 - ~~Página de thread de un mensaje.~~
 - ~~Autocomplete en messageForm.~~
 - ~~Crear mensaje en página de juego.~~
-- Tests con Karma (algún test de flujo de página/controller/servicio).
+- ~~Tests con Karma (controller/service).~~
 
 
 # Instalacion del proyecto
@@ -33,5 +33,3 @@
 # Karma
 - npm install karma karma-chrome-launcher karma-jasmine jasmine-core
 - sudo npm install karma-cli -g
-- sudo npm install protractor -g
-- sudo webdriver-manager update
