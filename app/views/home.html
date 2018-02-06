@@ -17,11 +17,6 @@
 				</div>
 		</div>
 
-
-			<!--<c:if test="${postsNum == 0}">
-				<h5 id="messageEmpty"><spring:message code="messages.empty"> </spring:message></h5>
-			</c:if>-->
-
 			<message-form
 			show-text-form="showTextForm"
 			show-video-form="showVideoForm"
@@ -30,7 +25,7 @@
 
 			<div>
 				<div ng-repeat="p in posts">
-					<post-view post="p"/>
+					<post-view post="p" body='false'/>
 				</div>
 
 				<div ng-if="isLoading()" class="loader"></div>

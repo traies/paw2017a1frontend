@@ -1,7 +1,7 @@
 /* global paths */
 'use strict';
 require.config({
-    baseUrl: '/scripts',
+    baseUrl: 'scripts',
     paths: {
         alert: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert',
         angular: '../../bower_components/angular/angular',
@@ -35,7 +35,8 @@ require.config({
         'concrete-promise': '../../bower_components/concrete-promise/src/promise',
         'typeahead-jquery': '../../bower_components/typeahead.js/dist/typeahead.jquery',
         bloodhound: '../../bower_components/typeahead.js/dist/bloodhound',
-        typeahead: '../../bower_components/typeahead.js/dist/typeahead.bundle'
+        typeahead: '../../bower_components/typeahead.js/dist/typeahead.bundle',
+        'angular-mocks': '../../bower_components/angular-mocks/angular-mocks'
     },
     shim: {
         angular: {

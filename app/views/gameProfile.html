@@ -57,34 +57,6 @@
             {{'FOLLOW' | translate }}
           </button>
         </div>
-        <!--
-        <c:choose>
-                <c:when test="${isFollowing}">
-                    <form method="post" style="margin-top:1rem;"action="${pageContext.servletContext.contextPath}/unfollowGame">
-                        <button class="btn btn-primary" type="submit">
-                            <spring:message code="profile.unfollow"></spring:message>
-                        </button>
-                        <input type="hidden" name="game" value="${game.appid }">
-                    </form>
-                </c:when>
-
-                <c:when test="${currentUser == null}">
-                            <a  style="margin-top:1rem;" href="<c:url value='/login?loginURL=/game/steam/${game.appid}' />">
-                                <button class="btn btn-primary" >
-                                <spring:message code="profile.follow"></spring:message>
-                                </button>
-                            </a>
-                        </c:when>
-                <c:otherwise>
-                    <form method="post"  style="margin-top:1rem;" action="${pageContext.servletContext.contextPath}/followGame">
-                        <button class="btn btn-primary" type="submit">
-                            <spring:message code="profile.follow"></spring:message>
-                        </button>
-                        <input type="hidden" name="game" value="${game.appid}">
-                    </form>
-                </c:otherwise>
-        </c:choose>
-        -->
     </div>
 </div>
 
@@ -97,8 +69,8 @@
                     {{'GAME_DEVELOPER' | translate}}
                 </span>
                 <span class="game_info_value">
-                    <a ng-repeat="developer in game.developers" class="game_info_value_link" ng-href="/search">
-                            {{developer.name}}
+                    <a ng-repeat="developer in game.developers" class="game_info_value_link" ng-href="#!/search">
+                        {{developer.name}}
                     </a>
                 </span>
             </div>
@@ -108,7 +80,7 @@
                     {{'GAME_PUBLISHER' | translate}}
                 </span>
                 <span class="game_info_value">
-                    <a ng-repeat="publisher in game.publishers" class="game_info_value_link" ng-href="/search">
+                    <a ng-repeat="publisher in game.publishers" class="game_info_value_link" ng-href="#!/search">
                         {{publisher.name}}
                     </a>
                 </span>

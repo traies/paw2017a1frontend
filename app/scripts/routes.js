@@ -6,28 +6,28 @@ define([], function() {
         routes: {
             'Home': {
                 path: '/',
-                templateUrl: '/views/home.html',
+                templateUrl: 'views/home.html',
                 controller: 'HomeCtrl'
             },
             'Welcome': {
                 path: '/welcome',
-                templateUrl: '/views/welcome.html',
+                templateUrl: 'views/welcome.html',
                 controller: 'WelcomeCtrl'
             },
             'Login': {
                 path: '/login',
-                templateUrl: '/views/login.html',
+                templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             },
             'Register': {
                 path: '/register',
-                templateUrl: '/views/register.html',
+                templateUrl: 'views/register.html',
                 controller: 'RegisterCtrl'
             },
             'Game': {
                 abstract: true,
                 path: '/game/:id',
-                templateUrl: '/views/game.html',
+                templateUrl: 'views/game.html',
                 controller: 'GameCtrl'
             },
             'Game.followers': {
@@ -43,7 +43,7 @@ define([], function() {
             'user': {
                 abstract: true,
                 path: '/user/:name' ,
-                templateUrl: '/views/user.html',
+                templateUrl: 'views/user.html',
                 controller: 'UserCtrl'
             },
             'user.followers': {

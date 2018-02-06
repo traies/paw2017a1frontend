@@ -1,16 +1,16 @@
 <div class="card message"  id="{{post.message.id}}"  user="{{post.message.author.name}}">
  <!--<a class="card-link-absolute" ng-href="/post?id={{post.message.id}}"></a>-->
  <div class=" shared" ng-if="post.sharers.length > 0">
-		   	<span ng-if="post.sharers.length == 1" > <a ng-href="#!/user/{{post.sharers[0].name}}/messages">{{post.sharers[0].name}} </a> has shared it </span>
+	<span ng-if="post.sharers.length == 1" > <a ng-href="#!/user/{{post.sharers[0].name}}/messages">{{post.sharers[0].name}} </a> has shared it </span>
 
-		   	<span ng-if="post.sharers.length > 1" >
-		   		<div ng-repeat="sharer in post.sharers" style="display:inline;">
-		   			<a ng-href="/user/{{sharer.name}}">{{sharer.name}} </a>
-		   			<span ng-if="$index < post.sharers.length - 2">,</span>
-		   			<span ng-if="$index == post.sharers.length - 2">and</span>
-		   		</div>
-		   		have shared it
-		   	</span>
+	<span ng-if="post.sharers.length > 1" >
+		<div ng-repeat="sharer in post.sharers" style="display:inline;">
+			<a ng-href="#!/user/{{sharer.name}}">{{sharer.name}} </a>
+			<span ng-if="$index < post.sharers.length - 2">,</span>
+			<span ng-if="$index == post.sharers.length - 2">and</span>
+		</div>
+		have shared it
+	</span>
 
   </div>
 
@@ -33,11 +33,11 @@
   </div>
 
   <div  ng-if="post.message.content_type == 'VIDEO'" class="card-block">
-			<div class="video-container">
-				<div class="embed-responsive embed-responsive-16by9">
-				<iframe class="embed-responsive-item" ng-src="{{trustedVideoUrl(post.message.content_data)}}"></iframe>
-				</div>
+		<div class="video-container">
+			<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" ng-src="{{trustedVideoUrl(post.message.content_data)}}"></iframe>
 			</div>
+		</div>
 	</div>
 
 

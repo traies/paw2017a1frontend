@@ -17,7 +17,7 @@
                     <li class='nav-item' ng-class="type().type == 'messages' ? 'active'  : ''">
             <h3>
                 <a class="nav-link game_category_link"
-                    ng-href="/#!/user/{{targetuser.name}}/messages">
+                    ng-href="#!/user/{{targetuser.name}}/messages">
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_MESSAGES' | translate}}
@@ -33,7 +33,7 @@
             </li>
             <li class='nav-item' ng-class="type().type == 'followers' ? 'active'  : ''">
                 <h3>
-                    <a class="nav-link game_category_link" ng-href="/#!/user/{{targetuser.name}}/followers">
+                    <a class="nav-link game_category_link" ng-href="#!/user/{{targetuser.name}}/followers">
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_FOLLOWERS' | translate}}
@@ -50,7 +50,7 @@
 
             <li class='nav-item' ng-class="type().type == 'following' ? 'active'  : ''">
                 <h3>
-                    <a class="nav-link game_category_link" ng-href="/#!/user/{{targetuser.name}}/following">
+                    <a class="nav-link game_category_link" ng-href="#!/user/{{targetuser.name}}/following">
                         <div class = "row justify-content-center">
                             <span class="game_message_category" >
                                 {{'COUNT_FOLLOWING' | translate}}
